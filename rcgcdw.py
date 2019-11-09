@@ -1141,7 +1141,7 @@ class Recent_Changes_Class(object):
 				categorize_events = {}
 				new_events = 0
 				for change in changes:
-					if not (change["rcid"] in self.ids or change["rcid"] < self.recent_id) and not clean:
+					if not (change["rcid"] in self.ids) and not clean:
 						new_events += 1
 						logger.debug(
 							"New event: {}".format(change["rcid"]))
@@ -1179,7 +1179,7 @@ class Recent_Changes_Class(object):
 						# 	logger.debug("New category '{}' for {}".format(cat_title, change["revid"]))
 						# 	categorize_events[change["revid"]] = {cat_title: }
 				for change in changes:
-					if change["rcid"] in self.ids or change["rcid"] < self.recent_id:
+					if change["rcid"] in self.ids:
 						logger.debug("Change ({}) is in ids or is lower than recent_id {}".format(change["rcid"],
 						                                                                           self.recent_id))
 						continue
