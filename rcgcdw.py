@@ -1178,18 +1178,36 @@ class Recent_Changes_Class(object):
 						# else:
 						# 	logger.debug("New category '{}' for {}".format(cat_title, change["revid"]))
 						# 	categorize_events[change["revid"]] = {cat_title: }
-				for change in changes:
-					if change["rcid"] in self.ids:
-						logger.debug("Change ({}) is in ids or is lower than recent_id {}".format(change["rcid"],
-						                                                                           self.recent_id))
-						continue
-					logger.debug(self.ids)
-					logger.debug(self.recent_id)
-					self.add_cache(change)
-					if clean and not (self.recent_id == 0 and change["rcid"] > self.file_id):
-						logger.debug("Rejected {val}".format(val=change["rcid"]))
-						continue
-					essential_info(change, categorize_events.get(change.get("revid"), None))
+				# Hello MediaWiki, here we meet again, since you cannot maintain any consistency, I have to make workaround just for your stupid system.
+				# reached_rc_entry is a bool that is False by default and becomes True when script meets the rcid that were already considered as "last"
+				# in the previous check. Entries after that "last" are considered new and not rejected anymore unless in cache.
+				# this system should prevent a situation where the rcid value is inconsistent and not incremental (which happens, see #90)
+				# and it should still protect from repeating the entries. HOWEVER it depends on the array list to be at least consistent.
+				# If the page got removed and this caused some events from the recent changes to disappear (old rcid is no longer in the array)
+				# the script will set reached_rc_entry to None and redo the entire for loop but in the old system (if rcid > old rcid - show the event)
+				reached_rc_entry = True if clean else False
+				while True:
+					for change in changes:
+						if reached_rc_entry is False:
+							if change["rcid"] == self.recent_id:
+								reached_rc_entry = True
+							continue
+						if change["rcid"] in self.ids or (reached_rc_entry is None and change["rcid"] < self.recent_id):
+							logger.debug("Change ({}) is in ids".format(change["rcid"]))
+							continue
+						logger.debug(self.ids)
+						logger.debug(self.recent_id)
+						self.add_cache(change)
+						if clean and not (self.recent_id == 0 and change["rcid"] > self.file_id):
+							logger.debug("Rejected {val}".format(val=change["rcid"]))
+							continue
+						essential_info(change, categorize_events.get(change.get("revid"), None))
+					else:
+						if reached_rc_entry is False:
+							logger.info("The last entry could not be found in this array! Assuming we lost something, restarting the for loop and using the 'old system'.")
+							reached_rc_entry = None
+						else:
+							break
 				return change["rcid"]
 
 	def safe_request(self, url):
