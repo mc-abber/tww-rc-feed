@@ -169,7 +169,7 @@ def set_webhook():
 			print("The webhook URL does not seem right. Reason: {}".format(test_webhook.json()["message"]))
 			return False
 		else:
-			settings["webhookURL"] = option
+			settings["webhookURL"] = [option]
 			return True
 	else:
 		print("A Discord webhook URL should start with https://discord.com/api/webhooks/, are you sure it's the right URL?")

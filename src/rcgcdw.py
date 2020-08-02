@@ -140,7 +140,7 @@ def day_overview():
 		changed_bytes = 0
 		new_articles = 0
 		active_articles = []
-		embed = DiscordMessage("embed", "daily_overview", settings["webhookURL"])
+		embed = DiscordMessage("embed", "daily_overview", settings["webhookURL"][0])
 		embed["title"] = _("Daily overview")
 		embed["url"] = create_article_path("Special:Statistics")
 		embed.set_author(settings["wikiname"], create_article_path(""),

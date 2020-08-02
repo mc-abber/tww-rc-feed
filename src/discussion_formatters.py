@@ -14,7 +14,7 @@ discussion_logger = logging.getLogger("rcgcdw.discussion_formatter")
 
 def embed_formatter(post, post_type):
 	"""Embed formatter for Fandom discussions."""
-	embed = DiscordMessage("embed", "discussion", settings["fandom_discussions"]["webhookURL"])
+	embed = DiscordMessage("embed", "discussion", settings["fandom_discussions"]["webhookURL"][int(post["id"]) % len(settings["fandom_discussions"]["webhookURL"])])
 	embed.set_author(post["createdBy"]["name"], "{wikiurl}f/u/{creatorId}".format(
 		wikiurl=settings["fandom_discussions"]["wiki_url"], creatorId=post["creatorId"]), icon_url=post["createdBy"]["avatarUrl"])
 	discussion_post_type = post["_embedded"]["thread"][0].get("containerType", "FORUM")  # Can be FORUM, ARTICLE_COMMENT or WALL on UCP
@@ -122,7 +122,7 @@ def compact_formatter(post, post_type):
 			"[{author}](<{url}f/u/{creatorId}>) created a poll [{title}](<{url}f/p/{threadId}>) in {forumName}").format(
 			author=post["createdBy"]["name"], url=settings["fandom_discussions"]["wiki_url"],
 			creatorId=post["creatorId"], title=post["title"], threadId=post["threadId"], forumName=post["forumName"])
-	send_to_discord(DiscordMessage("compact", "discussion", settings["fandom_discussions"]["webhookURL"], content=message))
+	send_to_discord(DiscordMessage("compact", "discussion", settings["fandom_discussions"]["webhookURL"][int(post["id"]) % len(settings["fandom_discussions"]["webhookURL"])], content=message))
 
 
 class DiscussionsFromHellParser:

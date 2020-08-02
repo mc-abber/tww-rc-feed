@@ -321,11 +321,11 @@ def compact_formatter(action, change, parsed_comment, categories, recent_changes
 	else:
 		logger.warning("No entry for {event} with params: {params}".format(event=action, params=change))
 		return
-	send_to_discord(DiscordMessage("compact", action, settings["webhookURL"], content=content))
+	send_to_discord(DiscordMessage("compact", action, settings["webhookURL"][change["rcid"] % len(settings["webhookURL"])], content=content))
 
 
 def embed_formatter(action, change, parsed_comment, categories, recent_changes):
-	embed = DiscordMessage("embed", action, settings["webhookURL"])
+	embed = DiscordMessage("embed", action, settings["webhookURL"][change["rcid"] % len(settings["webhookURL"])])
 	if parsed_comment is None:
 		parsed_comment = _("No description provided")
 	if action != "suppressed":

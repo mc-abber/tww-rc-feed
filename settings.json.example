@@ -7,7 +7,9 @@
       "user-agent": "RcGcDw/{version}"
       },
    "limit": 10,
-   "webhookURL": "https://discordapp.com/api/webhooks/111111111111111111/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "webhookURL": [
+      "https://discordapp.com/api/webhooks/111111111111111111/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   ],
    "limitrefetch": 28,
    "wikiname": "Wreck It Woodhouse",
    "avatars": {
@@ -293,7 +295,9 @@
         "wiki_id": 1885853,
         "wiki_url": "https://wikibot.fandom.com/",
         "cooldown": 60,
-        "webhookURL": "https://discordapp.com/api/webhooks/111111111111111111/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "webhookURL": [
+           "https://discordapp.com/api/webhooks/111111111111111111/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
         "limit": 5,
         "appearance": {
             "mode": "embed",

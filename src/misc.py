@@ -305,7 +305,7 @@ def create_article_path(article: str) -> str:
 
 
 def send_simple(msgtype, message, name, avatar):
-	discord_msg = DiscordMessage("compact", msgtype, settings["webhookURL"], content=message)
+	discord_msg = DiscordMessage("compact", msgtype, settings["webhookURL"][0], content=message)
 	discord_msg.set_avatar(avatar)
 	discord_msg.set_name(name)
 	messagequeue.resend_msgs()
