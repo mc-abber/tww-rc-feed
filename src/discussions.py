@@ -22,11 +22,11 @@ from src.configloader import settings
 from src.discussion_formatters import embed_formatter, compact_formatter
 from src.misc import datafile, messagequeue
 from src.session import session
+from src.i18n import disc
 
 # Initialize translation
 
-t = gettext.translation('discussions', localedir='locale', languages=[settings["lang"]])
-_ = t.gettext
+_ = disc.gettext
 
 # Create a custom logger
 
@@ -67,13 +67,8 @@ def fetch_discussions():
 
 def parse_discussion_post(post):
 	"""Initial post recognition & handling"""
-	post_type = post.get("funnel", "TEXT")
-	if post_type == "TEXT":
-		formatter(post, post_type)
-	elif post_type == "POLL":
-		formatter(post, post_type)
-	else:
-		discussion_logger.warning("The type of {} is an unknown discussion post type. Please post an issue on the project page to have it added https://gitlab.com/piotrex43/RcGcDw/-/issues.")
+	post_type = post["_embedded"]["thread"][0]["containerType"]
+	formatter(post_type, post)
 
 
 def safe_request(url):
