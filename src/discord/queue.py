@@ -132,7 +132,7 @@ def send_to_discord_webhook(data: Optional[DiscordMessage], metadata: DiscordMes
 	header['Content-Type'] = 'application/json'
 	standard_args = dict(headers=header)
 	if metadata.method == "POST":
-		req = requests.Request("POST", data.webhook_url+"?wait=" + ("true" if AUTO_SUPPRESSION_ENABLED else "false"), data=repr(data), **standard_args)
+		req = requests.Request("POST", data.webhook_url + (("&" if "?" in data.webhook_url else "&")+"wait=true" if AUTO_SUPPRESSION_ENABLED else ""), data=repr(data), **standard_args)
 	elif metadata.method == "DELETE":
 		req = requests.Request("DELETE", metadata.webhook_url, **standard_args)
 	elif metadata.method == "PATCH":

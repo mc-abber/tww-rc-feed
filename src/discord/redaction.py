@@ -39,7 +39,7 @@ def delete_messages(matching_data: dict):
 	msg_to_remove = []
 	logger.debug("Deleting messages for data: {}".format(matching_data))
 	for message in to_delete:
-		webhook_url = "{main_webhook}/messages/{message_id}".format(main_webhook=settings["webhookURL"], message_id=message[0])
+		webhook_url = "{main_webhook}/messages/{message_id}".format(main_webhook=settings["webhookURL"].split("?", 1)[0], message_id=message[0])
 		msg_to_remove.append(message[0])
 		logger.debug("Removing following message: {}".format(message[0]))
 		send_to_discord(None, DiscordMessageMetadata("DELETE", webhook_url=webhook_url))
@@ -87,6 +87,6 @@ def redact_messages(ids: list, entry_type: int, to_censor: dict):
 				db_cursor.execute("UPDATE messages SET content = ? WHERE message_id = ?;", (json.dumps(message), row[1],))
 				db_connection.commit()
 				logger.debug(message)
-				send_to_discord(DiscordMessageRaw(message, settings["webhookURL"]+"/messages/"+str(row[1])), DiscordMessageMetadata("PATCH"))
+				send_to_discord(DiscordMessageRaw(message, settings["webhookURL"].split("?", 1)[0]+"/messages/"+str(row[1])), DiscordMessageMetadata("PATCH"))
 			else:
 				logger.debug("Could not find message in the database.")
