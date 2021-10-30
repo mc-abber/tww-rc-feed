@@ -12,5 +12,6 @@ setup(
 	keywords=['MediaWiki', 'recent changes', 'Discord', 'webhook'],
 	package_dir={"": "src"},
 	install_requires=["beautifulsoup4 >= 4.6.0", "requests >= 2.18.4", "schedule >=  0.5.0", "lxml >= 4.2.1"],
+	extras_require=["matplotlib => 3.4.3"],
 	python_requires="3.7"
 )

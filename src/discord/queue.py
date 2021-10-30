@@ -129,10 +129,18 @@ def update_ratelimit(request):
 def send_to_discord_webhook(data: Optional[DiscordMessage], metadata: DiscordMessageMetadata):
 	global rate_limit
 	header = settings["header"]
-	header['Content-Type'] = 'application/json'
+	if data.files:
+		header['Content-Type'] = 'multipart/form-data'
+	else:
+		header['Content-Type'] = 'application/json'
 	standard_args = dict(headers=header)
 	if metadata.method == "POST":
-		req = requests.Request("POST", data.webhook_url+"?wait=" + ("true" if AUTO_SUPPRESSION_ENABLED else "false"), data=repr(data), **standard_args)
+		if data.files:
+			data.add_file("payload_json", repr(data))
+			logger.debug(data.files)
+			req = requests.Request("POST", data.webhook_url+"?wait=" + ("true" if AUTO_SUPPRESSION_ENABLED else "false"), files=data.files, **standard_args)
+		else:
+			req = requests.Request("POST", data.webhook_url+"?wait=" + ("true" if AUTO_SUPPRESSION_ENABLED else "false"), data=repr(data), **standard_args)
 	elif metadata.method == "DELETE":
 		req = requests.Request("DELETE", metadata.webhook_url, **standard_args)
 	elif metadata.method == "PATCH":

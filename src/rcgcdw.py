@@ -18,13 +18,13 @@
 
 # WARNING! SHITTY CODE AHEAD. ENTER ONLY IF YOU ARE SURE YOU CAN TAKE IT
 # You have been warned
-
-import time, logging.config, requests, datetime, math, os.path, schedule, sys, re, importlib
+import io
+import time, logging.config, requests, datetime, math, os.path, schedule, sys, importlib
 
 import src.misc
 from collections import defaultdict, Counter, OrderedDict
 
-from typing import Optional
+from typing import Optional, List
 import src.api.client
 from src.api.context import Context
 from src.api.hooks import formatter_hooks, pre_hooks, post_hooks
@@ -42,15 +42,23 @@ ngettext = rcgcdw.ngettext
 
 TESTING = True if "--test" in sys.argv else False  # debug mode, pipeline testing
 AUTO_SUPPRESSION_ENABLED = settings.get("auto_suppression", {"enabled": False}).get("enabled")
+PLOTTING_ENABLED = settings.get("event_appearance", {}).get("daily_overview", {}).get("plot", False)
 
 if AUTO_SUPPRESSION_ENABLED:
 	from src.discord.redaction import delete_messages, redact_messages
+
 # Prepare logging
 
 logging.config.dictConfig(settings["logging"])
 logger = logging.getLogger("rcgcdw")
 logger.debug("Current settings: {settings}".format(settings=settings))
 
+if PLOTTING_ENABLED:
+	try:
+		import matplotlib.pyplot as plt
+		from matplotlib.ticker import MultipleLocator
+	except ImportError:
+		logger.error("matplotlib is not installed. Install matplotlib with pip install matplotlib if you want to use plots in daily overview.")
 
 def load_extensions():
 	"""Loads all of the extensions, can be a local import because all we need is them to register"""
@@ -121,6 +129,27 @@ def daily_overview_sync(data: dict) -> dict:
 	return data_output
 
 
+def overview_plot_generation(hours: defaultdict[int, int]) -> io.BytesIO:
+	"""Generates plot image using matplotlib"""
+	output = io.BytesIO()
+	current_hour, axes_data = datetime.datetime.utcnow().hour, [[], []]
+	for __ in range(24):
+		axes_data[0].append(current_hour)
+		axes_data[1].append(hours.get(current_hour, 0))
+		current_hour += 1
+		if current_hour > 23:
+			current_hour = 0
+	fig, ax = plt.subplots()
+	plt.bar(axes_data[0], axes_data[1])
+	plt.xlabel(_('Hour (UTC)'))
+	plt.ylabel(_('Actions'))
+	ax.set_xlim(-0.5, 23.5)
+	ax.set_xticklabels([str(axes_data[0][0])] + [str(x) for x in axes_data[0]])
+	ax.xaxis.set_major_locator(MultipleLocator(1))
+	plt.savefig(output, format="png")
+	return output
+
+
 def day_overview():
 	try:
 		result = day_overview_request()
@@ -146,7 +175,7 @@ def day_overview():
 				if "actionhidden" in item or "suppressed" in item or "userhidden" in item:
 					continue  # while such actions have type value (edit/new/log) many other values are hidden and therefore can crash with key error, let's not process such events
 				activity = add_to_dict(activity, item["user"])
-				hours = add_to_dict(hours, datetime.datetime.strptime(item["timestamp"], "%Y-%m-%dT%H:%M:%SZ").hour)
+				hours = add_to_dict(hours, datetime.datetime.strptime(item["timestamp"], "%Y-%m-%dT%H:%M:%SZ").hour)  # Edits can overlap between days at same hour if overview executes in non full hour, but let's ignore that
 				if item["type"] == "edit":
 					edits += 1
 					changed_bytes += item["newlen"] - item["oldlen"]
@@ -190,6 +219,11 @@ def day_overview():
 			)
 			for name, value in fields:
 				embed.add_field(name, value, inline=True)
+		if PLOTTING_ENABLED:
+			file = overview_plot_generation(hours)
+			file_name = "_" + datetime.datetime.now().strftime("%Y-%m-%d_%H:%M") + "_wiki_overview.png"
+			embed.add_file(file_name, file)
+			embed["image"]["url"] = "attachment://" + file_name
 		embed.finish_embed()
 		send_to_discord(embed, meta=DiscordMessageMetadata("POST"))
 

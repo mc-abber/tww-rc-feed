@@ -17,6 +17,8 @@ import json
 import math
 import random
 from collections import defaultdict
+from typing import Tuple, Dict, Union
+from io import BytesIO
 
 from src.configloader import settings
 
@@ -36,6 +38,7 @@ class DiscordMessage:
 
 		self.message_type = message_type
 		self.event_type = event_type
+		self.files: Dict[str, Tuple[str, Union[BytesIO, str], str]] = {}
 
 	def __setitem__(self, key, value):
 		"""Set item is used only in embeds."""
@@ -62,6 +65,9 @@ class DiscordMessage:
 	def add_embed(self):
 		self.finish_embed()
 		self.__setup_embed()
+
+	def add_file(self, filename: str, content: Union[str, BytesIO]):
+		self.files[filename] = (None if isinstance(content, str) else filename, content, "application/json" if isinstance(content, str) else "image/" + filename.split(".")[1])
 
 	def finish_embed(self):
 		if self.message_type != "embed":
