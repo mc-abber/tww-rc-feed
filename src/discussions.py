@@ -16,7 +16,7 @@
 # along with RcGcDw.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging, schedule, requests
-from typing import Dict, Any, Optional
+from typing import Optional
 
 from src.configloader import settings
 
@@ -134,6 +134,7 @@ def parse_discussion_post(post, comment_pages):
 			raise
 	metadata = DiscordMessageMetadata("POST")
 	run_hooks(post_hooks, discord_message, metadata, context, post)
+	discord_message.finish_embed()
 	send_to_discord(discord_message, metadata)
 
 
