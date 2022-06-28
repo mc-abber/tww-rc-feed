@@ -34,7 +34,7 @@ from src.api.util import create_article_path, default_message
 from src.discord.queue import send_to_discord
 from src.discord.message import DiscordMessage, DiscordMessageMetadata
 from src.exceptions import ServerError, MediaWikiError, NoFormatter
-from src.i18n import rcgcdw
+from src.i18n import rcgcdw, formatters_i18n
 from src.wiki import Wiki
 
 settings = src.configloader.settings
@@ -202,7 +202,7 @@ def rc_processor(change, changed_categories):
 	metadata = DiscordMessageMetadata("POST", rev_id=change.get("revid", None), log_id=change.get("logid", None),
 	                       page_id=change.get("pageid", None))
 	logger.debug(change)
-	context = Context(settings["appearance"]["mode"], "recentchanges", settings["webhookURL"], client)
+	context = Context(settings["appearance"]["mode"], "recentchanges", settings["webhookURL"], client, formatters_i18n, settings)
 	if ("actionhidden" in change or "suppressed" in change) and "suppressed" not in settings["ignored"]:  # if event is hidden using suppression
 		context.event = "suppressed"
 		run_hooks(pre_hooks, context, change)

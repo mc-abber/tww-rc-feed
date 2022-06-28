@@ -17,24 +17,19 @@ import ipaddress
 import logging
 from src.discord.message import DiscordMessage
 from src.api import formatter
-from src.i18n import formatters_i18n
 from src.api.context import Context
 from src.api.util import embed_helper, sanitize_to_url, parse_mediawiki_changes, clean_link, compact_author, \
 	create_article_path, sanitize_to_markdown
-from src.configloader import settings
 
-_ = formatters_i18n.gettext
-ngettext = formatters_i18n.ngettext
-
-abusefilter_results = {"": _("None"), "warn": _("Warning issued"), "block": _("**Blocked user**"), "tag": _("Tagged the edit"), "disallow": _("Disallowed the action"), "rangeblock": _("**IP range blocked**"), "throttle": _("Throttled actions"), "blockautopromote": _("Removed autoconfirmed group"), "degroup": _("**Removed from privileged groups**")}
-abusefilter_actions = {"edit": _("Edit"), "upload": _("Upload"), "move": _("Move"), "stashupload": _("Stash upload"), "delete": _("Deletion"), "createaccount": _("Account creation"), "autocreateaccount": _("Auto account creation")}
+abusefilter_translatable = lambda string, _, default: {"edit": _("Edit"), "upload": _("Upload"), "move": _("Move"), "stashupload": _("Stash upload"), "delete": _("Deletion"), "createaccount": _("Account creation"), "autocreateaccount": _("Auto account creation"), "": _("None"), "warn": _("Warning issued"), "block": _("**Blocked user**"), "tag": _("Tagged the edit"), "disallow": _("Disallowed the action"), "rangeblock": _("**IP range blocked**"), "throttle": _("Throttled actions"), "blockautopromote": _("Removed autoconfirmed group"), "degroup": _("**Removed from privileged groups**")}.get(string, default)
 
 logger = logging.getLogger("extensions.base")
 
 # AbuseFilter - https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter
 # Processing Abuselog LOG events, separate from RC logs
 
-def abuse_filter_format_user(change):
+
+def abuse_filter_format_user(change, settings):
 	author = change["user"]
 	if settings.get("hide_ips", False):
 		try:
@@ -50,10 +45,10 @@ def abuse_filter_format_user(change):
 def embed_abuselog(ctx: Context, change: dict):
 	action = "abuselog/{}".format(change["result"])
 	embed = DiscordMessage(ctx.message_type, action, ctx.webhook_url)
-	author = abuse_filter_format_user(change)
+	author = abuse_filter_format_user(change, ctx.settings)
 	embed["title"] = _("{user} triggered \"{abuse_filter}\"").format(user=author, abuse_filter=sanitize_to_markdown(change["filter"]))
-	embed.add_field(_("Performed"), abusefilter_actions.get(change["action"], _("Unknown")))
-	embed.add_field(_("Action taken"), abusefilter_results.get(change["result"], _("Unknown")))
+	embed.add_field(_("Performed"), abusefilter_translatable(change["action"], ctx._, _("Unknown")))
+	embed.add_field(_("Action taken"), abusefilter_translatable(change["result"], ctx._, _("Unknown")))
 	embed.add_field(_("Title"), sanitize_to_markdown(change.get("title", _("Unknown"))))
 	return embed
 
@@ -62,12 +57,12 @@ def embed_abuselog(ctx: Context, change: dict):
 def compact_abuselog(ctx: Context, change: dict):
 	action = "abuselog/{}".format(change["result"])
 	author_url = clean_link(create_article_path("User:{user}".format(user=change["user"])))
-	author = abuse_filter_format_user(change)
+	author = abuse_filter_format_user(change, ctx.settings)
 	message = _("[{author}]({author_url}) triggered *{abuse_filter}*, performing the action \"{action}\" on *[{target}]({target_url})* - action taken: {result}.").format(
 		author=author, author_url=author_url, abuse_filter=sanitize_to_markdown(change["filter"]),
-		action=abusefilter_actions.get(change["action"], _("Unknown")), target=change.get("title", _("Unknown")),
+		action=abusefilter_translatable(change["action"], ctx._, _("Unknown")), target=change.get("title", _("Unknown")),
 		target_url=clean_link(create_article_path(sanitize_to_url(change.get("title", _("Unknown"))))),
-		result=abusefilter_results.get(change["result"], _("Unknown")))
+		result=abusefilter_translatable(change["result"], ctx._, _("Unknown")))
 	return DiscordMessage(ctx.message_type, action, ctx.webhook_url, content=message)
 
 # abusefilter/modify - AbuseFilter filter modification
@@ -110,6 +105,7 @@ def embed_abuselog_create(ctx: Context, change: dict):
 	embed["url"] = create_article_path("Special:AbuseFilter/{number}".format(number=change["logparams"]['newId']))
 	embed["title"] = _("Created abuse filter number {number}").format(number=change["logparams"]['newId'])
 	return embed
+
 
 @formatter.compact(event="abusefilter/create")
 def compact_abuselog_create(ctx: Context, change: dict):

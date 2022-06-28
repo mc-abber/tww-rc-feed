@@ -18,7 +18,6 @@ from typing import Union, Optional
 from src.configloader import settings
 logger = logging.getLogger("rcgcdw.i18n")
 rcgcdw: Optional[Union[gettext.GNUTranslations, gettext.NullTranslations]] = None
-discussion_formatters: Optional[Union[gettext.GNUTranslations, gettext.NullTranslations]] = None
 rc: Optional[Union[gettext.GNUTranslations, gettext.NullTranslations]] = None
 formatters_i18n: Optional[Union[gettext.GNUTranslations, gettext.NullTranslations]] = None
 misc: Optional[Union[gettext.GNUTranslations, gettext.NullTranslations]] = None
@@ -44,7 +43,7 @@ def load_languages():
 			misc = gettext.translation('misc', localedir='locale', languages=[settings["lang"]])
 			redaction = gettext.translation('redaction', localedir='locale', languages=[settings["lang"]])
 		else:
-			rcgcdw, discussion_formatters, rc, formatters_i18n, misc, redaction = gettext.NullTranslations(), gettext.NullTranslations(), gettext.NullTranslations(), gettext.NullTranslations(), gettext.NullTranslations(), gettext.NullTranslations()
+			rcgcdw, rc, formatters_i18n, misc, redaction = gettext.NullTranslations(), gettext.NullTranslations(), gettext.NullTranslations(), gettext.NullTranslations(), gettext.NullTranslations()
 		formatters_i18n.pgettext = python37_pgettext_backward_compatibility
 	except FileNotFoundError:
 		logger.critical("No language files have been found. Make sure locale folder is located in the directory.")

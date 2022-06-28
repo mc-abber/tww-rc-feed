@@ -13,6 +13,8 @@
 #  You should have received a copy of the GNU General Public License
 #  along with RcGcDw.  If not, see <http://www.gnu.org/licenses/>.
 from __future__ import annotations
+
+import gettext
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -22,7 +24,7 @@ if TYPE_CHECKING:
 class Context:
 	"""Context object containing client and some metadata regarding specific formatter call,
 	they are mainly used as a bridge between part that fetches the changes and API's formatters"""
-	def __init__(self, message_type: str, feed_type: str, webhook_url: str, client: Client):
+	def __init__(self, message_type: str, feed_type: str, webhook_url: str, client: Client, language: gettext.GNUTranslations, settings: dict):
 		self.client = client
 		self.webhook_url = webhook_url
 		self.message_type = message_type
@@ -31,6 +33,11 @@ class Context:
 		self.parsedcomment = None
 		self.event = None
 		self.comment_page = None
+		self._ = language.gettext  # Singular translations (ex. ctx._("Large goat"))
+		self.ngettext = language.npgettext  # Plural translations depending on amount (ex. ctx.ngettext("{} action", "{} actions", action_amount))
+		self.pgettext = language.pgettext  # Translation with context (ex. ctx.pgettext("From mediawiki module", "Blocked {} user"))
+		self.npgettext = language.npgettext  # Plural translation with context (ex. ctx.npgettext("From mediawiki module", "Edited {} time", "Edited {} times", edit_amoint)
+		self.settings = settings
 
 	def set_categories(self, cats):
 		self.categories = cats

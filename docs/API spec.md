@@ -118,6 +118,10 @@ Context can consist of the following fields:
 - `categories` - {"new": set(), "removed": set()} - each set containing strings of added or removed categories for given page
 - `parsedcomment` - string - contains escaped and Markdown parsed summary (parsed_comment) of a log/edit action 
 - `comment_page` - dict - containing `fullUrl` and `article` with strings both to full article url and its name
+- `_` – gettext.gettext - function for singular translations
+- `ngettext` – gettext.ngettext – function for plural translations
+- `pgettext` – gettext.pgettext – function for translations differentiated by the context
+- `npgettext` – gettext.npgettext – function for plural translations differentiated by the context
 
 ### Util
 **Path**: `src.api.util`
