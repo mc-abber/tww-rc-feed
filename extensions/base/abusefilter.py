@@ -46,10 +46,10 @@ def embed_abuselog(ctx: Context, change: dict):
 	action = "abuselog/{}".format(change["result"])
 	embed = DiscordMessage(ctx.message_type, action, ctx.webhook_url)
 	author = abuse_filter_format_user(change, ctx.settings)
-	embed["title"] = _("{user} triggered \"{abuse_filter}\"").format(user=author, abuse_filter=sanitize_to_markdown(change["filter"]))
-	embed.add_field(_("Performed"), abusefilter_translatable(change["action"], ctx._, _("Unknown")))
-	embed.add_field(_("Action taken"), abusefilter_translatable(change["result"], ctx._, _("Unknown")))
-	embed.add_field(_("Title"), sanitize_to_markdown(change.get("title", _("Unknown"))))
+	embed["title"] = ctx._("{user} triggered \"{abuse_filter}\"").format(user=author, abuse_filter=sanitize_to_markdown(change["filter"]))
+	embed.add_field(ctx._("Performed"), abusefilter_translatable(change["action"], ctx._, ctx._("Unknown")))
+	embed.add_field(ctx._("Action taken"), abusefilter_translatable(change["result"], ctx._, ctx._("Unknown")))
+	embed.add_field(ctx._("Title"), sanitize_to_markdown(change.get("title", ctx._("Unknown"))))
 	return embed
 
 
@@ -58,11 +58,11 @@ def compact_abuselog(ctx: Context, change: dict):
 	action = "abuselog/{}".format(change["result"])
 	author_url = clean_link(create_article_path("User:{user}".format(user=change["user"])))
 	author = abuse_filter_format_user(change, ctx.settings)
-	message = _("[{author}]({author_url}) triggered *{abuse_filter}*, performing the action \"{action}\" on *[{target}]({target_url})* - action taken: {result}.").format(
+	message = ctx._("[{author}]({author_url}) triggered *{abuse_filter}*, performing the action \"{action}\" on *[{target}]({target_url})* - action taken: {result}.").format(
 		author=author, author_url=author_url, abuse_filter=sanitize_to_markdown(change["filter"]),
-		action=abusefilter_translatable(change["action"], ctx._, _("Unknown")), target=change.get("title", _("Unknown")),
-		target_url=clean_link(create_article_path(sanitize_to_url(change.get("title", _("Unknown"))))),
-		result=abusefilter_translatable(change["result"], ctx._, _("Unknown")))
+		action=abusefilter_translatable(change["action"], ctx._, ctx._("Unknown")), target=change.get("title", ctx._("Unknown")),
+		target_url=clean_link(create_article_path(sanitize_to_url(change.get("title", ctx._("Unknown"))))),
+		result=abusefilter_translatable(change["result"], ctx._, ctx._("Unknown")))
 	return DiscordMessage(ctx.message_type, action, ctx.webhook_url, content=message)
 
 # abusefilter/modify - AbuseFilter filter modification
@@ -75,7 +75,7 @@ def embed_abuselog_modify(ctx: Context, change: dict):
 	embed["url"] = create_article_path(
 		"Special:AbuseFilter/history/{number}/diff/prev/{historyid}".format(number=change["logparams"]['newId'],
 																			historyid=change["logparams"]["historyId"]))
-	embed["title"] = _("Edited abuse filter number {number}").format(number=change["logparams"]['newId'])
+	embed["title"] = ctx._("Edited abuse filter number {number}").format(number=change["logparams"]['newId'])
 	return embed
 
 
@@ -87,7 +87,7 @@ def compact_abuselog_modify(ctx: Context, change: dict):
 																			historyid=change["logparams"][
 																				"historyId"])))
 
-	content = _("[{author}]({author_url}) edited abuse filter [number {number}]({filter_url})").format(author=author,
+	content = ctx._("[{author}]({author_url}) edited abuse filter [number {number}]({filter_url})").format(author=author,
 																									   author_url=author_url,
 																									   number=change[
 																										   "logparams"][
@@ -103,7 +103,7 @@ def embed_abuselog_create(ctx: Context, change: dict):
 	embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
 	embed_helper(ctx, embed, change)
 	embed["url"] = create_article_path("Special:AbuseFilter/{number}".format(number=change["logparams"]['newId']))
-	embed["title"] = _("Created abuse filter number {number}").format(number=change["logparams"]['newId'])
+	embed["title"] = ctx._("Created abuse filter number {number}").format(number=change["logparams"]['newId'])
 	return embed
 
 
@@ -112,7 +112,7 @@ def compact_abuselog_create(ctx: Context, change: dict):
 	author, author_url = compact_author(ctx, change)
 	link = clean_link(
 		create_article_path("Special:AbuseFilter/{number}".format(number=change["logparams"]['newId'])))
-	content = _("[{author}]({author_url}) created abuse filter [number {number}]({filter_url})").format(author=author,
+	content = ctx._("[{author}]({author_url}) created abuse filter [number {number}]({filter_url})").format(author=author,
 																										author_url=author_url,
 																										number=change[
 																											"logparams"][
