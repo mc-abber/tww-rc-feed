@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RcGcDw\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-16 23:56+0200\n"
+"POT-Creation-Date: 2022-07-14 18:17+0200\n"
 "PO-Revision-Date: 2022-07-10 16:40+0000\n"
 "Last-Translator: lakejason0 <sunliyuan200402@outlook.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.wikibot.de/projects/"
@@ -32,8 +32,8 @@ msgid "Added"
 msgstr "已新增"
 
 #: src/api/util.py:94 src/api/util.py:126 src/api/util.py:133
-#: src/api/util.py:141 extensions/base/discussions.py:247
-#: extensions/base/discussions.py:264 extensions/base/abusefilter.py:45
+#: src/api/util.py:141 extensions/base/discussions.py:241
+#: extensions/base/discussions.py:258 extensions/base/abusefilter.py:40
 msgid "Unregistered user"
 msgstr "未註冊使用者"
 
@@ -62,52 +62,52 @@ msgstr " 還有 {} 個"
 msgid "Changed categories"
 msgstr "已變更分類"
 
-#: extensions/base/cargo.py:37
+#: extensions/base/cargo.py:32
 #, python-brace-format
 msgid "Created the Cargo table \"{table}\""
 msgstr "已建立 Cargo 表「{table}」"
 
-#: extensions/base/cargo.py:45
+#: extensions/base/cargo.py:40
 #, python-brace-format
 msgid "[{author}]({author_url}) created the Cargo table \"{table}\""
 msgstr "[{author}]({author_url})已建立 Cargo 表「{table}」"
 
-#: extensions/base/cargo.py:60
+#: extensions/base/cargo.py:55
 #, python-brace-format
 msgid "Recreated the Cargo table \"{table}\""
 msgstr "已重新建立 Cargo 表「{table}」"
 
-#: extensions/base/cargo.py:68
+#: extensions/base/cargo.py:63
 #, python-brace-format
 msgid "[{author}]({author_url}) recreated the Cargo table \"{table}\""
 msgstr "[{author}]({author_url})已重新建立 Cargo 表「{table}」"
 
-#: extensions/base/cargo.py:83
+#: extensions/base/cargo.py:78
 #, python-brace-format
 msgid "Replaced the Cargo table \"{table}\""
 msgstr "已替換 Cargo 表「{table}」"
 
-#: extensions/base/cargo.py:91
+#: extensions/base/cargo.py:86
 #, python-brace-format
 msgid "[{author}]({author_url}) replaced the Cargo table \"{table}\""
 msgstr "[{author}]({author_url})已替換 Cargo 表「{table}」"
 
-#: extensions/base/cargo.py:105
+#: extensions/base/cargo.py:100
 #, python-brace-format
 msgid "Deleted the Cargo table \"{table}\""
 msgstr "已刪除 Cargo 表「{table}」"
 
-#: extensions/base/cargo.py:112
+#: extensions/base/cargo.py:107
 #, python-brace-format
 msgid "[{author}]({author_url}) deleted the Cargo table \"{table}\""
 msgstr "[{author}]({author_url})已刪除 Cargo 表「{table}」"
 
-#: extensions/base/translate.py:41
+#: extensions/base/translate.py:37
 #, python-brace-format
 msgid "Marked \"{article}\" for translation"
 msgstr "將 「{article}」 標記為需要翻譯"
 
-#: extensions/base/translate.py:55
+#: extensions/base/translate.py:51
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) marked [{article}]({article_url}) for "
@@ -116,12 +116,12 @@ msgstr ""
 "[{author}]({author_url}) 已將 [{article}]({article_url}) 標記為需要翻譯 "
 "{comment}"
 
-#: extensions/base/translate.py:70
+#: extensions/base/translate.py:66
 #, python-brace-format
 msgid "Removed \"{article}\" from the translation system"
 msgstr "已從翻譯系統移除「{article}」"
 
-#: extensions/base/translate.py:80
+#: extensions/base/translate.py:76
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) removed [{article}]({article_url}) from the "
@@ -130,70 +130,71 @@ msgstr ""
 "[{author}]({author_url})已從翻譯系統移除「[{article}]({article_url})」"
 "{comment}"
 
-#: extensions/base/translate.py:95
+#: extensions/base/translate.py:91
 #, python-brace-format
 msgid "Completed moving translation pages from \"{article}\" to \"{target}\""
 msgstr "已完成將翻譯頁面從 「{article}」 移動到 「{target}」"
 
-#: extensions/base/translate.py:106
+#: extensions/base/translate.py:102
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) completed moving translation pages from *{article}* "
 "to [{target}]({target_url}){comment}"
 msgstr ""
-"[{author}]({author_url}) 已完成將翻譯頁面 *{article}* 移動到 "
-"[{target}]({target_url}){comment}"
+"[{author}]({author_url}) 已完成將翻譯頁面 *{article}* 移動到 [{target}]"
+"({target_url}){comment}"
 
-#: extensions/base/translate.py:121
+#: extensions/base/translate.py:117
 #, python-brace-format
 msgid "Encountered a problem while moving \"{article}\" to \"{target}\""
 msgstr "在移動「{article}」到「{target}」時遇到問題"
 
-#: extensions/base/translate.py:133
+#: extensions/base/translate.py:129
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) encountered a problem while moving [{article}]"
 "({article_url}) to [{target}]({target_url}){comment}"
 msgstr ""
-"[{author}]({author_url}) 在移動 [{article}]({article_url}) 至 "
-"[{target}]({target_url}) 時遇到了問題{comment}"
+"[{author}]({author_url}) 在移動 [{article}]({article_url}) 至 [{target}]"
+"({target_url}) 時遇到了問題{comment}"
 
-#: extensions/base/translate.py:149
+#: extensions/base/translate.py:145
 #, python-brace-format
 msgid ""
 "Failed to delete \"{article}\" which belongs to translatable page "
 "\"{target}\""
 msgstr "無法刪除「{article}」，其屬於可翻譯頁面「{target}」"
 
-#: extensions/base/translate.py:161
+#: extensions/base/translate.py:157
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) failed to delete [{article}]({article_url}) which "
 "belongs to translatable page [{target}]({target_url}){comment}"
 msgstr ""
-"[{author}]({author_url}) 無法刪除 [{article}]({article_url})，"
-"其屬於可翻譯頁面 [{target}]({target_url}){comment}"
+"[{author}]({author_url}) 無法刪除 [{article}]({article_url})，其屬於可翻譯頁"
+"面 [{target}]({target_url}){comment}"
 
-#: extensions/base/translate.py:177
+#: extensions/base/translate.py:173
 #, python-brace-format
 msgid "Completed deletion of translation page \"{article}\""
 msgstr "已完成刪除翻譯頁面「{article}」"
 
-#: extensions/base/translate.py:188
+#: extensions/base/translate.py:184
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) completed deletion of translation page [{article}]"
 "({article_url}){comment}"
-msgstr "[{author}]({author_url}) 已完成刪除翻譯頁面 "
-"[{article}]({article_url}){comment}"
+msgstr ""
+"[{author}]({author_url}) 已完成刪除翻譯頁面 [{article}]({article_url})"
+"{comment}"
 
-#: extensions/base/translate.py:203
+#: extensions/base/translate.py:199
 #, python-brace-format
 msgid ""
 "Failed to delete \"{article}\" which belongs to translation page \"{target}\""
 msgstr "無法刪除「{article}」，其屬於翻譯頁面「{target}」"
 
-#: extensions/base/translate.py:215
+#: extensions/base/translate.py:211
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) failed to delete [{article}]({article_url}) which "
@@ -202,148 +203,149 @@ msgstr ""
 "[{author}]({author_url}) 無法刪除 [{article}]({article_url})，其屬於翻譯頁面 "
 "[{target}]({target_url}){comment}"
 
-#: extensions/base/translate.py:231
+#: extensions/base/translate.py:227
 #, python-brace-format
 msgid "Encouraged translation of \"{article}\""
 msgstr "建議翻譯「{article}」"
 
-#: extensions/base/translate.py:240
+#: extensions/base/translate.py:236
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) encouraged translation of [{article}]({article_url})"
 "{comment}"
 msgstr "[{author}]({author_url}) 建議翻譯 [{article}]({article_url}){comment}"
 
-#: extensions/base/translate.py:255
+#: extensions/base/translate.py:251
 #, python-brace-format
 msgid "Discouraged translation of \"{article}\""
 msgstr "不建議翻譯「{article}」"
 
-#: extensions/base/translate.py:264
+#: extensions/base/translate.py:260
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) discouraged translation of [{article}]"
 "({article_url}){comment}"
-msgstr "[{author}]({author_url}) 不建議翻譯 [{article}]({article_url}){comment}"
+msgstr ""
+"[{author}]({author_url}) 不建議翻譯 [{article}]({article_url}){comment}"
 
-#: extensions/base/translate.py:282
+#: extensions/base/translate.py:278
 #, python-brace-format
 msgid "Limited languages for \"{article}\" to `{languages}`"
 msgstr "將「{article}」的語言限制為 `{languages}`"
 
-#: extensions/base/translate.py:285
+#: extensions/base/translate.py:281
 #, python-brace-format
 msgid "Priority languages for \"{article}\" set to `{languages}`"
 msgstr ""
 
-#: extensions/base/translate.py:288
+#: extensions/base/translate.py:284
 #, python-brace-format
 msgid "Removed priority languages from \"{article}\""
 msgstr ""
 
-#: extensions/base/translate.py:301
+#: extensions/base/translate.py:297
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) limited languages for [{article}]({article_url}) to "
 "`{languages}`{comment}"
 msgstr ""
 
-#: extensions/base/translate.py:308
+#: extensions/base/translate.py:304
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) set the priority languages for [{article}]"
 "({article_url}) to `{languages}`{comment}"
 msgstr ""
 
-#: extensions/base/translate.py:315
+#: extensions/base/translate.py:311
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) removed priority languages from [{article}]"
 "({article_url}){comment}"
 msgstr ""
 
-#: extensions/base/translate.py:331
+#: extensions/base/translate.py:327
 #, python-brace-format
 msgid "Added translatable page \"{article}\" to aggregate group \"{group}\""
 msgstr ""
 
-#: extensions/base/translate.py:342
+#: extensions/base/translate.py:338
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) added translatable page [{article}]({article_url}) "
 "to aggregate group \"{group}\"{comment}"
 msgstr ""
 
-#: extensions/base/translate.py:357
+#: extensions/base/translate.py:353
 #, python-brace-format
 msgid ""
 "Removed translatable page \"{article}\" from aggregate group \"{group}\""
 msgstr ""
 
-#: extensions/base/translate.py:368
+#: extensions/base/translate.py:364
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) removed translatable page [{article}]"
 "({article_url}) from aggregate group \"{group}\"{comment}"
 msgstr ""
 
-#: extensions/base/translate.py:387
+#: extensions/base/translate.py:383
 #, python-brace-format
 msgid "Reviewed translation \"{article}\""
 msgstr ""
 
-#: extensions/base/translate.py:401
+#: extensions/base/translate.py:397
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) reviewed translation [{article}]({article_url})"
 "{comment}"
 msgstr ""
 
-#: extensions/base/translate.py:416
+#: extensions/base/translate.py:412
 #, python-brace-format
 msgid "Changed the state of `{language}` translations of \"{article}\""
 msgstr ""
 
-#: extensions/base/translate.py:419
+#: extensions/base/translate.py:415
 msgid "Old state"
 msgstr "舊狀態"
 
-#: extensions/base/translate.py:420
+#: extensions/base/translate.py:416
 msgid "New state"
 msgstr "新狀態"
 
-#: extensions/base/translate.py:431
+#: extensions/base/translate.py:427
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) changed the state of `{language}` translations of "
 "[{article}]({article_url}) from `{old_state}` to `{new_state}`{comment}"
 msgstr ""
 
-#: extensions/base/translate.py:439
+#: extensions/base/translate.py:435
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) changed the state of `{language}` translations of "
 "[{article}]({article_url}) to `{new_state}`{comment}"
 msgstr ""
 
-#: extensions/base/translate.py:452 extensions/base/translate.py:455
+#: extensions/base/translate.py:448 extensions/base/translate.py:451
 msgid "(default)"
 msgstr "(預設)"
 
-#: extensions/base/translate.py:464
+#: extensions/base/translate.py:460
 #, python-brace-format
 msgid "Changed the language of \"{article}\""
 msgstr "已變更「」的語言"
 
-#: extensions/base/translate.py:465
+#: extensions/base/translate.py:461
 msgid "Old language"
 msgstr "原語言"
 
-#: extensions/base/translate.py:466
+#: extensions/base/translate.py:462
 msgid "New language"
 msgstr "新語言"
 
-#: extensions/base/translate.py:477
+#: extensions/base/translate.py:473
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) changed the language of [{article}]({article_url}) "
@@ -352,53 +354,53 @@ msgstr ""
 "[{author}]({author_url})已將[{article}]({article_url})的語言從{old_lang}變更"
 "為{new_lang}{comment}"
 
-#: extensions/base/discussions.py:148 extensions/base/discussions.py:207
-#: extensions/base/discussions.py:245 extensions/base/discussions.py:261
-#: extensions/base/discussions.py:284 extensions/base/discussions.py:306
-#: extensions/base/discussions.py:334 extensions/base/discussions.py:354
+#: extensions/base/discussions.py:142 extensions/base/discussions.py:201
+#: extensions/base/discussions.py:239 extensions/base/discussions.py:255
+#: extensions/base/discussions.py:278 extensions/base/discussions.py:300
+#: extensions/base/discussions.py:328 extensions/base/discussions.py:348
 msgid "unknown"
 msgstr "未知"
 
-#: extensions/base/discussions.py:157
+#: extensions/base/discussions.py:151
 #, python-brace-format
 msgid "Created \"{title}\""
 msgstr "已建立「」"
 
-#: extensions/base/discussions.py:161
+#: extensions/base/discussions.py:155
 #, python-brace-format
 msgid "Created a poll \"{title}\""
 msgstr "已建立投票「」"
 
-#: extensions/base/discussions.py:168
+#: extensions/base/discussions.py:162
 msgid "Option {}"
 msgstr "選項"
 
-#: extensions/base/discussions.py:170
+#: extensions/base/discussions.py:164
 #, python-brace-format
 msgid "__[View image]({image_url})__"
 msgstr "__[檢視圖片]({image_url})__"
 
-#: extensions/base/discussions.py:174
+#: extensions/base/discussions.py:168
 #, python-brace-format
 msgid "Created a quiz \"{title}\""
 msgstr "已建立測驗「」"
 
-#: extensions/base/discussions.py:193 extensions/base/discussions.py:195
+#: extensions/base/discussions.py:187 extensions/base/discussions.py:189
 msgctxt "Fandom discussions Tags/Forums"
 msgid "Tags"
 msgstr "標籤"
 
-#: extensions/base/discussions.py:193
+#: extensions/base/discussions.py:187
 msgctxt "Fandom discussions amount of Tags/Forums"
 msgid "{} tags"
 msgstr ""
 
-#: extensions/base/discussions.py:198
+#: extensions/base/discussions.py:192
 #, python-brace-format
 msgid "Replied to \"{title}\""
 msgstr "已回覆「」"
 
-#: extensions/base/discussions.py:214
+#: extensions/base/discussions.py:208
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created [{title}](<{url}f/p/{threadId}>) in "
@@ -406,7 +408,7 @@ msgid ""
 msgstr ""
 "[{author}]({author_url})已於{forumName}建立[{title}](<{url}f/p/{threadId}>)"
 
-#: extensions/base/discussions.py:217
+#: extensions/base/discussions.py:211
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created a poll [{title}](<{url}f/p/{threadId}>) in "
@@ -415,7 +417,7 @@ msgstr ""
 "[{author}]({author_url})已於{forumName}建立投票[{title}](<{url}f/p/{threadId}"
 ">)"
 
-#: extensions/base/discussions.py:220
+#: extensions/base/discussions.py:214
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created a quiz [{title}](<{url}f/p/{threadId}>) in "
@@ -424,24 +426,24 @@ msgstr ""
 "[{author}]({author_url})已於{forumName}建立測驗[{title}](<{url}f/p/{threadId}"
 ">)"
 
-#: extensions/base/discussions.py:234
+#: extensions/base/discussions.py:228
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created a [reply](<{url}f/p/{threadId}/r/{postId}>) "
 "to [{title}](<{url}f/p/{threadId}>) in {forumName}"
 msgstr "[{author}]({author_url})已於{forumName}"
 
-#: extensions/base/discussions.py:292
+#: extensions/base/discussions.py:286
 #, python-brace-format
 msgid "Created \"{title}\" on {user}'s Message Wall"
 msgstr "已於"
 
-#: extensions/base/discussions.py:298
+#: extensions/base/discussions.py:292
 #, python-brace-format
 msgid "Replied to \"{title}\" on {user}'s Message Wall"
 msgstr "已於{user}的留言牆回覆「{title}」"
 
-#: extensions/base/discussions.py:312
+#: extensions/base/discussions.py:306
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created [{title}](<{url}wiki/Message_Wall:"
@@ -452,7 +454,7 @@ msgstr ""
 "{user_wall}>)建立[{title}](<{url}wiki/Message_Wall:{user_wall}?"
 "threadId={threadId}>)"
 
-#: extensions/base/discussions.py:318
+#: extensions/base/discussions.py:312
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created a [reply](<{url}wiki/Message_Wall:"
@@ -465,17 +467,17 @@ msgstr ""
 "#{replyId}>)[{title}](<{url}wiki/Message_Wall:{user_wall}?threadId={threadId}"
 ">)"
 
-#: extensions/base/discussions.py:338
+#: extensions/base/discussions.py:332
 #, python-brace-format
 msgid "Commented on {article}"
 msgstr "於評論"
 
-#: extensions/base/discussions.py:344
+#: extensions/base/discussions.py:338
 #, python-brace-format
 msgid "Replied to a comment on {article}"
 msgstr "已於{article}回覆評論"
 
-#: extensions/base/discussions.py:359
+#: extensions/base/discussions.py:353
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created a [comment](<{url}?commentId={commentId}>) "
@@ -484,7 +486,7 @@ msgstr ""
 "[{author}]({author_url})已於[{article}](<{url}>)發表[評論](<{url}?"
 "commentId={commentId}>)"
 
-#: extensions/base/discussions.py:365
+#: extensions/base/discussions.py:359
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created a [reply](<{url}?commentId={commentId}"
@@ -494,82 +496,82 @@ msgstr ""
 "[{author}]({author_url})已於[{article}](<{url}>)發表[評論](<{url}?"
 "commentId={commentId}>)"
 
-#: extensions/base/managewiki.py:34
+#: extensions/base/managewiki.py:30
 msgid "Changed wiki settings"
 msgstr "已變更wiki設定"
 
-#: extensions/base/managewiki.py:44
+#: extensions/base/managewiki.py:40
 #, python-brace-format
 msgid "[{author}]({author_url}) changed wiki settings{reason}"
 msgstr "[{author}]({author_url})已變更wiki設定{reason}"
 
-#: extensions/base/managewiki.py:55
+#: extensions/base/managewiki.py:51
 #, python-brace-format
 msgid "Deleted a \"{wiki}\" wiki"
 msgstr "已刪除wiki「」"
 
-#: extensions/base/managewiki.py:55 extensions/base/managewiki.py:67
-#: extensions/base/managewiki.py:103 extensions/base/managewiki.py:112
-#: extensions/base/managewiki.py:125 extensions/base/managewiki.py:126
-#: extensions/base/managewiki.py:135 extensions/base/managewiki.py:136
-#: extensions/base/managewiki.py:148 extensions/base/managewiki.py:149
-#: extensions/base/managewiki.py:160 extensions/base/managewiki.py:161
-#: extensions/base/managewiki.py:195 extensions/base/managewiki.py:204
-#: extensions/base/managewiki.py:217 extensions/base/managewiki.py:226
-#: extensions/base/abusefilter.py:55 extensions/base/abusefilter.py:56
-#: extensions/base/abusefilter.py:57 extensions/base/abusefilter.py:68
-#: extensions/base/abusefilter.py:69 extensions/base/abusefilter.py:70
-#: extensions/base/mediawiki.py:743
+#: extensions/base/managewiki.py:51 extensions/base/managewiki.py:63
+#: extensions/base/managewiki.py:99 extensions/base/managewiki.py:108
+#: extensions/base/managewiki.py:121 extensions/base/managewiki.py:122
+#: extensions/base/managewiki.py:131 extensions/base/managewiki.py:132
+#: extensions/base/managewiki.py:144 extensions/base/managewiki.py:145
+#: extensions/base/managewiki.py:156 extensions/base/managewiki.py:157
+#: extensions/base/managewiki.py:191 extensions/base/managewiki.py:200
+#: extensions/base/managewiki.py:213 extensions/base/managewiki.py:222
+#: extensions/base/abusefilter.py:50 extensions/base/abusefilter.py:51
+#: extensions/base/abusefilter.py:52 extensions/base/abusefilter.py:63
+#: extensions/base/abusefilter.py:64 extensions/base/abusefilter.py:65
+#: extensions/base/mediawiki.py:739
 msgid "Unknown"
 msgstr "未知"
 
-#: extensions/base/managewiki.py:63
+#: extensions/base/managewiki.py:59
 #, python-brace-format
 msgid "[{author}]({author_url}) deleted a wiki *{wiki_name}*{comment}"
 msgstr "[{author}]({author_url})已刪除wiki *{wiki_name}*{comment}"
 
-#: extensions/base/managewiki.py:80
+#: extensions/base/managewiki.py:76
 #, python-brace-format
 msgid "Deleted a \"{group}\" user group"
 msgstr "已刪除使用者群組「」"
 
-#: extensions/base/managewiki.py:89
+#: extensions/base/managewiki.py:85
 #, python-brace-format
 msgid "[{author}]({author_url}) deleted a usergroup *{group}*{comment}"
 msgstr "[{author}]({author_url})已刪除使用者群組*{group}*{comment}"
 
-#: extensions/base/managewiki.py:103
+#: extensions/base/managewiki.py:99
 #, python-brace-format
 msgid "Locked a \"{wiki}\" wiki"
 msgstr "已鎖定wiki「」"
 
-#: extensions/base/managewiki.py:111
+#: extensions/base/managewiki.py:107
 #, python-brace-format
 msgid "[{author}]({author_url}) locked a wiki *{wiki_name}*{comment}"
 msgstr "[{author}]({author_url})已鎖定wiki *{wiki_name}*{comment}"
 
-#: extensions/base/managewiki.py:124
+#: extensions/base/managewiki.py:120
 #, python-brace-format
 msgid "Modified \"{namespace_name}\" namespace"
 msgstr "已修改命名空間「」"
 
-#: extensions/base/managewiki.py:126 extensions/base/managewiki.py:149
+#: extensions/base/managewiki.py:122 extensions/base/managewiki.py:145
 msgid "Wiki"
 msgstr "wiki"
 
-#: extensions/base/managewiki.py:134
+#: extensions/base/managewiki.py:130
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) modified namespace *{namespace_name}* on "
 "*{wiki_name}*{comment}"
 msgstr ""
 
-#: extensions/base/managewiki.py:147
+#: extensions/base/managewiki.py:143
 #, python-brace-format
 msgid "Deleted a \"{namespace_name}\" namespace"
 msgstr "已刪除命名空間「{namespace_name}」"
 
-#: extensions/base/managewiki.py:158
+#: extensions/base/managewiki.py:154
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) deleted a namespace *{namespace_name}* on "
@@ -578,226 +580,226 @@ msgstr ""
 "[{author}]({author_url})已於*{wiki_name}* deleted a namespace "
 "*{namespace_name}* on {comment}"
 
-#: extensions/base/managewiki.py:173
+#: extensions/base/managewiki.py:169
 #, python-brace-format
 msgid "Modified \"{usergroup_name}\" usergroup"
 msgstr "已修改使用者群組*{group_name}"
 
-#: extensions/base/managewiki.py:182
+#: extensions/base/managewiki.py:178
 #, python-brace-format
 msgid "[{author}]({author_url}) modified user group *{group_name}*{comment}"
 msgstr "[{author}]({author_url})已修改使用者群組*{group_name}*{comment}"
 
-#: extensions/base/managewiki.py:195
+#: extensions/base/managewiki.py:191
 #, python-brace-format
 msgid "Undeleted a \"{wiki}\" wiki"
 msgstr ""
 
-#: extensions/base/managewiki.py:203
+#: extensions/base/managewiki.py:199
 #, python-brace-format
 msgid "[{author}]({author_url}) undeleted a wiki *{wiki_name}*{comment}"
 msgstr ""
 
-#: extensions/base/managewiki.py:217
+#: extensions/base/managewiki.py:213
 #, python-brace-format
 msgid "Unlocked a \"{wiki}\" wiki"
 msgstr ""
 
-#: extensions/base/managewiki.py:225
+#: extensions/base/managewiki.py:221
 #, python-brace-format
 msgid "[{author}]({author_url}) unlocked a wiki *{wiki_name}*{comment}"
 msgstr ""
 
-#: extensions/base/datadump.py:36
+#: extensions/base/datadump.py:32
 #, python-brace-format
 msgid "Generated {file} dump"
 msgstr ""
 
-#: extensions/base/datadump.py:45
+#: extensions/base/datadump.py:41
 #, python-brace-format
 msgid "[{author}]({author_url}) generated *{file}* dump{comment}"
 msgstr ""
 
-#: extensions/base/datadump.py:58
+#: extensions/base/datadump.py:54
 #, python-brace-format
 msgid "Deleted {file} dump"
 msgstr "已刪除{file}傾印"
 
-#: extensions/base/datadump.py:67
+#: extensions/base/datadump.py:63
 #, python-brace-format
 msgid "[{author}]({author_url}) deleted *{file}* dump{comment}"
 msgstr "[{author}]({author_url})已刪除*{file}*傾印{comment}"
 
-#: extensions/base/curseprofile.py:40
+#: extensions/base/curseprofile.py:35
 #, python-brace-format
 msgid "Edited {target}'s profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:42
+#: extensions/base/curseprofile.py:37
 msgid "Edited their own profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:44
+#: extensions/base/curseprofile.py:39
 #, python-brace-format
 msgid "Cleared the {field} field"
 msgstr ""
 
-#: extensions/base/curseprofile.py:46
+#: extensions/base/curseprofile.py:41
 #, python-brace-format
 msgid "{field} field changed to: {desc}"
 msgstr ""
 
-#: extensions/base/curseprofile.py:58
+#: extensions/base/curseprofile.py:53
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) cleared the {field} on [{target}]({target_url})'s "
 "profile."
 msgstr ""
 
-#: extensions/base/curseprofile.py:60
+#: extensions/base/curseprofile.py:55
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited the {field} on [{target}]({target_url})'s "
 "profile. *({desc})*"
 msgstr ""
 
-#: extensions/base/curseprofile.py:65
+#: extensions/base/curseprofile.py:60
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) cleared the {field} on [their own]({target_url}) "
 "profile."
 msgstr ""
 
-#: extensions/base/curseprofile.py:67
+#: extensions/base/curseprofile.py:62
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited the {field} on [their own]({target_url}) "
 "profile. *({desc})*"
 msgstr ""
 
-#: extensions/base/curseprofile.py:82
+#: extensions/base/curseprofile.py:77
 #, python-brace-format
 msgid "Left a comment on {target}'s profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:84
+#: extensions/base/curseprofile.py:79
 msgid "Left a comment on their own profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:97
+#: extensions/base/curseprofile.py:92
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) left a [comment]({comment}) on {target}'s profile."
 msgstr ""
 
-#: extensions/base/curseprofile.py:100
+#: extensions/base/curseprofile.py:95
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) left a [comment]({comment}) on their own profile."
 msgstr ""
 
-#: extensions/base/curseprofile.py:113
+#: extensions/base/curseprofile.py:108
 #, python-brace-format
 msgid "Edited a comment on {target}'s profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:115
+#: extensions/base/curseprofile.py:110
 msgid "Edited a comment on their own profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:128
+#: extensions/base/curseprofile.py:123
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited a [comment]({comment}) on {target}'s profile."
 msgstr ""
 
-#: extensions/base/curseprofile.py:131
+#: extensions/base/curseprofile.py:126
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited a [comment]({comment}) on their own profile."
 msgstr ""
 
-#: extensions/base/curseprofile.py:144
+#: extensions/base/curseprofile.py:139
 #, python-brace-format
 msgid "Replied to a comment on {target}'s profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:146
+#: extensions/base/curseprofile.py:141
 msgid "Replied to a comment on their own profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:159
+#: extensions/base/curseprofile.py:154
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) replied to a [comment]({comment}) on {target}'s "
 "profile."
 msgstr ""
 
-#: extensions/base/curseprofile.py:162
+#: extensions/base/curseprofile.py:157
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) replied to a [comment]({comment}) on their own "
 "profile."
 msgstr ""
 
-#: extensions/base/curseprofile.py:175
+#: extensions/base/curseprofile.py:170
 #, python-brace-format
 msgid "Deleted a comment on {target}'s profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:177
+#: extensions/base/curseprofile.py:172
 msgid "Deleted a comment on their own profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:197
+#: extensions/base/curseprofile.py:192
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) deleted a [comment]({comment}) on {target}'s "
 "profile.{reason}"
 msgstr ""
 
-#: extensions/base/curseprofile.py:200
+#: extensions/base/curseprofile.py:195
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) deleted a [comment]({comment}) on their own profile."
 "{reason}"
 msgstr ""
 
-#: extensions/base/curseprofile.py:214
+#: extensions/base/curseprofile.py:209
 #, python-brace-format
 msgid "Purged a comment on {target}'s profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:216
+#: extensions/base/curseprofile.py:211
 msgid "Purged a comment on their own profile"
 msgstr ""
 
-#: extensions/base/curseprofile.py:230
+#: extensions/base/curseprofile.py:225
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) purged a comment on [{target}]({link})'s profile."
 "{reason}"
 msgstr ""
 
-#: extensions/base/curseprofile.py:233
+#: extensions/base/curseprofile.py:228
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) purged a comment on [their own]({link}) profile."
 "{reason}"
 msgstr ""
 
-#: extensions/base/renameuser.py:38
+#: extensions/base/renameuser.py:33
 #, python-brace-format
 msgid "Renamed user \"{old_name}\" with {edits} edit to \"{new_name}\""
 msgid_plural "Renamed user \"{old_name}\" with {edits} edits to \"{new_name}\""
 msgstr[0] ""
 
-#: extensions/base/renameuser.py:43
+#: extensions/base/renameuser.py:38
 #, python-brace-format
 msgid "Renamed user \"{old_name}\" to \"{new_name}\""
 msgstr ""
 
-#: extensions/base/renameuser.py:58
+#: extensions/base/renameuser.py:53
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) renamed user *{old_name}* with {edits} edit to "
@@ -807,138 +809,138 @@ msgid_plural ""
 "[{new_name}]({link}){comment}"
 msgstr[0] ""
 
-#: extensions/base/renameuser.py:66
+#: extensions/base/renameuser.py:61
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) renamed user *{old_name}* to [{new_name}]({link})"
 "{comment}"
 msgstr ""
 
-#: extensions/base/interwiki.py:37
+#: extensions/base/interwiki.py:32
 msgid "Added an entry to the interwiki table"
 msgstr ""
 
-#: extensions/base/interwiki.py:38 extensions/base/interwiki.py:65
+#: extensions/base/interwiki.py:33 extensions/base/interwiki.py:60
 #, python-brace-format
 msgid "Prefix: {prefix}, website: {website} | {desc}"
 msgstr ""
 
-#: extensions/base/interwiki.py:50
+#: extensions/base/interwiki.py:45
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) added an entry to the [interwiki table]"
 "({table_url}) pointing to {website} with {prefix} prefix"
 msgstr ""
 
-#: extensions/base/interwiki.py:64
+#: extensions/base/interwiki.py:59
 msgid "Edited an entry in interwiki table"
 msgstr ""
 
-#: extensions/base/interwiki.py:77
+#: extensions/base/interwiki.py:72
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited an entry in [interwiki table]({table_url}) "
 "pointing to {website} with {prefix} prefix"
 msgstr ""
 
-#: extensions/base/interwiki.py:91
+#: extensions/base/interwiki.py:86
 msgid "Deleted an entry in interwiki table"
 msgstr ""
 
-#: extensions/base/interwiki.py:92
+#: extensions/base/interwiki.py:87
 #, python-brace-format
 msgid "Prefix: {prefix} | {desc}"
 msgstr ""
 
-#: extensions/base/interwiki.py:102
+#: extensions/base/interwiki.py:97
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) deleted an entry in [interwiki table]({table_url})"
 "{desc}"
 msgstr ""
 
-#: extensions/base/abusefilter.py:29
-msgid "None"
-msgstr "無"
-
-#: extensions/base/abusefilter.py:29
-msgid "Warning issued"
-msgstr "已發出警告"
-
-#: extensions/base/abusefilter.py:29
-msgid "**Blocked user**"
-msgstr "**已封鎖使用者**"
-
-#: extensions/base/abusefilter.py:29
-msgid "Tagged the edit"
-msgstr "已標記編輯"
-
-#: extensions/base/abusefilter.py:29
-msgid "Disallowed the action"
-msgstr "已阻止操作"
-
-#: extensions/base/abusefilter.py:29
-msgid "**IP range blocked**"
-msgstr "**已封鎖IP段**"
-
-#: extensions/base/abusefilter.py:29
-msgid "Throttled actions"
-msgstr "已壓制操作"
-
-#: extensions/base/abusefilter.py:29
-msgid "Removed autoconfirmed group"
-msgstr "已移除自動確認使用者群組"
-
-#: extensions/base/abusefilter.py:29
-msgid "**Removed from privileged groups**"
-msgstr "**已移除特有使用者群組**"
-
-#: extensions/base/abusefilter.py:30
+#: extensions/base/abusefilter.py:24
 msgid "Edit"
 msgstr "編輯"
 
-#: extensions/base/abusefilter.py:30
+#: extensions/base/abusefilter.py:24
 msgid "Upload"
 msgstr "上傳"
 
-#: extensions/base/abusefilter.py:30
+#: extensions/base/abusefilter.py:24
 msgid "Move"
 msgstr "移動"
 
-#: extensions/base/abusefilter.py:30
+#: extensions/base/abusefilter.py:24
 msgid "Stash upload"
 msgstr "隱藏上傳"
 
-#: extensions/base/abusefilter.py:30
+#: extensions/base/abusefilter.py:24
 msgid "Deletion"
 msgstr "刪除"
 
-#: extensions/base/abusefilter.py:30
+#: extensions/base/abusefilter.py:24
 msgid "Account creation"
 msgstr "建立帳號"
 
-#: extensions/base/abusefilter.py:30
+#: extensions/base/abusefilter.py:24
 msgid "Auto account creation"
 msgstr "自動建立帳號"
 
-#: extensions/base/abusefilter.py:54
+#: extensions/base/abusefilter.py:24
+msgid "None"
+msgstr "無"
+
+#: extensions/base/abusefilter.py:24
+msgid "Warning issued"
+msgstr "已發出警告"
+
+#: extensions/base/abusefilter.py:24
+msgid "**Blocked user**"
+msgstr "**已封鎖使用者**"
+
+#: extensions/base/abusefilter.py:24
+msgid "Tagged the edit"
+msgstr "已標記編輯"
+
+#: extensions/base/abusefilter.py:24
+msgid "Disallowed the action"
+msgstr "已阻止操作"
+
+#: extensions/base/abusefilter.py:24
+msgid "**IP range blocked**"
+msgstr "**已封鎖IP段**"
+
+#: extensions/base/abusefilter.py:24
+msgid "Throttled actions"
+msgstr "已壓制操作"
+
+#: extensions/base/abusefilter.py:24
+msgid "Removed autoconfirmed group"
+msgstr "已移除自動確認使用者群組"
+
+#: extensions/base/abusefilter.py:24
+msgid "**Removed from privileged groups**"
+msgstr "**已移除特有使用者群組**"
+
+#: extensions/base/abusefilter.py:49
 #, python-brace-format
 msgid "{user} triggered \"{abuse_filter}\""
 msgstr "{user}觸發了「{abuse_filter}\""
 
-#: extensions/base/abusefilter.py:55
+#: extensions/base/abusefilter.py:50
 msgid "Performed"
 msgstr "執行了"
 
-#: extensions/base/abusefilter.py:56
+#: extensions/base/abusefilter.py:51
 msgid "Action taken"
 msgstr "已採取的操作"
 
-#: extensions/base/abusefilter.py:57
+#: extensions/base/abusefilter.py:52
 msgid "Title"
 msgstr "標題"
 
-#: extensions/base/abusefilter.py:66
+#: extensions/base/abusefilter.py:61
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) triggered *{abuse_filter}*, performing the action "
@@ -947,82 +949,82 @@ msgstr ""
 "[{author}]({author_url})於*[{target}]({target_url})*執行操作「{action}」時觸"
 "發了*{abuse_filter}* - 已採取的操作：{result}。"
 
-#: extensions/base/abusefilter.py:83
+#: extensions/base/abusefilter.py:78
 #, python-brace-format
 msgid "Edited abuse filter number {number}"
 msgstr "已編輯防濫用過濾器"
 
-#: extensions/base/abusefilter.py:95
+#: extensions/base/abusefilter.py:90
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited abuse filter [number {number}]({filter_url})"
 msgstr ""
 "[{author}]({author_url})已編輯防濫用過濾器[number {number}]({filter_url})"
 
-#: extensions/base/abusefilter.py:111
+#: extensions/base/abusefilter.py:106
 #, python-brace-format
 msgid "Created abuse filter number {number}"
 msgstr "已建立防濫用過濾器"
 
-#: extensions/base/abusefilter.py:119
+#: extensions/base/abusefilter.py:115
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created abuse filter [number {number}]({filter_url})"
 msgstr "已建立防濫用過濾器{number}"
 
-#: extensions/base/mediawiki.py:37
+#: extensions/base/mediawiki.py:33
 msgid "director"
 msgstr "嚮導"
 
-#: extensions/base/mediawiki.py:37
+#: extensions/base/mediawiki.py:33
 msgid "bot"
 msgstr "機器人"
 
-#: extensions/base/mediawiki.py:37
+#: extensions/base/mediawiki.py:33
 msgid "editor"
 msgstr "編輯者"
 
-#: extensions/base/mediawiki.py:37
+#: extensions/base/mediawiki.py:33
 msgid "directors"
 msgstr "嚮導"
 
-#: extensions/base/mediawiki.py:37
+#: extensions/base/mediawiki.py:33
 msgid "sysop"
 msgstr "管理員"
 
-#: extensions/base/mediawiki.py:37
+#: extensions/base/mediawiki.py:33
 msgid "bureaucrat"
 msgstr "行政員"
 
-#: extensions/base/mediawiki.py:37
+#: extensions/base/mediawiki.py:33
 msgid "reviewer"
 msgstr "覆核員"
 
-#: extensions/base/mediawiki.py:38
+#: extensions/base/mediawiki.py:34
 msgid "autoreview"
 msgstr "自動覆核使用者"
 
-#: extensions/base/mediawiki.py:38
+#: extensions/base/mediawiki.py:34
 msgid "autopatrol"
 msgstr "自動巡查使用者"
 
-#: extensions/base/mediawiki.py:38
+#: extensions/base/mediawiki.py:34
 msgid "wiki_guardian"
 msgstr "Wiki守衛"
 
-#: extensions/base/mediawiki.py:70
+#: extensions/base/mediawiki.py:66
 msgid "(N!) "
 msgstr "(新!) "
 
-#: extensions/base/mediawiki.py:71
+#: extensions/base/mediawiki.py:67
 msgid "m"
 msgstr "小"
 
-#: extensions/base/mediawiki.py:72
+#: extensions/base/mediawiki.py:68
 msgid "b"
 msgstr "機"
 
-#: extensions/base/mediawiki.py:112
+#: extensions/base/mediawiki.py:108
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited [{article}]({edit_link}){comment} {bold}"
@@ -1031,7 +1033,7 @@ msgstr ""
 "[{author}]({author_url})已編輯[{article}]({edit_link}){comment}{bold}（{sign}"
 "{edit_size}）{bold}"
 
-#: extensions/base/mediawiki.py:117
+#: extensions/base/mediawiki.py:113
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created [{article}]({edit_link}){comment} {bold}"
@@ -1040,40 +1042,40 @@ msgstr ""
 "[{author}]({author_url})已建立[{article}]({edit_link}){comment}{bold}（{sign}"
 "{edit_size}）{bold}"
 
-#: extensions/base/mediawiki.py:190 extensions/base/mediawiki.py:223
+#: extensions/base/mediawiki.py:186 extensions/base/mediawiki.py:219
 msgid "Options"
 msgstr "選項"
 
-#: extensions/base/mediawiki.py:190
+#: extensions/base/mediawiki.py:186
 #, python-brace-format
 msgid "([preview]({link}) | [undo]({undolink}))"
 msgstr "（[預覽]({link})）"
 
-#: extensions/base/mediawiki.py:195
+#: extensions/base/mediawiki.py:191
 #, python-brace-format
 msgid "Uploaded a new version of {name}"
 msgstr "已上傳"
 
-#: extensions/base/mediawiki.py:197
+#: extensions/base/mediawiki.py:193
 #, python-brace-format
 msgid "Reverted a version of {name}"
 msgstr "已回退"
 
-#: extensions/base/mediawiki.py:199
+#: extensions/base/mediawiki.py:195
 #, python-brace-format
 msgid "Uploaded {name}"
 msgstr "已上傳"
 
-#: extensions/base/mediawiki.py:208
+#: extensions/base/mediawiki.py:204
 msgid "**No license!**"
 msgstr ""
 
-#: extensions/base/mediawiki.py:223
+#: extensions/base/mediawiki.py:219
 #, python-brace-format
 msgid "([preview]({link}))"
 msgstr "（[預覽]({link})）"
 
-#: extensions/base/mediawiki.py:228
+#: extensions/base/mediawiki.py:224
 msgid ""
 "\n"
 "License: {}"
@@ -1081,40 +1083,40 @@ msgstr ""
 "\n"
 "授權條款：{}"
 
-#: extensions/base/mediawiki.py:237
+#: extensions/base/mediawiki.py:233
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) reverted a version of [{file}]({file_link}){comment}"
 msgstr "[{author}]({author_url})已回退[{file}]({file_link})的版本{comment}"
 
-#: extensions/base/mediawiki.py:248
+#: extensions/base/mediawiki.py:244
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) uploaded a new version of [{file}]({file_link})"
 "{comment}"
 msgstr "[{author}]({author_url})已上傳[{file}]({file_link})的新版本 {comment}"
 
-#: extensions/base/mediawiki.py:259
+#: extensions/base/mediawiki.py:255
 #, python-brace-format
 msgid "[{author}]({author_url}) uploaded [{file}]({file_link}){comment}"
 msgstr "[{author}]({author_url})已上傳[{file}]({file_link}){comment}"
 
-#: extensions/base/mediawiki.py:274
+#: extensions/base/mediawiki.py:270
 #, python-brace-format
 msgid "Deleted page {article}"
 msgstr "已刪除頁面"
 
-#: extensions/base/mediawiki.py:283
+#: extensions/base/mediawiki.py:279
 #, python-brace-format
 msgid "[{author}]({author_url}) deleted [{page}]({page_link}){comment}"
 msgstr "[{author}]({author_url})已刪除[{page}]({page_link}){comment}"
 
-#: extensions/base/mediawiki.py:298
+#: extensions/base/mediawiki.py:294
 #, python-brace-format
 msgid "Deleted redirect {article} by overwriting"
 msgstr "透過覆蓋頁面刪除了重新導向"
 
-#: extensions/base/mediawiki.py:308
+#: extensions/base/mediawiki.py:304
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) deleted redirect by overwriting [{page}]"
@@ -1122,32 +1124,32 @@ msgid ""
 msgstr ""
 "[{author}]({author_url})透過覆蓋[{page}]({page_link})刪除了重新導向{comment}"
 
-#: extensions/base/mediawiki.py:322
+#: extensions/base/mediawiki.py:318
 #, python-brace-format
 msgid "Restored {article}"
 msgstr "已還原"
 
-#: extensions/base/mediawiki.py:331
+#: extensions/base/mediawiki.py:327
 #, python-brace-format
 msgid "[{author}]({author_url}) restored [{article}]({article_url}){comment}"
 msgstr "[{author}]({author_url})已還原[{article}]({article_url}){comment}"
 
-#: extensions/base/mediawiki.py:348
+#: extensions/base/mediawiki.py:344
 msgid "Changed visibility of log events"
 msgstr ""
 
-#: extensions/base/mediawiki.py:356
+#: extensions/base/mediawiki.py:352
 #, python-brace-format
 msgid "[{author}]({author_url}) changed visibility of log events{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:370
+#: extensions/base/mediawiki.py:366
 #, python-brace-format
 msgid "Changed visibility of revision on page {article} "
 msgid_plural "Changed visibility of {amount} revisions on page {article} "
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:383
+#: extensions/base/mediawiki.py:379
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) changed visibility of revision on page [{article}]"
@@ -1157,28 +1159,28 @@ msgid_plural ""
 "[{article}]({article_url}){comment}"
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:399 extensions/base/mediawiki.py:432
+#: extensions/base/mediawiki.py:395 extensions/base/mediawiki.py:428
 msgid "No redirect has been made"
 msgstr "未建立重新導向"
 
-#: extensions/base/mediawiki.py:400 extensions/base/mediawiki.py:433
+#: extensions/base/mediawiki.py:396 extensions/base/mediawiki.py:429
 msgid "A redirect has been made"
 msgstr "已建立重新導向"
 
-#: extensions/base/mediawiki.py:401
+#: extensions/base/mediawiki.py:397
 #, python-brace-format
 msgid "Moved {redirect}{article} to {target}"
 msgstr "已將{redirect}{article}移動至{target}"
 
-#: extensions/base/mediawiki.py:412 extensions/base/mediawiki.py:444
+#: extensions/base/mediawiki.py:408 extensions/base/mediawiki.py:440
 msgid "without making a redirect"
 msgstr "不留重新導向"
 
-#: extensions/base/mediawiki.py:413 extensions/base/mediawiki.py:445
+#: extensions/base/mediawiki.py:409 extensions/base/mediawiki.py:441
 msgid "with a redirect"
 msgstr "保留重新導向"
 
-#: extensions/base/mediawiki.py:416
+#: extensions/base/mediawiki.py:412
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) moved {redirect}*{article}* to [{target}]"
@@ -1187,12 +1189,12 @@ msgstr ""
 "[{author}]({author_url}) 已將 {redirect}*{article}* 移動至 [{target}]"
 "({target_url}) {made_a_redirect} {comment}"
 
-#: extensions/base/mediawiki.py:434
+#: extensions/base/mediawiki.py:430
 #, python-brace-format
 msgid "Moved {redirect}{article} to {title} over redirect"
 msgstr ""
 
-#: extensions/base/mediawiki.py:448
+#: extensions/base/mediawiki.py:444
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) moved {redirect}*{article}* over redirect to "
@@ -1201,12 +1203,12 @@ msgstr ""
 "[{author}]({author_url}) 已透過重新導向將 {redirect}*{article}* 移動至 "
 "[{target}]({target_url}) {made_a_redirect} {comment}"
 
-#: extensions/base/mediawiki.py:464
+#: extensions/base/mediawiki.py:460
 #, python-brace-format
 msgid "Moved protection settings from {redirect}{article} to {title}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:477
+#: extensions/base/mediawiki.py:473
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) moved protection settings from {redirect}*{article}"
@@ -1215,114 +1217,114 @@ msgstr ""
 "[{author}]({author_url}) 已將 {redirect}*{article}* 的保護設定移動至 "
 "[{target}]({target_url}) {comment}"
 
-#: extensions/base/mediawiki.py:492
+#: extensions/base/mediawiki.py:488
 #, python-brace-format
 msgid "Protected {target}"
 msgstr "已保護"
 
-#: extensions/base/mediawiki.py:495 extensions/base/mediawiki.py:510
-#: extensions/base/mediawiki.py:526 extensions/base/mediawiki.py:541
+#: extensions/base/mediawiki.py:491 extensions/base/mediawiki.py:506
+#: extensions/base/mediawiki.py:522 extensions/base/mediawiki.py:537
 msgid " [cascading]"
 msgstr " [連鎖]"
 
-#: extensions/base/mediawiki.py:506
+#: extensions/base/mediawiki.py:502
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) protected [{article}]({article_url}) with the "
 "following settings: {settings}{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:523
+#: extensions/base/mediawiki.py:519
 #, python-brace-format
 msgid "Changed protection level for {article}"
 msgstr "已變更"
 
-#: extensions/base/mediawiki.py:537
+#: extensions/base/mediawiki.py:533
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) modified protection settings of [{article}]"
 "({article_url}) to: {settings}{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:554
+#: extensions/base/mediawiki.py:550
 #, python-brace-format
 msgid "Removed protection from {article}"
 msgstr "已移除"
 
-#: extensions/base/mediawiki.py:563
+#: extensions/base/mediawiki.py:559
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) removed protection from [{article}]({article_url})"
 "{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:572
+#: extensions/base/mediawiki.py:568
 msgid "for infinity and beyond"
 msgstr "時長為無限期"
 
-#: extensions/base/mediawiki.py:581
+#: extensions/base/mediawiki.py:577
 msgid "for less than a minute"
 msgstr ""
 
-#: extensions/base/mediawiki.py:583
+#: extensions/base/mediawiki.py:579
 msgid "year"
 msgid_plural "years"
 msgstr[0] "年"
 
-#: extensions/base/mediawiki.py:583
+#: extensions/base/mediawiki.py:579
 msgid "day"
 msgid_plural "days"
 msgstr[0] "日"
 
-#: extensions/base/mediawiki.py:583
+#: extensions/base/mediawiki.py:579
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "小時"
 
-#: extensions/base/mediawiki.py:584
+#: extensions/base/mediawiki.py:580
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "分鐘"
 
-#: extensions/base/mediawiki.py:589
+#: extensions/base/mediawiki.py:585
 #, python-brace-format
 msgid "for {time_number} {time_unit}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:608
+#: extensions/base/mediawiki.py:604
 msgid "Blocked from editing the following pages: "
 msgstr "已被阻止編輯以下頁面： "
 
-#: extensions/base/mediawiki.py:615 extensions/base/mediawiki.py:661
+#: extensions/base/mediawiki.py:611 extensions/base/mediawiki.py:657
 msgid " and namespaces: "
 msgstr " 及命名空間： "
 
-#: extensions/base/mediawiki.py:617
+#: extensions/base/mediawiki.py:613
 msgid "Blocked from editing pages on following namespaces: "
 msgstr ""
 
-#: extensions/base/mediawiki.py:628
+#: extensions/base/mediawiki.py:624
 msgid "Partial block details"
 msgstr ""
 
-#: extensions/base/mediawiki.py:631
+#: extensions/base/mediawiki.py:627
 msgid "Block flags"
 msgstr ""
 
-#: extensions/base/mediawiki.py:633
+#: extensions/base/mediawiki.py:629
 #, python-brace-format
 msgid "Blocked {blocked_user} {time}"
 msgstr "已封鎖{blocked_user} {time}"
 
-#: extensions/base/mediawiki.py:653
+#: extensions/base/mediawiki.py:649
 msgid " on pages: "
 msgstr " 於頁面： "
 
-#: extensions/base/mediawiki.py:663
+#: extensions/base/mediawiki.py:659
 msgid " on namespaces: "
 msgstr " 於命名空間： "
 
-#: extensions/base/mediawiki.py:675
+#: extensions/base/mediawiki.py:671
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) blocked [{user}]({user_url}) {time}"
@@ -1331,12 +1333,12 @@ msgstr ""
 "[{author}]({author_url}) 封鎖了 [{user}]({user_url}) {time}{restriction_desc}"
 "{comment}"
 
-#: extensions/base/mediawiki.py:693
+#: extensions/base/mediawiki.py:689
 #, python-brace-format
 msgid "Changed block settings for {blocked_user}"
 msgstr "已變更"
 
-#: extensions/base/mediawiki.py:703
+#: extensions/base/mediawiki.py:699
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) changed block settings for [{blocked_user}]"
@@ -1344,32 +1346,32 @@ msgid ""
 msgstr ""
 "[{author}]({author_url})已變更[{blocked_user}]({user_url})的封鎖設定{comment}"
 
-#: extensions/base/mediawiki.py:716
+#: extensions/base/mediawiki.py:712
 #, python-brace-format
 msgid "Unblocked {blocked_user}"
 msgstr "已解除封鎖{blocked_user}"
 
-#: extensions/base/mediawiki.py:726
+#: extensions/base/mediawiki.py:722
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) unblocked [{blocked_user}]({user_url}){comment}"
 msgstr "[{author}]({author_url}) 解封了 [{blocked_user}]({user_url}) {comment}"
 
-#: extensions/base/mediawiki.py:742
+#: extensions/base/mediawiki.py:738
 msgid "Action has been hidden by administration"
 msgstr ""
 
-#: extensions/base/mediawiki.py:749
+#: extensions/base/mediawiki.py:745
 msgid "An action has been hidden by administration."
 msgstr ""
 
-#: extensions/base/mediawiki.py:760
+#: extensions/base/mediawiki.py:756
 #, python-brace-format
 msgid "Imported {article} with {count} revision"
 msgid_plural "Imported {article} with {count} revisions"
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:771
+#: extensions/base/mediawiki.py:767
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) imported [{article}]({article_url}) with {count} "
@@ -1379,13 +1381,13 @@ msgid_plural ""
 "revisions{comment}"
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:787
+#: extensions/base/mediawiki.py:783
 #, python-brace-format
 msgid "Imported {article} with {count} revision from \"{source}\""
 msgid_plural "Imported {article} with {count} revisions from \"{source}\""
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:802
+#: extensions/base/mediawiki.py:798
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) imported [{article}]({article_url}) with {count} "
@@ -1395,197 +1397,197 @@ msgid_plural ""
 "revisions from [{source}]({source_url}){comment}"
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:817
+#: extensions/base/mediawiki.py:813
 #, python-brace-format
 msgid " (until {date_and_time})"
 msgstr ""
 
-#: extensions/base/mediawiki.py:834
+#: extensions/base/mediawiki.py:830
 #, python-brace-format
 msgid "Changed group membership for {target}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:836
+#: extensions/base/mediawiki.py:832
 msgid "System"
 msgstr "系統"
 
-#: extensions/base/mediawiki.py:837
+#: extensions/base/mediawiki.py:833
 #, python-brace-format
 msgid "{target} got autopromoted to a new usergroup"
 msgstr ""
 
-#: extensions/base/mediawiki.py:843
+#: extensions/base/mediawiki.py:839
 msgid "Added group"
 msgid_plural "Added groups"
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:845
+#: extensions/base/mediawiki.py:841
 msgid "Removed group"
 msgid_plural "Removed groups"
 msgstr[0] "已移除使用者群組"
 
-#: extensions/base/mediawiki.py:859
+#: extensions/base/mediawiki.py:855
 #, python-brace-format
 msgid "Added to {added} and removed from {removed}."
 msgstr ""
 
-#: extensions/base/mediawiki.py:860 extensions/base/mediawiki.py:862
-#: extensions/base/mediawiki.py:864 extensions/base/mediawiki.py:871
+#: extensions/base/mediawiki.py:856 extensions/base/mediawiki.py:858
+#: extensions/base/mediawiki.py:860 extensions/base/mediawiki.py:867
 msgid ", "
 msgstr "、"
 
-#: extensions/base/mediawiki.py:862
+#: extensions/base/mediawiki.py:858
 #, python-brace-format
 msgid "Added to {added}."
 msgstr ""
 
-#: extensions/base/mediawiki.py:864
+#: extensions/base/mediawiki.py:860
 #, python-brace-format
 msgid "Removed from {removed}."
 msgstr ""
 
-#: extensions/base/mediawiki.py:865
+#: extensions/base/mediawiki.py:861
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) changed group membership for [{target}]"
 "({target_url}): {group_changes}{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:869
+#: extensions/base/mediawiki.py:865
 #, python-brace-format
 msgid "The system autopromoted [{target}]({target_url}) to {added}.{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:882
+#: extensions/base/mediawiki.py:878
 #, python-brace-format
 msgid "Merged revision histories of {article} into {dest}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:896
+#: extensions/base/mediawiki.py:892
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) merged revision histories of [{article}]"
 "({article_url}) into [{dest}]({dest_url}){comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:910
+#: extensions/base/mediawiki.py:906
 msgid "Created account automatically"
 msgstr "已自動建立帳號"
 
-#: extensions/base/mediawiki.py:917
+#: extensions/base/mediawiki.py:913
 #, python-brace-format
 msgid "Account [{author}]({author_url}) was created automatically"
 msgstr ""
 
-#: extensions/base/mediawiki.py:930 extensions/base/mediawiki.py:995
+#: extensions/base/mediawiki.py:926 extensions/base/mediawiki.py:991
 msgid "Created account"
 msgstr "已建立帳號"
 
-#: extensions/base/mediawiki.py:937 extensions/base/mediawiki.py:1002
+#: extensions/base/mediawiki.py:933 extensions/base/mediawiki.py:998
 #, python-brace-format
 msgid "Account [{author}]({author_url}) was created"
 msgstr ""
 
-#: extensions/base/mediawiki.py:949
+#: extensions/base/mediawiki.py:945
 #, python-brace-format
 msgid "Created account {article}"
 msgstr "已建立帳號"
 
-#: extensions/base/mediawiki.py:958
+#: extensions/base/mediawiki.py:954
 #, python-brace-format
 msgid ""
 "Account [{article}]({article_url}) was created by [{author}]({author_url})"
 "{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:971
+#: extensions/base/mediawiki.py:967
 #, python-brace-format
 msgid "Created account {article} and password was sent by email"
 msgstr ""
 
-#: extensions/base/mediawiki.py:982
+#: extensions/base/mediawiki.py:978
 #, python-brace-format
 msgid ""
 "Account [{article}]({article_url}) was created by [{author}]({author_url}) "
 "and password was sent by email{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1014
+#: extensions/base/mediawiki.py:1010
 #, fuzzy
 msgid "Reclaimed account"
 msgstr "已建立帳號"
 
-#: extensions/base/mediawiki.py:1021
+#: extensions/base/mediawiki.py:1017
 #, fuzzy, python-brace-format
 msgid "Account [{author}]({author_url}) was reclaimed"
 msgstr "[{author}]({author_url})已變更wiki設定{reason}"
 
-#: extensions/base/mediawiki.py:1033
+#: extensions/base/mediawiki.py:1029
 #, python-brace-format
 msgid "Changed the content model of the page {article}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1035
+#: extensions/base/mediawiki.py:1031
 #, python-brace-format
 msgid "Model changed from {old} to {new}: {reason}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1047
+#: extensions/base/mediawiki.py:1043
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) changed the content model of the page [{article}]"
 "({article_url}) from {old} to {new}{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1062
+#: extensions/base/mediawiki.py:1058
 #, python-brace-format
 msgid "Created the page {article} using a non-default content model"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1064
+#: extensions/base/mediawiki.py:1060
 #, python-brace-format
 msgid "Created with model {new}: {reason}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1075
+#: extensions/base/mediawiki.py:1071
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created the page [{article}]({article_url}) using a "
 "non-default content model {new}{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1090
+#: extensions/base/mediawiki.py:1086
 #, python-brace-format
 msgid "Created the tag \"{tag}\""
 msgstr ""
 
-#: extensions/base/mediawiki.py:1100
+#: extensions/base/mediawiki.py:1096
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created the [tag]({tag_url}) \"{tag}\"{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1121
+#: extensions/base/mediawiki.py:1117
 #, python-brace-format
 msgid "Deleted the tag \"{tag}\""
 msgstr ""
 
-#: extensions/base/mediawiki.py:1123
+#: extensions/base/mediawiki.py:1119
 msgid "Removed from"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1123
+#: extensions/base/mediawiki.py:1119
 msgid "{} revision or log entry"
 msgid_plural "{} revisions and/or log entries"
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:1136
+#: extensions/base/mediawiki.py:1132
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) deleted the [tag]({tag_url}) \"{tag}\"{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1146
+#: extensions/base/mediawiki.py:1142
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) deleted the [tag]({tag_url}) \"{tag}\" and removed "
@@ -1595,57 +1597,57 @@ msgid_plural ""
 "it from {count} revisions and/or log entries{comment}"
 msgstr[0] ""
 
-#: extensions/base/mediawiki.py:1163
+#: extensions/base/mediawiki.py:1159
 #, python-brace-format
 msgid "Activated the tag \"{tag}\""
 msgstr ""
 
-#: extensions/base/mediawiki.py:1172
+#: extensions/base/mediawiki.py:1168
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) activated the [tag]({tag_url}) \"{tag}\"{comment}"
 msgstr ""
 
-#: extensions/base/mediawiki.py:1191
+#: extensions/base/mediawiki.py:1187
 #, python-brace-format
 msgid "Deactivated the tag \"{tag}\""
 msgstr ""
 
-#: extensions/base/mediawiki.py:1200
+#: extensions/base/mediawiki.py:1196
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) deactivated the [tag]({tag_url}) \"{tag}\"{comment}"
 msgstr ""
 
-#: extensions/base/sprite.py:37
+#: extensions/base/sprite.py:33
 #, python-brace-format
 msgid "Edited the sprite for {article}"
 msgstr ""
 
-#: extensions/base/sprite.py:45
+#: extensions/base/sprite.py:41
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited the sprite for [{article}]({article_url})"
 msgstr ""
 
-#: extensions/base/sprite.py:60
+#: extensions/base/sprite.py:56
 #, python-brace-format
 msgid "Created the sprite sheet for {article}"
 msgstr ""
 
-#: extensions/base/sprite.py:68
+#: extensions/base/sprite.py:64
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) created the sprite sheet for [{article}]"
 "({article_url})"
 msgstr ""
 
-#: extensions/base/sprite.py:79
+#: extensions/base/sprite.py:75
 #, python-brace-format
 msgid "Edited the slice for {article}"
 msgstr ""
 
-#: extensions/base/sprite.py:86
+#: extensions/base/sprite.py:82
 #, python-brace-format
 msgid ""
 "[{author}]({author_url}) edited the slice for [{article}]({article_url})"

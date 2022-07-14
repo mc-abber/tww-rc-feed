@@ -57,15 +57,17 @@ class Client:
 
 			Returns:
 
-				sched.event
+				FIRST sched.event, later cycles have their own sched.event and will be viewable by client.scheduler.queue
 		"""
 		def return_delay(given_time: Union[float, str]) -> float:
+			"""Converts UTC time to amount of seconds from now, if amount of seconds given returns seconds as a float"""
 			if isinstance(given_time, float) or isinstance(given_time, int):
 				return float(given_time)
 			now = datetime.utcnow()
 			then = datetime(now.year, now.month, now.day, *(map(int, given_time.split(':'))), 0, 0)
 			return float((then - now).seconds)
 		def wrap_reschedule(function, period: float, *args, **kwargs):
+			"""Function for rescheduling a function every period of times. It provides args and kwargs to the function"""
 			self.schedule(function, every=period, *args, **kwargs)
 			function(*args, **kwargs)
 		if not any([every, at]) or all([every, at]):
