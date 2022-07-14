@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-16 23:56+0200\n"
-"PO-Revision-Date: 2020-08-16 19:13+0000\n"
-"Last-Translator: Frisk The Evil Goat Overlord <>\n"
-"Language-Team: Lolcat <https://weblate.frisk.space/projects/rcgcdw/main/lol/"
+"PO-Revision-Date: 2022-07-14 16:13+0000\n"
+"Last-Translator: magiczocker <jan-frederik-kriete@t-online.de>\n"
+"Language-Team: Lolcat <https://translate.wikibot.de/projects/rcgcdw/main/lol/"
 ">\n"
 "Language: lol\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1.1\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: src/rcgcdw.py:118
 #, python-brace-format
@@ -63,8 +63,8 @@ msgstr[1] "Most skilld cats"
 #: src/rcgcdw.py:185
 msgid "Most edited article"
 msgid_plural "Most edited articles"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Most editd article"
+msgstr[1] "Most editd articlez"
 
 #: src/rcgcdw.py:186
 msgid "Edits made"
@@ -76,7 +76,7 @@ msgstr "new picturz"
 
 #: src/rcgcdw.py:187
 msgid "Admin actions"
-msgstr ""
+msgstr "Admin acshuns"
 
 #: src/rcgcdw.py:187
 msgid "Bytes changed"

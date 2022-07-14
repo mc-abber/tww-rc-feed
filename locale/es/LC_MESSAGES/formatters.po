@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RcGcDw\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-16 23:56+0200\n"
-"PO-Revision-Date: 2022-05-03 10:08+0000\n"
+"PO-Revision-Date: 2022-07-10 16:40+0000\n"
 "Last-Translator: Tamara Carvallo <carvallotamara@hotmail.com>\n"
 "Language-Team: Spanish <https://translate.wikibot.de/projects/rcgcdw/"
 "formatters/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6.2\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: src/api/util.py:61 src/api/util.py:66
 msgid "__Only whitespace__"
@@ -1648,14 +1648,13 @@ msgstr ""
 "y la contraseña se envió por correo electrónico{comment}"
 
 #: extensions/base/mediawiki.py:1014
-#, fuzzy
 msgid "Reclaimed account"
-msgstr "Creó la cuenta"
+msgstr "Cuenta recuperada"
 
 #: extensions/base/mediawiki.py:1021
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Account [{author}]({author_url}) was reclaimed"
-msgstr "Se creó la cuenta [{author}]({author_url})"
+msgstr "La cuenta [{author}]({author_url})fue recuperada"
 
 #: extensions/base/mediawiki.py:1033
 #, python-brace-format
