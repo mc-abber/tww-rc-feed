@@ -134,7 +134,6 @@ class Wiki(object):
 			raise
 		return request
 
-
 	def construct_params(self, amount):
 		"""Constructs GET parameters for recentchanges/abuselog fetching feature"""
 		params = OrderedDict(action="query", format="json")
