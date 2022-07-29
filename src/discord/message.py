@@ -104,13 +104,12 @@ class DiscordMessageRaw(DiscordMessage):
 		self.webhook_url = webhook_url
 
 class DiscordMessageMetadata:
-	def __init__(self, method, log_id = None, page_id = None, rev_id = None, webhook_url = None, new_data = None):
+	def __init__(self, method, log_id = None, page_id = None, rev_id = None, webhook_url = None):
 		self.method = method
 		self.page_id = page_id
 		self.log_id = log_id
 		self.rev_id = rev_id
 		self.webhook_url = webhook_url
-		self.new_data = new_data
 
 	def dump_ids(self) -> (int, int, int):
 		return self.page_id, self.rev_id, self.log_id
