@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RcGcDw\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-14 18:17+0200\n"
-"PO-Revision-Date: 2021-07-11 12:33+0000\n"
+"PO-Revision-Date: 2022-08-13 16:43+0000\n"
 "Last-Translator: しぃ <lzmashili@icloud.com>\n"
 "Language-Team: Japanese <https://translate.wikibot.de/projects/rcgcdw/"
 "formatters/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.6.2\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: src/api/util.py:61 src/api/util.py:66
 msgid "__Only whitespace__"
@@ -345,20 +345,20 @@ msgstr ""
 
 #: extensions/base/translate.py:448 extensions/base/translate.py:451
 msgid "(default)"
-msgstr ""
+msgstr "(既定)"
 
 #: extensions/base/translate.py:460
 #, python-brace-format
 msgid "Changed the language of \"{article}\""
-msgstr ""
+msgstr "\"{article}\"の言語を変更しました"
 
 #: extensions/base/translate.py:461
 msgid "Old language"
-msgstr ""
+msgstr "以前の言語"
 
 #: extensions/base/translate.py:462
 msgid "New language"
-msgstr ""
+msgstr "新しい言語"
 
 #: extensions/base/translate.py:473
 #, python-brace-format
@@ -372,7 +372,7 @@ msgstr ""
 #: extensions/base/discussions.py:278 extensions/base/discussions.py:300
 #: extensions/base/discussions.py:328 extensions/base/discussions.py:348
 msgid "unknown"
-msgstr ""
+msgstr "不明"
 
 #: extensions/base/discussions.py:151
 #, python-brace-format
@@ -386,7 +386,7 @@ msgstr ""
 
 #: extensions/base/discussions.py:162
 msgid "Option {}"
-msgstr ""
+msgstr "オプション {}"
 
 #: extensions/base/discussions.py:164
 #, python-brace-format
@@ -401,12 +401,12 @@ msgstr ""
 #: extensions/base/discussions.py:187 extensions/base/discussions.py:189
 msgctxt "Fandom discussions Tags/Forums"
 msgid "Tags"
-msgstr ""
+msgstr "タグ"
 
 #: extensions/base/discussions.py:187
 msgctxt "Fandom discussions amount of Tags/Forums"
 msgid "{} tags"
-msgstr ""
+msgstr "{} タグ"
 
 #: extensions/base/discussions.py:192
 #, python-brace-format
@@ -520,7 +520,7 @@ msgstr ""
 #: extensions/base/abusefilter.py:64 extensions/base/abusefilter.py:65
 #: extensions/base/mediawiki.py:739
 msgid "Unknown"
-msgstr ""
+msgstr "不明"
 
 #: extensions/base/managewiki.py:59
 #, python-brace-format
@@ -554,7 +554,7 @@ msgstr ""
 
 #: extensions/base/managewiki.py:122 extensions/base/managewiki.py:145
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #: extensions/base/managewiki.py:130
 #, python-brace-format

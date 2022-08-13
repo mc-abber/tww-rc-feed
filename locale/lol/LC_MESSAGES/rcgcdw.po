@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-16 23:56+0200\n"
-"PO-Revision-Date: 2022-07-14 16:13+0000\n"
+"PO-Revision-Date: 2022-08-13 16:43+0000\n"
 "Last-Translator: magiczocker <jan-frederik-kriete@t-online.de>\n"
 "Language-Team: Lolcat <https://translate.wikibot.de/projects/rcgcdw/main/lol/"
 ">\n"
@@ -80,11 +80,11 @@ msgstr "Admin acshuns"
 
 #: src/rcgcdw.py:187
 msgid "Bytes changed"
-msgstr ""
+msgstr "Bytez changd"
 
 #: src/rcgcdw.py:188
 msgid "New articles"
-msgstr ""
+msgstr "New articlez"
 
 #: src/rcgcdw.py:188
 msgid "Unique contributors"
@@ -93,12 +93,12 @@ msgstr ""
 #: src/rcgcdw.py:189
 msgid "Most active hour"
 msgid_plural "Most active hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Most activ hour"
+msgstr[1] "Most activ hours"
 
 #: src/rcgcdw.py:190
 msgid "Day score"
-msgstr ""
+msgstr "Dai skor"
 
 #: src/rcgcdw.py:224
 msgid "~~hidden~~"
@@ -106,7 +106,7 @@ msgstr ""
 
 #: src/rcgcdw.py:226
 msgid "No description provided"
-msgstr ""
+msgstr "No descripshun providd"
 
 #: src/rcgcdw.py:229
 msgid "hidden"
