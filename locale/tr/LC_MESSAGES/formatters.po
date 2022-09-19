@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RcGcDw\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-22 18:48+0200\n"
-"PO-Revision-Date: 2022-05-03 10:08+0000\n"
+"PO-Revision-Date: 2022-08-13 16:43+0000\n"
 "Last-Translator: Doğukan Karakaş <dogukankarakas6@gmail.com>\n"
 "Language-Team: Turkish <https://translate.wikibot.de/projects/rcgcdw/"
 "formatters/tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6.2\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: src/api/util.py:61 src/api/util.py:66
 msgid "__Only whitespace__"
@@ -60,7 +60,7 @@ msgstr " ve {} fazlası"
 
 #: src/api/util.py:168
 msgid "Changed categories"
-msgstr "Kategoriler değiştirildi"
+msgstr "Değiştirilen kategoriler"
 
 #: extensions/base/cargo.py:37
 #, python-brace-format
@@ -479,6 +479,9 @@ msgid ""
 "{user_wall}?threadId={threadId}>) on [{user}'s Message Wall](<{url}wiki/"
 "Message_Wall:{user_wall}>)"
 msgstr ""
+"[{author}]({author_url}), [{user} kullanıcısının Mesaj Duvarı](<{url}wiki/"
+"Message_Wall:{user_wall}>)'nda [{title}](<{url}wiki/"
+"Message_Wall:{user_wall}?threadId={threadId}>) başlığını oluşturdu"
 
 #: extensions/base/discussions.py:318
 #, python-brace-format

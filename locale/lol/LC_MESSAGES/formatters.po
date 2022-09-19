@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: RcGcDw\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-14 18:17+0200\n"
-"PO-Revision-Date: 2022-07-14 16:13+0000\n"
+"PO-Revision-Date: 2022-08-13 16:43+0000\n"
 "Last-Translator: magiczocker <jan-frederik-kriete@t-online.de>\n"
 "Language-Team: Lolcat <https://translate.wikibot.de/projects/rcgcdw/"
 "formatters/lol/>\n"
@@ -82,37 +82,37 @@ msgstr ""
 #: extensions/base/cargo.py:55
 #, python-brace-format
 msgid "Recreated the Cargo table \"{table}\""
-msgstr ""
+msgstr "Recreatd teh Cargo table \"{table}\""
 
 #: extensions/base/cargo.py:63
 #, python-brace-format
 msgid "[{author}]({author_url}) recreated the Cargo table \"{table}\""
-msgstr ""
+msgstr "[{author}]({author_url}) recreatd teh Cargo table \"{table}\""
 
 #: extensions/base/cargo.py:78
 #, python-brace-format
 msgid "Replaced the Cargo table \"{table}\""
-msgstr ""
+msgstr "Replacd teh Cargo table \"{table}\""
 
 #: extensions/base/cargo.py:86
 #, python-brace-format
 msgid "[{author}]({author_url}) replaced the Cargo table \"{table}\""
-msgstr ""
+msgstr "[{author}]({author_url}) replacd teh Cargo table \"{table}\""
 
 #: extensions/base/cargo.py:100
 #, python-brace-format
 msgid "Deleted the Cargo table \"{table}\""
-msgstr ""
+msgstr "Deletd teh Cargo table \"{table}\""
 
 #: extensions/base/cargo.py:107
 #, python-brace-format
 msgid "[{author}]({author_url}) deleted the Cargo table \"{table}\""
-msgstr ""
+msgstr "[{author}]({author_url}) deletd teh Cargo table \"{table}\""
 
 #: extensions/base/translate.py:37
 #, python-brace-format
 msgid "Marked \"{article}\" for translation"
-msgstr ""
+msgstr "Markd \"{article}\" 4 tranzlashun"
 
 #: extensions/base/translate.py:51
 #, python-brace-format
@@ -120,11 +120,13 @@ msgid ""
 "[{author}]({author_url}) marked [{article}]({article_url}) for "
 "translation{comment}"
 msgstr ""
+"[{author}]({author_url}) markd [{article}]({article_url}) 4 "
+"tranzlashun{comment}"
 
 #: extensions/base/translate.py:66
 #, python-brace-format
 msgid "Removed \"{article}\" from the translation system"
-msgstr ""
+msgstr "Removd \"{article}\" frum teh tranzlashun sistem"
 
 #: extensions/base/translate.py:76
 #, python-brace-format
@@ -132,11 +134,13 @@ msgid ""
 "[{author}]({author_url}) removed [{article}]({article_url}) from the "
 "translation system{comment}"
 msgstr ""
+"[{author}]({author_url}) removd [{article}]({article_url}) frum teh "
+"tranzlashun sistem{comment}"
 
 #: extensions/base/translate.py:91
 #, python-brace-format
 msgid "Completed moving translation pages from \"{article}\" to \"{target}\""
-msgstr ""
+msgstr "Completd movin tranzlashun pagez frum \"{article}\" 2 \"{target}\""
 
 #: extensions/base/translate.py:102
 #, python-brace-format
@@ -144,11 +148,13 @@ msgid ""
 "[{author}]({author_url}) completed moving translation pages from *{article}* "
 "to [{target}]({target_url}){comment}"
 msgstr ""
+"[{author}]({author_url}) completd movin tranzlashun pagez frum *{article}* 2 "
+"[{target}]({target_url}){comment}"
 
 #: extensions/base/translate.py:117
 #, python-brace-format
 msgid "Encountered a problem while moving \"{article}\" to \"{target}\""
-msgstr ""
+msgstr "Encounterd problem while movin \"{article}\" 2 \"{target}\""
 
 #: extensions/base/translate.py:129
 #, python-brace-format
@@ -156,6 +162,8 @@ msgid ""
 "[{author}]({author_url}) encountered a problem while moving [{article}]"
 "({article_url}) to [{target}]({target_url}){comment}"
 msgstr ""
+"[{author}]({author_url}) encounterd problem while movin "
+"[{article}]({article_url}) 2 [{target}]({target_url}){comment}"
 
 #: extensions/base/translate.py:145
 #, python-brace-format
@@ -163,6 +171,7 @@ msgid ""
 "Failed to delete \"{article}\" which belongs to translatable page "
 "\"{target}\""
 msgstr ""
+"Faild 2 delete \"{article}\" which belongs 2 tranzlatable paeg \"{target}\""
 
 #: extensions/base/translate.py:157
 #, python-brace-format
@@ -170,11 +179,13 @@ msgid ""
 "[{author}]({author_url}) failed to delete [{article}]({article_url}) which "
 "belongs to translatable page [{target}]({target_url}){comment}"
 msgstr ""
+"[{author}]({author_url}) faild 2 delete [{article}]({article_url}) which "
+"belongs 2 tranzlatable paeg [{target}]({target_url}){comment}"
 
 #: extensions/base/translate.py:173
 #, python-brace-format
 msgid "Completed deletion of translation page \"{article}\""
-msgstr ""
+msgstr "Completd deleshun ov tranzlashun paeg \"{article}\""
 
 #: extensions/base/translate.py:184
 #, python-brace-format
@@ -182,12 +193,15 @@ msgid ""
 "[{author}]({author_url}) completed deletion of translation page [{article}]"
 "({article_url}){comment}"
 msgstr ""
+"[{author}]({author_url}) completd deleshun ov tranzlashun paeg "
+"[{article}]({article_url}){comment}"
 
 #: extensions/base/translate.py:199
 #, python-brace-format
 msgid ""
 "Failed to delete \"{article}\" which belongs to translation page \"{target}\""
 msgstr ""
+"Faild 2 delete \"{article}\" which belongs 2 tranzlashun paeg \"{target}\""
 
 #: extensions/base/translate.py:211
 #, python-brace-format
@@ -195,11 +209,13 @@ msgid ""
 "[{author}]({author_url}) failed to delete [{article}]({article_url}) which "
 "belongs to translation page [{target}]({target_url}){comment}"
 msgstr ""
+"[{author}]({author_url}) faild 2 delete [{article}]({article_url}) which "
+"belongs 2 tranzlashun paeg [{target}]({target_url}){comment}"
 
 #: extensions/base/translate.py:227
 #, python-brace-format
 msgid "Encouraged translation of \"{article}\""
-msgstr ""
+msgstr "Encouragd tranzlashun ov \"{article}\""
 
 #: extensions/base/translate.py:236
 #, python-brace-format
@@ -207,11 +223,13 @@ msgid ""
 "[{author}]({author_url}) encouraged translation of [{article}]({article_url})"
 "{comment}"
 msgstr ""
+"[{author}]({author_url}) encouragd tranzlashun ov "
+"[{article}]({article_url}){comment}"
 
 #: extensions/base/translate.py:251
 #, python-brace-format
 msgid "Discouraged translation of \"{article}\""
-msgstr ""
+msgstr "Discouragd tranzlashun ov \"{article}\""
 
 #: extensions/base/translate.py:260
 #, python-brace-format
@@ -219,21 +237,23 @@ msgid ""
 "[{author}]({author_url}) discouraged translation of [{article}]"
 "({article_url}){comment}"
 msgstr ""
+"[{author}]({author_url}) discouragd tranzlashun ov "
+"[{article}]({article_url}){comment}"
 
 #: extensions/base/translate.py:278
 #, python-brace-format
 msgid "Limited languages for \"{article}\" to `{languages}`"
-msgstr ""
+msgstr "Limitd languagez 4 \"{article}\" to `{languages}`"
 
 #: extensions/base/translate.py:281
 #, python-brace-format
 msgid "Priority languages for \"{article}\" set to `{languages}`"
-msgstr ""
+msgstr "Priority languagez 4 \"{article}\" set 2 `{languages}`"
 
 #: extensions/base/translate.py:284
 #, python-brace-format
 msgid "Removed priority languages from \"{article}\""
-msgstr ""
+msgstr "Removd priority languagez frum \"{article}\""
 
 #: extensions/base/translate.py:297
 #, python-brace-format
@@ -241,6 +261,8 @@ msgid ""
 "[{author}]({author_url}) limited languages for [{article}]({article_url}) to "
 "`{languages}`{comment}"
 msgstr ""
+"[{author}]({author_url}) limitd languagez 4 [{article}]({article_url}) 2 "
+"`{languages}`{comment}"
 
 #: extensions/base/translate.py:304
 #, python-brace-format
@@ -248,6 +270,8 @@ msgid ""
 "[{author}]({author_url}) set the priority languages for [{article}]"
 "({article_url}) to `{languages}`{comment}"
 msgstr ""
+"[{author}]({author_url}) set teh priority languagez 4 "
+"[{article}]({article_url}) 2 `{languages}`{comment}"
 
 #: extensions/base/translate.py:311
 #, python-brace-format
@@ -255,11 +279,13 @@ msgid ""
 "[{author}]({author_url}) removed priority languages from [{article}]"
 "({article_url}){comment}"
 msgstr ""
+"[{author}]({author_url}) removd priority languagez frum "
+"[{article}]({article_url}){comment}"
 
 #: extensions/base/translate.py:327
 #, python-brace-format
 msgid "Added translatable page \"{article}\" to aggregate group \"{group}\""
-msgstr ""
+msgstr "Addd tranzlatable paeg \"{article}\" 2 aggregate group \"{group}\""
 
 #: extensions/base/translate.py:338
 #, python-brace-format
@@ -267,12 +293,14 @@ msgid ""
 "[{author}]({author_url}) added translatable page [{article}]({article_url}) "
 "to aggregate group \"{group}\"{comment}"
 msgstr ""
+"[{author}]({author_url}) addd tranzlatable paeg [{article}]({article_url}) 2 "
+"aggregate group \"{group}\"{comment}"
 
 #: extensions/base/translate.py:353
 #, python-brace-format
 msgid ""
 "Removed translatable page \"{article}\" from aggregate group \"{group}\""
-msgstr ""
+msgstr "Removd tranzlatable paeg \"{article}\" frum aggregate group \"{group}\""
 
 #: extensions/base/translate.py:364
 #, python-brace-format
@@ -280,11 +308,13 @@ msgid ""
 "[{author}]({author_url}) removed translatable page [{article}]"
 "({article_url}) from aggregate group \"{group}\"{comment}"
 msgstr ""
+"[{author}]({author_url}) removd tranzlatable paeg [{article}]({article_url}) "
+"frum aggregate group \"{group}\"{comment}"
 
 #: extensions/base/translate.py:383
 #, python-brace-format
 msgid "Reviewed translation \"{article}\""
-msgstr ""
+msgstr "Reviewd tranzlashun \"{article}\""
 
 #: extensions/base/translate.py:397
 #, python-brace-format
@@ -292,11 +322,13 @@ msgid ""
 "[{author}]({author_url}) reviewed translation [{article}]({article_url})"
 "{comment}"
 msgstr ""
+"[{author}]({author_url}) reviewd tranzlashun "
+"[{article}]({article_url}){comment}"
 
 #: extensions/base/translate.py:412
 #, python-brace-format
 msgid "Changed the state of `{language}` translations of \"{article}\""
-msgstr ""
+msgstr "Changd teh state ov `{language}` tranzlashuns ov \"{article}\""
 
 #: extensions/base/translate.py:415
 msgid "Old state"
@@ -312,6 +344,8 @@ msgid ""
 "[{author}]({author_url}) changed the state of `{language}` translations of "
 "[{article}]({article_url}) from `{old_state}` to `{new_state}`{comment}"
 msgstr ""
+"[{author}]({author_url}) changd teh state ov `{language}` tranzlashuns ov "
+"[{article}]({article_url}) frum `{old_state}` 2 `{new_state}`{comment}"
 
 #: extensions/base/translate.py:435
 #, python-brace-format
@@ -319,6 +353,8 @@ msgid ""
 "[{author}]({author_url}) changed the state of `{language}` translations of "
 "[{article}]({article_url}) to `{new_state}`{comment}"
 msgstr ""
+"[{author}]({author_url}) changd teh state ov `{language}` tranzlashuns ov "
+"[{article}]({article_url}) 2 `{new_state}`{comment}"
 
 #: extensions/base/translate.py:448 extensions/base/translate.py:451
 msgid "(default)"
@@ -327,7 +363,7 @@ msgstr ""
 #: extensions/base/translate.py:460
 #, python-brace-format
 msgid "Changed the language of \"{article}\""
-msgstr ""
+msgstr "Changd the language ov \"{article}\""
 
 #: extensions/base/translate.py:461
 msgid "Old language"
@@ -343,6 +379,8 @@ msgid ""
 "[{author}]({author_url}) changed the language of [{article}]({article_url}) "
 "from {old_lang} to {new_lang}{comment}"
 msgstr ""
+"[{author}]({author_url}) changd teh language ov [{article}]({article_url}) "
+"frum {old_lang} to {new_lang}{comment}"
 
 #: extensions/base/discussions.py:142 extensions/base/discussions.py:201
 #: extensions/base/discussions.py:239 extensions/base/discussions.py:255
@@ -354,12 +392,12 @@ msgstr ""
 #: extensions/base/discussions.py:151
 #, python-brace-format
 msgid "Created \"{title}\""
-msgstr ""
+msgstr "Creatd \"{title}\""
 
 #: extensions/base/discussions.py:155
 #, python-brace-format
 msgid "Created a poll \"{title}\""
-msgstr ""
+msgstr "Creatd a poll \"{title}\""
 
 #: extensions/base/discussions.py:162
 msgid "Option {}"
@@ -373,7 +411,7 @@ msgstr ""
 #: extensions/base/discussions.py:168
 #, python-brace-format
 msgid "Created a quiz \"{title}\""
-msgstr ""
+msgstr "Creatd a quiz \"{title}\""
 
 #: extensions/base/discussions.py:187 extensions/base/discussions.py:189
 msgctxt "Fandom discussions Tags/Forums"
@@ -388,7 +426,7 @@ msgstr ""
 #: extensions/base/discussions.py:192
 #, python-brace-format
 msgid "Replied to \"{title}\""
-msgstr ""
+msgstr "Replid 2 \"{title}\""
 
 #: extensions/base/discussions.py:208
 #, python-brace-format
@@ -396,6 +434,8 @@ msgid ""
 "[{author}]({author_url}) created [{title}](<{url}f/p/{threadId}>) in "
 "{forumName}"
 msgstr ""
+"[{author}]({author_url}) creatd [{title}](<{url}f/p/{threadId}>) in "
+"{forumName}"
 
 #: extensions/base/discussions.py:211
 #, python-brace-format
@@ -403,6 +443,8 @@ msgid ""
 "[{author}]({author_url}) created a poll [{title}](<{url}f/p/{threadId}>) in "
 "{forumName}"
 msgstr ""
+"[{author}]({author_url}) creatd a poll [{title}](<{url}f/p/{threadId}>) in "
+"{forumName}"
 
 #: extensions/base/discussions.py:214
 #, python-brace-format
@@ -410,6 +452,8 @@ msgid ""
 "[{author}]({author_url}) created a quiz [{title}](<{url}f/p/{threadId}>) in "
 "{forumName}"
 msgstr ""
+"[{author}]({author_url}) creatd a quiz [{title}](<{url}f/p/{threadId}>) in "
+"{forumName}"
 
 #: extensions/base/discussions.py:228
 #, python-brace-format
@@ -417,16 +461,18 @@ msgid ""
 "[{author}]({author_url}) created a [reply](<{url}f/p/{threadId}/r/{postId}>) "
 "to [{title}](<{url}f/p/{threadId}>) in {forumName}"
 msgstr ""
+"[{author}]({author_url}) creatd a [reply](<{url}f/p/{threadId}/r/{postId}>) "
+"2 [{title}](<{url}f/p/{threadId}>) in {forumName}"
 
 #: extensions/base/discussions.py:286
 #, python-brace-format
 msgid "Created \"{title}\" on {user}'s Message Wall"
-msgstr ""
+msgstr "Creatd \"{title}\" on {user}'s Mesage Wall"
 
 #: extensions/base/discussions.py:292
 #, python-brace-format
 msgid "Replied to \"{title}\" on {user}'s Message Wall"
-msgstr ""
+msgstr "Replid to \"{title}\" on {user}'s Mesage Wall"
 
 #: extensions/base/discussions.py:306
 #, python-brace-format
