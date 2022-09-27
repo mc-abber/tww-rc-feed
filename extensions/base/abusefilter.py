@@ -76,7 +76,7 @@ def compact_abuselog(ctx: Context, change: dict):
 		author=author, author_url=author_url, abuse_filter=sanitize_to_markdown(change["filter"]),
 		action=abusefilter_actions(change["action"], ctx._, change["action"]), target=change.get("title", ctx._("Unknown")),
 		target_url=clean_link(create_article_path(sanitize_to_url(change.get("title", ctx._("Unknown"))))),
-		result=ctx._(", ").join([abusefilter_results(result, ctx._, result) for result in results])
+		result=ctx._(", ").join([abusefilter_results(result, ctx._, result) for result in results]))
 	return DiscordMessage(ctx.message_type, action, ctx.webhook_url, content=message)
 
 # abusefilter/modify - AbuseFilter filter modification
