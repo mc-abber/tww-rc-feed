@@ -551,6 +551,51 @@
             "color": 10802,
             "emoji": "🗒️"
         },
+        "abuselog/": {
+            "icon": "",
+            "color": 65280,
+            "emoji": "🆓"
+        },
+        "abuselog/warn": {
+            "icon": "",
+            "color": 16776960,
+            "emoji": "⚠️"
+        },
+        "abuselog/block": {
+            "icon": "https://i.imgur.com/g7KgZHf.png",
+            "color": 1,
+            "emoji": "🚫"
+        },
+        "abuselog/tag": {
+            "icon": "",
+            "color": 8750469,
+            "emoji": "🏷️"
+        },
+        "abuselog/disallow": {
+            "icon": "",
+            "color": 16711680,
+            "emoji": "🛑"
+        },
+        "abuselog/rangeblock": {
+            "icon": "https://i.imgur.com/g7KgZHf.png",
+            "color": 1,
+            "emoji": "🚫"
+        },
+        "abuselog/throttle": {
+            "icon": "",
+            "color": 16711680,
+            "emoji": "🐌"
+        },
+        "abuselog/blockautopromote": {
+            "icon": "",
+            "color": 1,
+            "emoji": "🚷"
+        },
+        "abuselog/degroup": {
+            "icon": "",
+            "color": 1,
+            "emoji": "⏬"
+        },
         "unknown": {
             "icon": "",
             "color": 0,
