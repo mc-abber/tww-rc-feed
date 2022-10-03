@@ -18,8 +18,7 @@ import logging
 from src.discord.message import DiscordMessage
 from src.api import formatter
 from src.api.context import Context
-from src.api.util import embed_helper, sanitize_to_url, parse_mediawiki_changes, clean_link, compact_author, \
-	create_article_path, sanitize_to_markdown
+from src.api.util import embed_helper, sanitize_to_url, parse_mediawiki_changes, clean_link, compact_author, sanitize_to_markdown
 
 # Order results from most drastic first to less drastic last
 abuselog_results = ["degroup", "blockautopromote", "rangeblock", "block", "disallow", "throttle", "warn", "tag", ""]
@@ -70,12 +69,12 @@ def embed_abuselog(ctx: Context, change: dict):
 def compact_abuselog(ctx: Context, change: dict):
 	results = change["result"].split(",")
 	action = abuselog_action(results)
-	author_url = clean_link(create_article_path("User:{user}".format(user=change["user"])))
+	author_url = clean_link(ctx.client.create_article_path("User:{user}".format(user=change["user"])))
 	author = abuse_filter_format_user(change, ctx.settings)
 	message = ctx._("[{author}]({author_url}) triggered *{abuse_filter}*, performing the action \"{action}\" on *[{target}]({target_url})* - action taken: {result}.").format(
 		author=author, author_url=author_url, abuse_filter=sanitize_to_markdown(change["filter"]),
 		action=abusefilter_actions(change["action"], ctx._, change["action"]), target=change.get("title", ctx._("Unknown")),
-		target_url=clean_link(create_article_path(sanitize_to_url(change.get("title", ctx._("Unknown"))))),
+		target_url=clean_link(ctx.client.create_article_path(sanitize_to_url(change.get("title", ctx._("Unknown"))))),
 		result=ctx._(", ").join([abusefilter_results(result, ctx._, result) for result in results]))
 	return DiscordMessage(ctx.message_type, action, ctx.webhook_url, content=message)
 
@@ -86,7 +85,7 @@ def compact_abuselog(ctx: Context, change: dict):
 def embed_abuselog_modify(ctx: Context, change: dict):
 	embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
 	embed_helper(ctx, embed, change)
-	embed["url"] = create_article_path(
+	embed["url"] = ctx.client.create_article_path(
 		"Special:AbuseFilter/history/{number}/diff/prev/{historyid}".format(number=change["logparams"]['newId'],
 																			historyid=change["logparams"]["historyId"]))
 	embed["title"] = ctx._("Edited abuse filter number {number}").format(number=change["logparams"]['newId'])
@@ -96,7 +95,7 @@ def embed_abuselog_modify(ctx: Context, change: dict):
 @formatter.compact(event="abusefilter/modify")
 def compact_abuselog_modify(ctx: Context, change: dict):
 	author, author_url = compact_author(ctx, change)
-	link = clean_link(create_article_path(
+	link = clean_link(ctx.client.create_article_path(
 		"Special:AbuseFilter/history/{number}/diff/prev/{historyid}".format(number=change["logparams"]['newId'],
 																			historyid=change["logparams"][
 																				"historyId"])))
@@ -116,7 +115,7 @@ def compact_abuselog_modify(ctx: Context, change: dict):
 def embed_abuselog_create(ctx: Context, change: dict):
 	embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
 	embed_helper(ctx, embed, change)
-	embed["url"] = create_article_path("Special:AbuseFilter/{number}".format(number=change["logparams"]['newId']))
+	embed["url"] = ctx.client.create_article_path("Special:AbuseFilter/{number}".format(number=change["logparams"]['newId']))
 	embed["title"] = ctx._("Created abuse filter number {number}").format(number=change["logparams"]['newId'])
 	return embed
 
@@ -125,7 +124,7 @@ def embed_abuselog_create(ctx: Context, change: dict):
 def compact_abuselog_create(ctx: Context, change: dict):
 	author, author_url = compact_author(ctx, change)
 	link = clean_link(
-		create_article_path("Special:AbuseFilter/{number}".format(number=change["logparams"]['newId'])))
+		ctx.client.create_article_path("Special:AbuseFilter/{number}".format(number=change["logparams"]['newId'])))
 	content = ctx._("[{author}]({author_url}) created abuse filter [number {number}]({filter_url})").format(author=author,
 																										author_url=author_url,
 																										number=change[

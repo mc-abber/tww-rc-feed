@@ -18,7 +18,7 @@ import logging
 from src.discord.message import DiscordMessage
 from src.api import formatter
 from src.api.context import Context
-from src.api.util import embed_helper, clean_link, compact_author, create_article_path, sanitize_to_markdown, sanitize_to_url
+from src.api.util import embed_helper, clean_link, compact_author, sanitize_to_markdown, sanitize_to_url
 from src.misc import profile_field_name
 
 
@@ -39,7 +39,7 @@ def embed_curseprofile_profile_edited(ctx: Context, change: dict) -> DiscordMess
         embed["description"] = ctx._("Cleared the {field} field").format(field=profile_field_name(change["logparams"]['4:section'], True))
     else:
         embed["description"] = ctx._("{field} field changed to: {desc}").format(field=profile_field_name(change["logparams"]['4:section'], True), desc=ctx.parsedcomment)
-    embed["url"] = create_article_path("UserProfile:" + sanitize_to_url(target_user))
+    embed["url"] = ctx.client.create_article_path("UserProfile:" + sanitize_to_url(target_user))
     return embed
 
 
@@ -47,7 +47,7 @@ def embed_curseprofile_profile_edited(ctx: Context, change: dict) -> DiscordMess
 def compact_curseprofile_profile_edited(ctx: Context, change: dict) -> DiscordMessage:
     author, author_url = compact_author(ctx, change)
     target_user = change["title"].split(':', 1)[1]
-    link = clean_link(create_article_path("UserProfile:" + sanitize_to_url(target_user)))
+    link = clean_link(ctx.client.create_article_path("UserProfile:" + sanitize_to_url(target_user)))
     if target_user != author:
         if ctx.parsedcomment is None:  # If the field is empty
             edit_clear_message = ctx._("[{author}]({author_url}) cleared the {field} on [{target}]({target_url})'s profile.")
@@ -79,7 +79,7 @@ def embed_curseprofile_comment_created(ctx: Context, change: dict) -> DiscordMes
         embed["title"] = ctx._("Left a comment on their own profile")
     if ctx.settings["appearance"]["embed"]["show_edit_changes"]:
         embed["description"] = ctx.client.pull_curseprofile_comment(change["logparams"]["4:comment_id"])
-    embed["url"] = create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"]))
+    embed["url"] = ctx.client.create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"]))
     return embed
 
 
@@ -87,7 +87,7 @@ def embed_curseprofile_comment_created(ctx: Context, change: dict) -> DiscordMes
 def compact_curseprofile_comment_created(ctx: Context, change: dict) -> DiscordMessage:
     author, author_url = compact_author(ctx, change)
     target_user = change["title"].split(':', 1)[1]
-    link = clean_link(create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"])))
+    link = clean_link(ctx.client.create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"])))
     if target_user != author:
         content = ctx._("[{author}]({author_url}) left a [comment]({comment}) on {target}'s profile.").format(
             author=author, author_url=author_url, comment=link, target=sanitize_to_markdown(target_user))
@@ -110,7 +110,7 @@ def embed_curseprofile_comment_edited(ctx: Context, change: dict) -> DiscordMess
         embed["title"] = ctx._("Edited a comment on their own profile")
     if ctx.settings["appearance"]["embed"]["show_edit_changes"]:
         embed["description"] = ctx.client.pull_curseprofile_comment(change["logparams"]["4:comment_id"])
-    embed["url"] = create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"]))
+    embed["url"] = ctx.client.create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"]))
     return embed
 
 
@@ -118,7 +118,7 @@ def embed_curseprofile_comment_edited(ctx: Context, change: dict) -> DiscordMess
 def compact_curseprofile_comment_edited(ctx: Context, change: dict) -> DiscordMessage:
     author, author_url = compact_author(ctx, change)
     target_user = change["title"].split(':', 1)[1]
-    link = clean_link(create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"])))
+    link = clean_link(ctx.client.create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"])))
     if target_user != author:
         content = ctx._("[{author}]({author_url}) edited a [comment]({comment}) on {target}'s profile.").format(
             author=author, author_url=author_url, comment=link, target=sanitize_to_markdown(target_user))
@@ -141,7 +141,7 @@ def embed_curseprofile_comment_replied(ctx: Context, change: dict) -> DiscordMes
         embed["title"] = ctx._("Replied to a comment on their own profile")
     if ctx.settings["appearance"]["embed"]["show_edit_changes"]:
         embed["description"] = ctx.client.pull_curseprofile_comment(change["logparams"]["4:comment_id"])
-    embed["url"] = create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"]))
+    embed["url"] = ctx.client.create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"]))
     return embed
 
 
@@ -149,7 +149,7 @@ def embed_curseprofile_comment_replied(ctx: Context, change: dict) -> DiscordMes
 def compact_curseprofile_comment_replied(ctx: Context, change: dict) -> DiscordMessage:
     author, author_url = compact_author(ctx, change)
     target_user = change["title"].split(':', 1)[1]
-    link = clean_link(create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"])))
+    link = clean_link(ctx.client.create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"])))
     if target_user != author:
         content = ctx._("[{author}]({author_url}) replied to a [comment]({comment}) on {target}'s profile.").format(
             author=author, author_url=author_url, comment=link, target=sanitize_to_markdown(target_user))
@@ -173,9 +173,9 @@ def embed_curseprofile_comment_deleted(ctx: Context, change: dict) -> DiscordMes
     if ctx.parsedcomment is not None:
         embed["description"] = ctx.parsedcomment
     if "4:comment_id" in change["logparams"]:
-        embed["url"] = create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"]))
+        embed["url"] = ctx.client.create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"]))
     else:
-        embed["url"] = create_article_path("UserProfile:" + sanitize_to_url(target_user))
+        embed["url"] = ctx.client.create_article_path("UserProfile:" + sanitize_to_url(target_user))
     return embed
 
 
@@ -184,9 +184,9 @@ def compact_curseprofile_comment_deleted(ctx: Context, change: dict) -> DiscordM
     author, author_url = compact_author(ctx, change)
     target_user = change["title"].split(':', 1)[1]
     if "4:comment_id" in change["logparams"]:
-        link = clean_link(create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"])))
+        link = clean_link(ctx.client.create_article_path("Special:CommentPermalink/{commentid}".format(commentid=change["logparams"]["4:comment_id"])))
     else:
-        link = clean_link(create_article_path("UserProfile:" + sanitize_to_url(target_user)))
+        link = clean_link(ctx.client.create_article_path("UserProfile:" + sanitize_to_url(target_user)))
     parsed_comment = "" if ctx.parsedcomment is None else " *(" + ctx.parsedcomment + ")*"
     if target_user != author:
         content = ctx._("[{author}]({author_url}) deleted a [comment]({comment}) on {target}'s profile.{reason}").format(
@@ -211,7 +211,7 @@ def embed_curseprofile_comment_purged(ctx: Context, change: dict) -> DiscordMess
         embed["title"] = ctx._("Purged a comment on their own profile")
     if ctx.parsedcomment is not None:
         embed["description"] = ctx.parsedcomment
-    embed["url"] = create_article_path("UserProfile:" + sanitize_to_url(target_user))
+    embed["url"] = ctx.client.create_article_path("UserProfile:" + sanitize_to_url(target_user))
     return embed
 
 
@@ -219,7 +219,7 @@ def embed_curseprofile_comment_purged(ctx: Context, change: dict) -> DiscordMess
 def compact_curseprofile_comment_purged(ctx: Context, change: dict) -> DiscordMessage:
     author, author_url = compact_author(ctx, change)
     target_user = change["title"].split(':', 1)[1]
-    link = clean_link(create_article_path("UserProfile:" + sanitize_to_url(target_user)))
+    link = clean_link(ctx.client.create_article_path("UserProfile:" + sanitize_to_url(target_user)))
     parsed_comment = "" if ctx.parsedcomment is None else " *(" + ctx.parsedcomment + ")*"
     if target_user != author:
         content = ctx._("[{author}]({author_url}) purged a comment on [{target}]({link})'s profile.{reason}").format(

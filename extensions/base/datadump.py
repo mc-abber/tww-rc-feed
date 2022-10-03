@@ -18,7 +18,7 @@ import logging
 from src.discord.message import DiscordMessage
 from src.api import formatter
 from src.api.context import Context
-from src.api.util import embed_helper, compact_author, create_article_path, sanitize_to_markdown, sanitize_to_url, compact_summary
+from src.api.util import embed_helper, compact_author, sanitize_to_markdown, sanitize_to_url, compact_summary
 
 
 # DataDumps - https://www.mediawiki.org/wiki/Extension:DataDump
@@ -30,7 +30,7 @@ def embed_datadump_generate(ctx: Context, change: dict) -> DiscordMessage:
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
     embed["title"] = ctx._("Generated {file} dump").format(file=change["logparams"]["filename"])
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     return embed
 
 
@@ -52,7 +52,7 @@ def embed_datadump_delete(ctx: Context, change: dict) -> DiscordMessage:
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
     embed["title"] = ctx._("Deleted {file} dump").format(file=sanitize_to_markdown(change["logparams"]["filename"]))
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     return embed
 
 

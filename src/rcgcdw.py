@@ -30,7 +30,7 @@ import src.api.client
 from src.api.context import Context
 from src.api.hooks import formatter_hooks, pre_hooks, post_hooks
 from src.misc import add_to_dict, datafile, run_hooks
-from src.api.util import create_article_path, default_message
+from src.api.util import default_message
 from src.discord.queue import send_to_discord
 from src.discord.message import DiscordMessage, DiscordMessageMetadata
 from src.exceptions import ServerError, MediaWikiError, NoFormatter
@@ -122,7 +122,7 @@ def daily_overview_sync(data: dict) -> dict:
 	return data_output
 
 
-def day_overview():
+def day_overview(client):
 	try:
 		result = day_overview_request()
 	except (ServerError, MediaWikiError):
@@ -135,8 +135,8 @@ def day_overview():
 		active_articles = []
 		embed = DiscordMessage("embed", "daily_overview", settings["webhookURL"])
 		embed["title"] = _("Daily overview")
-		embed["url"] = create_article_path("Special:Statistics")
-		embed.set_author(settings["wikiname"], create_article_path(""))
+		embed["url"] = client.create_article_path("Special:Statistics")
+		embed.set_author(settings["wikiname"], client.create_article_path(""))
 		if not result:
 			if not settings["send_empty_overview"]:
 				return  # no changes in this day
@@ -320,7 +320,7 @@ if settings["rc_enabled"]:
 	if settings["overview"]:
 		try:
 			overview_time = time.strptime(settings["overview_time"], '%H:%M')
-			client.schedule(day_overview, at="{}:{}".format(str(overview_time.tm_hour).zfill(2), str(overview_time.tm_min).zfill(2)))
+			client.schedule(day_overview, client, at="{}:{}".format(str(overview_time.tm_hour).zfill(2), str(overview_time.tm_min).zfill(2)))
 			del overview_time
 		except ValueError:
 			logger.error("Invalid time format! Currentely: {}. Note: It needs to be in HH:MM format.".format(
@@ -336,7 +336,7 @@ if TESTING:
 	logger.debug("DEBUGGING ")
 	storage["rcid"] = 1
 	wiki.fetch(amount=5)
-	day_overview()
+	day_overview(client)
 	import src.discussions
 	src.discussions.fetch_discussions()
 	logger.info("Test has succeeded without premature exceptions.")

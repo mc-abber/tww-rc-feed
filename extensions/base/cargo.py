@@ -18,7 +18,7 @@ import re
 from src.discord.message import DiscordMessage
 from src.api import formatter
 from src.api.context import Context
-from src.api.util import embed_helper, compact_author, create_article_path, sanitize_to_markdown
+from src.api.util import embed_helper, compact_author, sanitize_to_markdown
 
 # Cargo - https://www.mediawiki.org/wiki/Extension:Cargo
 # cargo/createtable - Creation of Cargo table
@@ -96,7 +96,7 @@ def compact_cargo_replacetable(ctx: Context, change: dict):
 def embed_cargo_deletetable(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path("Special:CargoTables")
+    embed["url"] = ctx.client.create_article_path("Special:CargoTables")
     embed["title"] = ctx._("Deleted the Cargo table \"{table}\"").format(table=sanitize_to_markdown(change["logparams"]["0"]))
     return embed
 

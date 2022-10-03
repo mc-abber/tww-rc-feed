@@ -54,7 +54,7 @@ from src.discord.message import DiscordMessage
 from src.api import formatter
 from src.i18n import formatters_i18n
 from src.api.context import Context
-from src.api.util import embed_helper, compact_author, create_article_path, sanitize_to_markdown, sanitize_to_url, \
+from src.api.util import embed_helper, compact_author, sanitize_to_markdown, sanitize_to_url, \
     clean_link
 
 #  Setup translation function which is used to translate english strings to other languages
@@ -67,7 +67,7 @@ def embed_sprite_sprite(ctx: Context, change: dict) -> DiscordMessage:
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     #  embed_helper function can be used to automatically populate DiscordMessage object with some common useful information such as setting author name/url, adding fields for tags/categories, or setting default description
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     embed["title"] = _("Edited the sprite for {article}").format(article=sanitize_to_markdown(change["title"]))
     #  return populated DiscordMessage object
     return embed
@@ -76,7 +76,7 @@ def embed_sprite_sprite(ctx: Context, change: dict) -> DiscordMessage:
 @formatter.compact(event="sprite/sprite")
 def compact_sprite_sprite(ctx: Context, change: dict) -> DiscordMessage:
     author, author_url = compact_author(ctx, change)
-    link = clean_link(create_article_path(sanitize_to_url(change["title"])))
+    link = clean_link(ctx.client.create_article_path(sanitize_to_url(change["title"])))
     content = _("[{author}]({author_url}) edited the sprite for [{article}]({article_url})").format(author=author,
                                                                                                     author_url=author_url,
                                                                                                     article=sanitize_to_markdown(change[

@@ -73,11 +73,6 @@ def parse_mediawiki_changes(ctx: Context, content: str, embed: DiscordMessage) -
 		embed.add_field(_("Added"), "{data}".format(data=edit_diff.small_prev_ins), inline=True)
 
 
-def create_article_path(article: str) -> str:
-	"""Takes the string and creates an URL with it as the article name"""
-	return src.misc.WIKI_ARTICLE_PATH.replace("$1", article)
-
-
 def compact_summary(ctx: Context) -> str:
 	"""Creates a comment for compact formatters"""
 	if ctx.parsedcomment:
@@ -88,7 +83,7 @@ def compact_author(ctx: Context, change: dict) -> (Optional[str], Optional[str])
 	"""Returns link to the author and the author itself respecting the settings"""
 	author, author_url = None, None
 	if ctx.event != "suppressed":
-		author_url = clean_link(create_article_path("User:{user}".format(user=sanitize_to_url(change["user"]))))
+		author_url = clean_link(ctx.client.create_article_path("User:{user}".format(user=sanitize_to_url(change["user"]))))
 		if "anon" in change:
 			if settings.get("hide_ips", False):
 				author = _("Unregistered user")
@@ -111,7 +106,7 @@ def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=T
 	if set_user:
 		author = None
 		if "anon" in change:
-			author_url = create_article_path("Special:Contributions/{user}".format(user=sanitize_to_url(change["user"])))
+			author_url = ctx.client.create_article_path("Special:Contributions/{user}".format(user=sanitize_to_url(change["user"])))
 			ip_mapper = ctx.client.get_ipmapper()
 			logger.debug("current user: {} with cache of IPs: {}".format(change["user"], ip_mapper.keys()))
 			if change["user"] not in list(ip_mapper.keys()):
@@ -141,7 +136,7 @@ def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=T
 					author=change["user"] if settings.get("hide_ips", False) is False else _("Unregistered user"),
 					amount=ip_mapper[change["user"]])
 		else:
-			author_url = create_article_path("User:{}".format(sanitize_to_url(change["user"])))
+			author_url = ctx.client.create_article_path("User:{}".format(sanitize_to_url(change["user"])))
 			author = change["user"]
 		message.set_author(author, author_url)
 	if set_edit_meta:

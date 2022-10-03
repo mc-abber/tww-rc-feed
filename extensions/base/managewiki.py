@@ -16,7 +16,7 @@
 from src.discord.message import DiscordMessage
 from src.api import formatter
 from src.api.context import Context
-from src.api.util import embed_helper, compact_author, create_article_path, sanitize_to_markdown, sanitize_to_url, compact_summary
+from src.api.util import embed_helper, compact_author, sanitize_to_markdown, sanitize_to_url, compact_summary
 
 
 # ManageWiki - https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:ManageWiki
@@ -26,7 +26,7 @@ from src.api.util import embed_helper, compact_author, create_article_path, sani
 def embed_managewiki_settings(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     embed["title"] = ctx._("Changed wiki settings")
     if change["logparams"].get("changes", ""):
         embed.add_field("Setting", sanitize_to_markdown(change["logparams"].get("changes")))
@@ -47,7 +47,7 @@ def compact_managewiki_settings(ctx: Context, change: dict):
 def embed_managewiki_delete(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     embed["title"] = ctx._("Deleted a \"{wiki}\" wiki").format(wiki=change["logparams"].get("wiki", ctx._("Unknown")))
     return embed
 
@@ -71,7 +71,7 @@ def compact_managewiki_delete(ctx: Context, change: dict):
 def embed_managewiki_delete_group(ctx: Context, change: dict) -> DiscordMessage:
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     group = change["title"].split("/")[-1]
     embed["title"] = ctx._("Deleted a \"{group}\" user group").format(wiki=group)
     return embed
@@ -95,7 +95,7 @@ def compact_managewiki_delete_group(ctx: Context, change: dict) -> DiscordMessag
 def embed_managewiki_lock(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     embed["title"] = ctx._("Locked a \"{wiki}\" wiki").format(wiki=change["logparams"].get("wiki", ctx._("Unknown")))
     return embed
 
@@ -116,7 +116,7 @@ def compact_managewiki_lock(ctx: Context, change: dict):
 def embed_managewiki_namespaces(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     embed["title"] = ctx._("Modified \"{namespace_name}\" namespace").format(
         namespace_name=change["logparams"].get("namespace", ctx._("Unknown")))
     embed.add_field(ctx._('Wiki'), change["logparams"].get("wiki", ctx._("Unknown")))
@@ -139,7 +139,7 @@ def compact_managewiki_namespaces(ctx: Context, change: dict):
 def embed_managewiki_namespaces_delete(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     embed["title"] = ctx._("Deleted a \"{namespace_name}\" namespace").format(
         namespace_name=change["logparams"].get("namespace", ctx._("Unknown")))
     embed.add_field(ctx._('Wiki'), change["logparams"].get("wiki", ctx._("Unknown")))
@@ -164,7 +164,7 @@ def compact_managewiki_namespaces_delete(ctx: Context, change: dict):
 def embed_managewiki_rights(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     group_name = change["title"].split("/permissions/", 1)[1]
     embed["title"] = ctx._("Modified \"{usergroup_name}\" usergroup").format(usergroup_name=group_name)
     return embed
@@ -187,7 +187,7 @@ def compact_managewiki_rights(ctx: Context, change: dict):
 def embed_managewiki_undelete(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     embed["title"] = ctx._("Undeleted a \"{wiki}\" wiki").format(wiki=change["logparams"].get("wiki", ctx._("Unknown")))
     return embed
 
@@ -209,7 +209,7 @@ def compact_managewiki_undelete(ctx: Context, change: dict):
 def embed_managewiki_unlock(ctx: Context, change: dict):
     embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
     embed_helper(ctx, embed, change)
-    embed["url"] = create_article_path(sanitize_to_url(change["title"]))
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
     embed["title"] = ctx._("Unlocked a \"{wiki}\" wiki").format(wiki=change["logparams"].get("wiki", ctx._("Unknown")))
     return embed
 
