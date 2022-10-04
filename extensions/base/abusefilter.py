@@ -22,7 +22,7 @@ from src.api.util import embed_helper, sanitize_to_url, parse_mediawiki_changes,
 
 # Order results from most drastic first to less drastic last
 abuselog_results = ["degroup", "blockautopromote", "rangeblock", "block", "disallow", "throttle", "warn", "tag", ""]
-abusefilter_results = lambda string, _, default: {"degroup": _("**Removed from privileged groups**"), "blockautopromote": _("Removed autoconfirmed group"), "rangeblock": _("**IP range blocked**"), "block": _("**Blocked user**"), "disallow": _("Disallowed the action"), "throttle": _("Throttled actions"), "warn": _("Warning issued"), "tag": _("Tagged the edit"), "": _("None")}.get(string, default)
+abusefilter_results = lambda string, _, default: {"degroup": _("**Removed from privileged groups**"), "blockautopromote": _("**Removed autopromoted groups**"), "rangeblock": _("**IP range blocked**"), "block": _("**Blocked user**"), "disallow": _("Disallowed the action"), "throttle": _("Throttled actions"), "warn": _("Warning issued"), "tag": _("Tagged the edit"), "": _("None")}.get(string, default)
 abusefilter_actions = lambda string, _, default: {"edit": _("Edit"), "upload": _("Upload"), "move": _("Move"), "stashupload": _("Stash upload"), "delete": _("Deletion"), "createaccount": _("Account creation"), "autocreateaccount": _("Auto account creation")}.get(string, default)
 
 logger = logging.getLogger("extensions.base")
@@ -40,16 +40,15 @@ def abuselog_action(results):
 	return action
 
 
-def abuse_filter_format_user(change, settings):
-	author = change["user"]
-	if settings.get("hide_ips", False):
-		try:
-			ipaddress.ip_address(change["user"])
-		except ValueError:
-			pass
-		else:
-			author = _("Unregistered user")
-	return author
+def abuse_filter_is_ip(change):
+	is_ip = False
+	try:
+		ipaddress.ip_address(change["user"])
+	except ValueError:
+		pass
+	else:
+		is_ip = True
+	return is_ip
 
 
 @formatter.embed(event="abuselog")
@@ -57,11 +56,13 @@ def embed_abuselog(ctx: Context, change: dict):
 	results = change["result"].split(",")
 	action = abuselog_action(results)
 	embed = DiscordMessage(ctx.message_type, action, ctx.webhook_url)
-	author = abuse_filter_format_user(change, ctx.settings)
-	embed["title"] = ctx._("{user} triggered \"{abuse_filter}\"").format(user=author, abuse_filter=sanitize_to_markdown(change["filter"]))
-	embed.add_field(ctx._("Performed"), abusefilter_actions(change["action"], ctx._, change["action"]))
-	embed.add_field(ctx._("Title"), sanitize_to_markdown(change.get("title", ctx._("Unknown"))))
+	embed["title"] = sanitize_to_markdown(change["filter"])
+	embed["url"] = ctx.client.create_article_path("Special:AbuseLog/{entry}".format(entry=change["id"]))
+	embed.add_field(ctx._("Title"), "[{target}]({target_url})".format(target=change.get("title", ctx._("Unknown")),
+		target_url=clean_link(ctx.client.create_article_path(sanitize_to_url(change.get("title", ctx._("Unknown")))))), inline=True)
+	embed.add_field(ctx._("Performed"), abusefilter_actions(change["action"], ctx._, change["action"]), inline=True)
 	embed.add_field(ctx._("Action taken"), ctx._(", ").join([abusefilter_results(result, ctx._, result) for result in results]))
+	embed_helper(ctx, embed, change, is_anon=abuse_filter_is_ip(change), set_desc=False)
 	return embed
 
 
@@ -69,10 +70,10 @@ def embed_abuselog(ctx: Context, change: dict):
 def compact_abuselog(ctx: Context, change: dict):
 	results = change["result"].split(",")
 	action = abuselog_action(results)
-	author_url = clean_link(ctx.client.create_article_path("User:{user}".format(user=change["user"])))
-	author = abuse_filter_format_user(change, ctx.settings)
-	message = ctx._("[{author}]({author_url}) triggered *{abuse_filter}*, performing the action \"{action}\" on *[{target}]({target_url})* - action taken: {result}.").format(
+	author, author_url = compact_author(ctx, change, is_anon=abuse_filter_is_ip(change))
+	message = ctx._("[{author}]({author_url}) triggered *[{abuse_filter}]({details_url})*, performing the action \"{action}\" on *[{target}]({target_url})* - action taken: {result}.").format(
 		author=author, author_url=author_url, abuse_filter=sanitize_to_markdown(change["filter"]),
+		details_url=clean_link(ctx.client.create_article_path("Special:AbuseLog/{entry}".format(entry=change["id"]))),
 		action=abusefilter_actions(change["action"], ctx._, change["action"]), target=change.get("title", ctx._("Unknown")),
 		target_url=clean_link(ctx.client.create_article_path(sanitize_to_url(change.get("title", ctx._("Unknown"))))),
 		result=ctx._(", ").join([abusefilter_results(result, ctx._, result) for result in results]))
