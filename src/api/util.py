@@ -24,8 +24,6 @@ import src.misc
 import logging
 from src.i18n import formatters_i18n
 
-_ = formatters_i18n.gettext
-
 if TYPE_CHECKING:
 	from src.api.context import Context
 
@@ -58,19 +56,19 @@ def parse_mediawiki_changes(ctx: Context, content: str, embed: DiscordMessage) -
 	edit_diff.feed(content)
 	if edit_diff.small_prev_del:
 		if edit_diff.small_prev_del.replace("~~", "").replace("__", "").isspace():
-			edit_diff.small_prev_del = _('__Only whitespace__')
+			edit_diff.small_prev_del = ctx._('__Only whitespace__')
 		else:
 			edit_diff.small_prev_del = edit_diff.small_prev_del.replace("~~~~", "").replace("____", "")
 	if edit_diff.small_prev_ins:
 		if edit_diff.small_prev_ins.replace("**", "").replace("__", "").isspace():
-			edit_diff.small_prev_ins = _('__Only whitespace__')
+			edit_diff.small_prev_ins = ctx._('__Only whitespace__')
 		else:
 			edit_diff.small_prev_ins = edit_diff.small_prev_ins.replace("****", "").replace("____", "")
 	logger.debug("Changed content: {}".format(edit_diff.small_prev_ins))
 	if edit_diff.small_prev_del and not ctx.event == "new":
-		embed.add_field(_("Removed"), "{data}".format(data=edit_diff.small_prev_del), inline=True)
+		embed.add_field(ctx._("Removed"), "{data}".format(data=edit_diff.small_prev_del), inline=True)
 	if edit_diff.small_prev_ins:
-		embed.add_field(_("Added"), "{data}".format(data=edit_diff.small_prev_ins), inline=True)
+		embed.add_field(ctx._("Added"), "{data}".format(data=edit_diff.small_prev_ins), inline=True)
 
 
 def compact_summary(ctx: Context) -> str:
@@ -86,7 +84,7 @@ def compact_author(ctx: Context, change: dict) -> (Optional[str], Optional[str])
 		author_url = clean_link(ctx.client.create_article_path("User:{user}".format(user=sanitize_to_url(change["user"]))))
 		if "anon" in change:
 			if settings.get("hide_ips", False):
-				author = _("Unregistered user")
+				author = ctx._("Unregistered user")
 			else:
 				author = change["user"]
 		else:
@@ -118,14 +116,14 @@ def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=T
 				except (ServerError, MediaWikiError):
 					logger.warning("WARNING: Something went wrong when checking amount of contributions for given IP address")
 					if settings.get("hide_ips", False):
-						author = _("Unregistered user")
+						author = ctx._("Unregistered user")
 					else:
 						author = change["user"] + "(?)"
 				else:
 					ip_mapper[change["user"]] = len(contibs)
 					logger.debug("Current params user {} and state of map_ips {}".format(change["user"], ip_mapper))
 					if settings.get("hide_ips", False):
-						author = _("Unregistered user")
+						author = ctx._("Unregistered user")
 					else:
 						author = "{author} ({contribs})".format(author=change["user"], contribs=len(contibs))
 			else:
@@ -133,7 +131,7 @@ def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=T
 				if ctx.event in ("edit", "new"):
 					ip_mapper[change["user"]] += 1
 				author = "{author} ({amount})".format(
-					author=change["user"] if settings.get("hide_ips", False) is False else _("Unregistered user"),
+					author=change["user"] if settings.get("hide_ips", False) is False else ctx._("Unregistered user"),
 					amount=ip_mapper[change["user"]])
 		else:
 			author_url = ctx.client.create_article_path("User:{}".format(sanitize_to_url(change["user"])))
@@ -155,12 +153,12 @@ def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=T
 			if tag_displayname:
 				message.add_field(formatters_i18n.pgettext("recent changes Tags", "Tags"), ", ".join(tag_displayname))
 		if ctx.categories is not None and not (len(ctx.categories["new"]) == 0 and len(ctx.categories["removed"]) == 0):
-			new_cat = (_("**Added**: ") + ", ".join(list(ctx.categories["new"])[0:16]) + (
-				"\n" if len(ctx.categories["new"]) <= 15 else _(" and {} more\n").format(
+			new_cat = (ctx._("**Added**: ") + ", ".join(list(ctx.categories["new"])[0:16]) + (
+				"\n" if len(ctx.categories["new"]) <= 15 else ctx._(" and {} more\n").format(
 					len(ctx.categories["new"]) - 15))) if ctx.categories["new"] else ""
-			del_cat = (_("**Removed**: ") + ", ".join(list(ctx.categories["removed"])[0:16]) + (
-				"" if len(ctx.categories["removed"]) <= 15 else _(" and {} more").format(
+			del_cat = (ctx._("**Removed**: ") + ", ".join(list(ctx.categories["removed"])[0:16]) + (
+				"" if len(ctx.categories["removed"]) <= 15 else ctx._(" and {} more").format(
 					len(ctx.categories["removed"]) - 15))) if ctx.categories["removed"] else ""
-			message.add_field(_("Changed categories"), new_cat + del_cat)
+			message.add_field(ctx._("Changed categories"), new_cat + del_cat)
 	if set_desc:
 		message["description"] = ctx.parsedcomment
