@@ -79,12 +79,12 @@ def compact_summary(ctx: Context) -> str:
 		return " *({})*".format(ctx.parsedcomment)
 	return ""
 
-def compact_author(ctx: Context, change: dict) -> (Optional[str], Optional[str]):
+def compact_author(ctx: Context, change: dict, is_anon=None) -> (Optional[str], Optional[str]):
 	"""Returns link to the author and the author itself respecting the settings"""
 	author, author_url = None, None
 	if ctx.event != "suppressed":
 		author_url = clean_link(ctx.client.create_article_path("User:{user}".format(user=sanitize_to_url(change["user"]))))
-		if "anon" in change:
+		if ("anon" in change if is_anon is None else is_anon):
 			if settings.get("hide_ips", False):
 				author = _("Unregistered user")
 			else:
@@ -94,7 +94,7 @@ def compact_author(ctx: Context, change: dict) -> (Optional[str], Optional[str])
 	return author, author_url
 
 
-def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=True, set_edit_meta=True, set_desc=True) -> None:
+def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=True, set_edit_meta=True, set_desc=True, is_anon=None) -> None:
 	"""Helps in preparing common edit/log fields for events. Passed arguments automatically become saturated with needed data.
 	All automatic setups can be disabled by setting relevant variable to False
 
@@ -105,7 +105,7 @@ def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=T
 	setting default description (to ctx.parsedcomment)"""
 	if set_user:
 		author = None
-		if "anon" in change:
+		if ("anon" in change if is_anon is None else is_anon):
 			author_url = ctx.client.create_article_path("Special:Contributions/{user}".format(user=sanitize_to_url(change["user"])))
 			ip_mapper = ctx.client.get_ipmapper()
 			logger.debug("current user: {} with cache of IPs: {}".format(change["user"], ip_mapper.keys()))

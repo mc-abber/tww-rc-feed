@@ -56,43 +56,13 @@ def embed_abuselog(ctx: Context, change: dict):
 	results = change["result"].split(",")
 	action = abuselog_action(results)
 	embed = DiscordMessage(ctx.message_type, action, ctx.webhook_url)
-	author = change["user"]
-	author_url = ctx.client.create_article_path("User:{}".format(sanitize_to_url(change["user"])))
-	if abuse_filter_is_ip(change):
-		author_url = ctx.client.create_article_path("Special:Contributions/{user}".format(user=sanitize_to_url(change["user"])))
-		ip_mapper = ctx.client.get_ipmapper()
-		logger.debug("current user: {} with cache of IPs: {}".format(change["user"], ip_mapper.keys()))
-		if change["user"] not in list(ip_mapper.keys()):
-			try:
-				contibs = ctx.client.make_api_request(
-					"?action=query&format=json&list=usercontribs&uclimit=max&ucuser={user}&ucstart={timestamp}&ucprop=".format(
-						user=sanitize_to_url(change["user"]), timestamp=change["timestamp"]), "query",
-					"usercontribs")
-			except (ServerError, MediaWikiError):
-				logger.warning("WARNING: Something went wrong when checking amount of contributions for given IP address")
-				if ctx.settings.get("hide_ips", False):
-					author = ctx._("Unregistered user")
-				else:
-					author = change["user"] + "(?)"
-			else:
-				ip_mapper[change["user"]] = len(contibs)
-				logger.debug("Current params user {} and state of map_ips {}".format(change["user"], ip_mapper))
-				if ctx.settings.get("hide_ips", False):
-					author = ctx._("Unregistered user")
-				else:
-					author = "{author} ({contribs})".format(author=change["user"], contribs=len(contibs))
-		else:
-			logger.debug("Current params user {} and state of map_ips {}".format(change["user"], ip_mapper))
-			author = "{author} ({amount})".format(
-				author=change["user"] if ctx.settings.get("hide_ips", False) is False else ctx._("Unregistered user"),
-				amount=ip_mapper[change["user"]])
-	embed.set_author(author, author_url)
 	embed["title"] = sanitize_to_markdown(change["filter"])
 	embed["url"] = ctx.client.create_article_path("Special:AbuseLog/{entry}".format(entry=change["id"]))
 	embed.add_field(ctx._("Title"), "[{target}]({target_url})".format(target=change.get("title", ctx._("Unknown")),
 		target_url=clean_link(ctx.client.create_article_path(sanitize_to_url(change.get("title", ctx._("Unknown")))))), inline=True)
 	embed.add_field(ctx._("Performed"), abusefilter_actions(change["action"], ctx._, change["action"]), inline=True)
 	embed.add_field(ctx._("Action taken"), ctx._(", ").join([abusefilter_results(result, ctx._, result) for result in results]))
+	embed_helper(ctx, embed, change, is_anon=abuse_filter_is_ip(change), set_desc=False)
 	return embed
 
 
@@ -100,12 +70,7 @@ def embed_abuselog(ctx: Context, change: dict):
 def compact_abuselog(ctx: Context, change: dict):
 	results = change["result"].split(",")
 	action = abuselog_action(results)
-	author = change["user"]
-	author_url = clean_link(ctx.client.create_article_path("User:{user}".format(user=sanitize_to_url(change["user"]))))
-	if abuse_filter_is_ip(change):
-		author_url = clean_link(ctx.client.create_article_path("Special:Contributions/{user}".format(user=sanitize_to_url(change["user"]))))
-		if ctx.settings.get("hide_ips", False):
-			author = ctx._("Unregistered user")
+	author, author_url = compact_author(ctx, change, is_anon=abuse_filter_is_ip(change))
 	message = ctx._("[{author}]({author_url}) triggered *[{abuse_filter}]({details_url})*, performing the action \"{action}\" on *[{target}]({target_url})* - action taken: {result}.").format(
 		author=author, author_url=author_url, abuse_filter=sanitize_to_markdown(change["filter"]),
 		details_url=clean_link(ctx.client.create_article_path("Special:AbuseLog/{entry}".format(entry=change["id"]))),
