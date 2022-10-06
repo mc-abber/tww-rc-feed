@@ -18,7 +18,8 @@ import logging
 from src.discord.message import DiscordMessage
 from src.api import formatter
 from src.api.context import Context
-from src.api.util import embed_helper, sanitize_to_url, parse_mediawiki_changes, clean_link, compact_author, sanitize_to_markdown
+from src.api.util import embed_helper, sanitize_to_url, parse_mediawiki_changes, clean_link, compact_author, \
+	sanitize_to_markdown, compact_summary
 
 # Order results from most drastic first to less drastic last
 abuselog_results = ["degroup", "blockautopromote", "rangeblock", "block", "disallow", "throttle", "warn", "tag", ""]
@@ -61,7 +62,7 @@ def embed_abuselog(ctx: Context, change: dict):
 	embed.add_field(ctx._("Title"), "[{target}]({target_url})".format(target=change.get("title", ctx._("Unknown")),
 		target_url=clean_link(ctx.client.create_article_path(sanitize_to_url(change.get("title", ctx._("Unknown")))))), inline=True)
 	embed.add_field(ctx._("Performed"), abusefilter_actions(change["action"], ctx._, change["action"]), inline=True)
-	embed.add_field(ctx._("Action taken"), ctx._(", ").join([abusefilter_results(result, ctx._, result) for result in results]))
+	embed.add_field(ctx._("Action taken"), "\n".join([abusefilter_results(result, ctx._, result) for result in results]))
 	embed_helper(ctx, embed, change, is_anon=abuse_filter_is_ip(change), set_desc=False)
 	return embed
 
@@ -133,3 +134,92 @@ def compact_abuselog_create(ctx: Context, change: dict):
 																											'newId'],
 																										filter_url=link)
 	return DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url, content=content)
+
+# rights/blockautopromote - AbuseFilter filter block auto promote
+def block_expiry(change: dict, ctx: Context) -> str:
+    if change["logparams"]["duration"] in ["infinite", "indefinite", "infinity", "never"]:
+        return ctx._("for infinity and beyond")
+    else:
+        if "expiry" in change["logparams"]:
+            expiry_date_time_obj = datetime.datetime.strptime(change["logparams"]["expiry"], '%Y-%m-%dT%H:%M:%SZ')
+            timestamp_date_time_obj = datetime.datetime.strptime(change["timestamp"], '%Y-%m-%dT%H:%M:%SZ')
+            timedelta_for_expiry = (expiry_date_time_obj - timestamp_date_time_obj).total_seconds()
+        elif isinstance(change["logparams"]["duration"], int):
+            timedelta_for_expiry = change["logparams"]["duration"]
+        else:
+            return change["logparams"]["duration"]  # Temporary? Should be rare? We will see in testing
+        years, days, hours, minutes = timedelta_for_expiry // 31557600, timedelta_for_expiry % 31557600 // 86400, \
+                                        timedelta_for_expiry % 86400 // 3600, timedelta_for_expiry % 3600 // 60
+        if not any([years, days, hours, minutes]):
+            return ctx._("for less than a minute")
+        time_names = (
+            ctx.ngettext("year", "years", years), ctx.ngettext("day", "days", days), ctx.ngettext("hour", "hours", hours),
+            ctx.ngettext("minute", "minutes", minutes))
+        final_time = []
+        for num, timev in enumerate([years, days, hours, minutes]):
+            if timev:
+                final_time.append(
+                    ctx._("for {time_number} {time_unit}").format(time_unit=time_names[num], time_number=int(timev)))
+        return ", ".join(final_time)
+
+
+@formatter.embed(event="rights/blockautopromote", mode="embed")
+def embed_rights_blockautopromote(ctx, change):
+    embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
+    user = change["title"].split(':', 1)[1]
+    try:
+        ipaddress.ip_address(user)
+        embed["url"] = ctx.client.create_article_path("Special:Contributions/{user}".format(user=user))
+    except ValueError:
+        embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
+    embed["title"] = ctx._("Blocked autopromotion of {user} {time}").format(user=user, time=block_expiry(change, ctx))
+    embed_helper(ctx, embed, change)
+    return embed
+
+
+@formatter.compact(event="rights/blockautopromote", mode="compact")
+def compact_rights_blockautopromote(ctx, change):
+    user = change["title"].split(':', 1)[1]
+    restriction_description = ""
+    author, author_url = compact_author(ctx, change)
+    parsed_comment = compact_summary(ctx)
+    try:
+        ipaddress.ip_address(user)
+        link = clean_link(ctx.client.create_article_path("Special:Contributions/{user}".format(user=user)))
+    except ValueError:
+        link = clean_link(ctx.client.create_article_path(sanitize_to_url(change["title"])))
+    content = ctx._(
+        "[{author}]({author_url}) blocked the autopromotion of [{user}]({user_url}) {time}{comment}").format(author=author,
+                                                                                                          author_url=author_url,
+                                                                                                          user=sanitize_to_markdown(user),
+                                                                                                          time=block_expiry(
+                                                                                                              change, ctx),
+                                                                                                          user_url=link,
+                                                                                                          comment=parsed_comment)
+    return DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url, content=content)
+
+
+# rights/restoreautopromote - AbuseFilter filter restore auto promote
+
+@formatter.embed(event="rights/restoreautopromote", mode="embed")
+def embed_rights_restoreautopromote(ctx, change):
+    embed = DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url)
+    embed["url"] = ctx.client.create_article_path(sanitize_to_url(change["title"]))
+    user = change["title"].split(':', 1)[1]
+    embed["title"] = ctx._("Restored autopromotion of {user}").format(user=sanitize_to_markdown(user))
+    embed_helper(ctx, embed, change)
+    return embed
+
+
+@formatter.compact(event="rights/restoreautopromote")
+def compact_rights_restoreautopromote(ctx, change):
+    author, author_url = compact_author(ctx, change)
+    link = clean_link(ctx.client.create_article_path(sanitize_to_url(change["title"])))
+    user = change["title"].split(':', 1)[1]
+    parsed_comment = compact_summary(ctx)
+    content = ctx._("[{author}]({author_url}) restored the autopromotion capability of [{user}]({user_url}){comment}").format(author=author,
+                                                                                                   author_url=author_url,
+                                                                                                   user=sanitize_to_markdown(user),
+                                                                                                   user_url=link,
+                                                                                                   comment=parsed_comment)
+    return DiscordMessage(ctx.message_type, ctx.event, ctx.webhook_url, content=content)

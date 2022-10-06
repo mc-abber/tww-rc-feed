@@ -571,21 +571,23 @@ def block_expiry(change: dict, ctx: Context) -> str:
             expiry_date_time_obj = datetime.datetime.strptime(change["logparams"]["expiry"], '%Y-%m-%dT%H:%M:%SZ')
             timestamp_date_time_obj = datetime.datetime.strptime(change["timestamp"], '%Y-%m-%dT%H:%M:%SZ')
             timedelta_for_expiry = (expiry_date_time_obj - timestamp_date_time_obj).total_seconds()
-            years, days, hours, minutes = timedelta_for_expiry // 31557600, timedelta_for_expiry % 31557600 // 86400, \
-                                          timedelta_for_expiry % 86400 // 3600, timedelta_for_expiry % 3600 // 60
-            if not any([years, days, hours, minutes]):
-                return ctx._("for less than a minute")
-            time_names = (
-                ctx.ngettext("year", "years", years), ctx.ngettext("day", "days", days), ctx.ngettext("hour", "hours", hours),
-                ctx.ngettext("minute", "minutes", minutes))
-            final_time = []
-            for num, timev in enumerate([years, days, hours, minutes]):
-                if timev:
-                    final_time.append(
-                        ctx._("for {time_number} {time_unit}").format(time_unit=time_names[num], time_number=int(timev)))
-            return ", ".join(final_time)
+        elif isinstance(change["logparams"]["duration"], int):
+            timedelta_for_expiry = change["logparams"]["duration"]
         else:
             return change["logparams"]["duration"]  # Temporary? Should be rare? We will see in testing
+        years, days, hours, minutes = timedelta_for_expiry // 31557600, timedelta_for_expiry % 31557600 // 86400, \
+                                        timedelta_for_expiry % 86400 // 3600, timedelta_for_expiry % 3600 // 60
+        if not any([years, days, hours, minutes]):
+            return ctx._("for less than a minute")
+        time_names = (
+            ctx.ngettext("year", "years", years), ctx.ngettext("day", "days", days), ctx.ngettext("hour", "hours", hours),
+            ctx.ngettext("minute", "minutes", minutes))
+        final_time = []
+        for num, timev in enumerate([years, days, hours, minutes]):
+            if timev:
+                final_time.append(
+                    ctx._("for {time_number} {time_unit}").format(time_unit=time_names[num], time_number=int(timev)))
+        return ", ".join(final_time)
 
 
 @formatter.embed(event="block/block", mode="embed")
@@ -670,7 +672,7 @@ def compact_block_block(ctx, change):
     content = ctx._(
         "[{author}]({author_url}) blocked [{user}]({user_url}) {time}{restriction_desc}{comment}").format(author=author,
                                                                                                           author_url=author_url,
-                                                                                                          user=user,
+                                                                                                          user=sanitize_to_markdown(user),
                                                                                                           time=block_expiry(
                                                                                                               change, ctx),
                                                                                                           user_url=link,
