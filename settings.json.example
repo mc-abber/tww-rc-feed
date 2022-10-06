@@ -216,6 +216,16 @@
             "color": 16711680,
             "emoji": "🏅"
         },
+        "rights/blockautopromote": {
+            "icon": "",
+            "color": 16711680,
+            "emoji": "🚫"
+        },
+        "rights/restoreautopromote": {
+            "icon": "",
+            "color": 16711680,
+            "emoji": "🏅"
+        },
         "abusefilter/modify": {
             "icon": "https://i.imgur.com/Sn2NzRJ.png",
             "color": 16711680,
