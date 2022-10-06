@@ -587,7 +587,7 @@ def block_expiry(change: dict, ctx: Context) -> str:
             if timev:
                 final_time.append(
                     ctx._("for {time_number} {time_unit}").format(time_unit=time_names[num], time_number=int(timev)))
-        return ", ".join(final_time)
+        return ctx._(", ").join(final_time)
 
 
 @formatter.embed(event="block/block", mode="embed")

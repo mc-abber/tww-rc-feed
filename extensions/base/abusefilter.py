@@ -15,6 +15,7 @@
 
 import ipaddress
 import logging
+import datetime
 from src.discord.message import DiscordMessage
 from src.api import formatter
 from src.api.context import Context
@@ -160,7 +161,7 @@ def block_expiry(change: dict, ctx: Context) -> str:
             if timev:
                 final_time.append(
                     ctx._("for {time_number} {time_unit}").format(time_unit=time_names[num], time_number=int(timev)))
-        return ", ".join(final_time)
+        return ctx._(", ").join(final_time)
 
 
 @formatter.embed(event="rights/blockautopromote", mode="embed")
