@@ -35,7 +35,7 @@ common functions that can be used to interact with the script and the wiki.
 ### Formatter
 **Path**: `src.api.formatter`  
 _Formatter module implements two decorators: `embed` and `compact`. Both of them can take the following keyword arguments:_
-- `event` - string - event type for formatter, in case the event is a [log event](https://www.mediawiki.org/wiki/Manual:Log_actions) it's constructed by taking log_type and combining it with log_action with / character in between (for example `upload/overwrite`). If the event however is not a log event but action like edit, the type will consist only of `type` value.
+- `event` - string - event type for formatter, in case the event is a [log event](https://www.mediawiki.org/wiki/Manual:Log_actions) it's constructed by taking log_type and combining it with log_action with / character in between (for example `upload/overwrite`). If the event however is not a log event but action like edit, the type will consist only of `type` value. (Pre hooks may receive or set this to an empty string for events that will be ignored.)
 - `aliases` - list[str] - list of strings containing all the events given event should alias for, it helps in case you want the same function be used for multiple event types.
 
 Both `event` and `aliases` arguments are optional in formatters. However, every formatter needs to have some kind of event specified. If it's not specified in the decorator, a fallback method will be used which constructs event type in format `{func.__module__}/{func.__name__.split("_", 1)[1]}`, in other terms taking the name of the file in which formatter is defined as first part and entire function name after first _ character as second part. Note that this fallback works only for log events.
