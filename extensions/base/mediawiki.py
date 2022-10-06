@@ -614,7 +614,9 @@ def embed_block_block(ctx, change):
                 else:
                     restriction_description = ctx._("Blocked from editing pages on following namespaces: ")
                 for namespace in change["logparams"]["restrictions"]["namespaces"]:
-                    if str(namespace) in ctx.client.namespaces:  # if we have cached namespace name for given namespace number, add its name to the list
+                    if str(namespace) == "0":
+                        namespaces.append("*{ns}*".format(ns=ctx._("(Main)")))
+                    elif str(namespace) in ctx.client.namespaces:  # if we have cached namespace name for given namespace number, add its name to the list
                         namespaces.append("*{ns}*".format(ns=ctx.client.namespaces[str(namespace)]["*"]))
                     else:
                         namespaces.append("*{ns}*".format(ns=namespace))
@@ -660,7 +662,9 @@ def compact_block_block(ctx, change):
                     else:
                         restriction_description = ctx._(" on namespaces: ")
                     for namespace in change["logparams"]["restrictions"]["namespaces"]:
-                        if str(namespace) in ctx.client.namespaces:  # if we have cached namespace name for given namespace number, add its name to the list
+                        if str(namespace) == "0":
+                            namespaces.append("*{ns}*".format(ns=ctx._("(Main)")))
+                        elif str(namespace) in ctx.client.namespaces:  # if we have cached namespace name for given namespace number, add its name to the list
                             namespaces.append("*{ns}*".format(ns=ctx.client.namespaces[str(namespace)]["*"]))
                         else:
                             namespaces.append("*{ns}*".format(ns=namespace))
