@@ -206,8 +206,10 @@ def rc_processor(change, changed_categories):
 	if ("actionhidden" in change or "suppressed" in change) and "suppressed" not in settings["ignored"]:  # if event is hidden using suppression
 		context.event = "suppressed"
 		run_hooks(pre_hooks, context, change)
+		if not context.event:
+			return
 		try:
-			discord_message: Optional[DiscordMessage] = default_message("suppressed", formatter_hooks)(context, change)
+			discord_message: Optional[DiscordMessage] = default_message(context.event, formatter_hooks)(context, change)
 		except NoFormatter:
 			return
 		except:
@@ -243,23 +245,25 @@ def rc_processor(change, changed_categories):
 			return
 		context.event = identification_string
 		run_hooks(pre_hooks, context, change)
+		if not context.event:
+			return
 		try:
-			discord_message: Optional[DiscordMessage] = default_message(identification_string, formatter_hooks)(context, change)
+			discord_message: Optional[DiscordMessage] = default_message(context.event, formatter_hooks)(context, change)
 		except:
 			if settings.get("error_tolerance", 1) > 0:
 				discord_message: Optional[DiscordMessage] = None  # It's handled by send_to_discord, we still want other code to run
 			else:
 				raise
-		if identification_string in ("delete/delete", "delete/delete_redir") and AUTO_SUPPRESSION_ENABLED:  # TODO Move it into a hook?
+		if context.event in ("delete/delete", "delete/delete_redir") and AUTO_SUPPRESSION_ENABLED:  # TODO Move it into a hook?
 			delete_messages(dict(pageid=change.get("pageid")))
-		elif identification_string == "delete/event" and AUTO_SUPPRESSION_ENABLED:
+		elif context.event == "delete/event" and AUTO_SUPPRESSION_ENABLED:
 			logparams = change.get('logparams', {"ids": []})
 			if settings["appearance"]["mode"] == "embed":
 				redact_messages(logparams.get("ids", []), 1, logparams.get("new", {}))
 			else:
 				for logid in logparams.get("ids", []):
 					delete_messages(dict(logid=logid))
-		elif identification_string == "delete/revision" and AUTO_SUPPRESSION_ENABLED:
+		elif context.event == "delete/revision" and AUTO_SUPPRESSION_ENABLED:
 			logparams = change.get('logparams', {"ids": []})
 			if logparams.get("type", "") in ("revision", "logging", "oldimage"):
 				if settings["appearance"]["mode"] == "embed":
@@ -282,8 +286,10 @@ def abuselog_processing(entry):
 	context = Context(settings["appearance"]["mode"], "abuselog", settings.get("abuselog_webhookURL", settings["webhookURL"]), client, formatters_i18n, settings)
 	context.event = action
 	run_hooks(pre_hooks, context, entry)
+	if not context.event:
+		return
 	try:
-		discord_message: Optional[DiscordMessage] = default_message(action, formatter_hooks)(context, entry)
+		discord_message: Optional[DiscordMessage] = default_message(context.event, formatter_hooks)(context, entry)
 	except NoFormatter:
 		return
 	except:

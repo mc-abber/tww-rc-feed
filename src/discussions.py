@@ -122,12 +122,13 @@ def parse_discussion_post(post, comment_pages):
 		except KeyError:
 			discussion_logger.error("Could not parse paths for article comment, here is the content of comment_pages: {}, ignoring...".format(comment_pages))
 			raise ArticleCommentError
-	event_type = f"discussion/{post_type.lower()}"
-	context.event = event_type
+	context.event = f"discussion/{post_type.lower()}"
 	context.set_comment_page(comment_page)
 	run_hooks(pre_hooks, context, post)
+	if not context.event:
+		return
 	try:
-		discord_message = default_message(event_type, formatter_hooks)(context, post)
+		discord_message = default_message(context.event, formatter_hooks)(context, post)
 	except NoFormatter:
 		return
 	except:
