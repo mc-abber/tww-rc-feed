@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RcGcDw\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-14 18:17+0200\n"
+"POT-Creation-Date: 2022-10-07 15:57+0200\n"
 "PO-Revision-Date: 2022-08-13 16:43+0000\n"
 "Last-Translator: しぃ <lzmashili@icloud.com>\n"
 "Language-Team: Japanese <https://translate.wikibot.de/projects/rcgcdw/main/"
@@ -94,14 +94,14 @@ msgstr[0] "最も活動的な時間"
 msgid "Day score"
 msgstr "日間スコア"
 
-#: src/rcgcdw.py:224
+#: src/rcgcdw.py:226
 msgid "~~hidden~~"
 msgstr "~~隠された~~"
 
-#: src/rcgcdw.py:226
+#: src/rcgcdw.py:228
 msgid "No description provided"
 msgstr "説明はありません"
 
-#: src/rcgcdw.py:229
+#: src/rcgcdw.py:231
 msgid "hidden"
 msgstr "隠された"

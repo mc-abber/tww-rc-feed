@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-16 23:56+0200\n"
+"POT-Creation-Date: 2022-10-07 15:57+0200\n"
 "PO-Revision-Date: 2021-05-22 12:08+0000\n"
 "Last-Translator: Philo04 <philipp2012lopu@mail.ru>\n"
 "Language-Team: Russian <https://translate.wikibot.de/projects/rcgcdw/main/ru/"
@@ -107,15 +107,15 @@ msgstr[2] "Самые активные часы"
 msgid "Day score"
 msgstr "Очков за день"
 
-#: src/rcgcdw.py:224
+#: src/rcgcdw.py:226
 msgid "~~hidden~~"
 msgstr "~~скрыто~~"
 
-#: src/rcgcdw.py:226
+#: src/rcgcdw.py:228
 msgid "No description provided"
 msgstr "Описание не предоставлено"
 
-#: src/rcgcdw.py:229
+#: src/rcgcdw.py:231
 msgid "hidden"
 msgstr "скрыто"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RcGcDw\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-14 18:17+0200\n"
+"POT-Creation-Date: 2022-10-07 15:57+0200\n"
 "PO-Revision-Date: 2022-08-13 16:43+0000\n"
 "Last-Translator: しぃ <lzmashili@icloud.com>\n"
 "Language-Team: Japanese <https://translate.wikibot.de/projects/rcgcdw/"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.12.1\n"
 
-#: src/discord/redaction.py:79
+#: src/discord/redaction.py:80
 msgid "hidden"
 msgstr "隠された"
 
-#: src/discord/redaction.py:82 src/discord/redaction.py:87
+#: src/discord/redaction.py:83 src/discord/redaction.py:88
 msgid "~~hidden~~"
 msgstr "~~隠された~~"
 
