@@ -105,34 +105,37 @@ def embed_helper(ctx: Context, message: DiscordMessage, change: dict, set_user=T
 		author = None
 		if "anon" in change if is_anon is None else is_anon:
 			author_url = ctx.client.create_article_path("Special:Contributions/{user}".format(user=sanitize_to_url(change["user"])))
-			ip_mapper = ctx.client.get_ipmapper()
-			logger.debug("current user: {} with cache of IPs: {}".format(change["user"], ip_mapper.keys()))
-			if change["user"] not in list(ip_mapper.keys()):
-				try:
-					contibs = ctx.client.make_api_request(
-						"?action=query&format=json&list=usercontribs&uclimit=max&ucuser={user}&ucstart={timestamp}&ucprop=".format(
-							user=sanitize_to_url(change["user"]), timestamp=change["timestamp"]), "query",
-						"usercontribs")
-				except (ServerError, MediaWikiError):
-					logger.warning("WARNING: Something went wrong when checking amount of contributions for given IP address")
-					if settings.get("hide_ips", False):
-						author = ctx._("Unregistered user")
-					else:
-						author = change["user"] + "(?)"
-				else:
-					ip_mapper[change["user"]] = len(contibs)
-					logger.debug("Current params user {} and state of map_ips {}".format(change["user"], ip_mapper))
-					if settings.get("hide_ips", False):
-						author = ctx._("Unregistered user")
-					else:
-						author = "{author} ({contribs})".format(author=change["user"], contribs=len(contibs))
+			if settings.get("hide_ip_editcount", False):
+				author = change["user"] if settings.get("hide_ips", False) is False else ctx._("Unregistered user")
 			else:
-				logger.debug("Current params user {} and state of map_ips {}".format(change["user"], ip_mapper))
-				if ctx.event in ("edit", "new"):
-					ip_mapper[change["user"]] += 1
-				author = "{author} ({amount})".format(
-					author=change["user"] if settings.get("hide_ips", False) is False else ctx._("Unregistered user"),
-					amount=ip_mapper[change["user"]])
+				ip_mapper = ctx.client.get_ipmapper()
+				logger.debug("current user: {} with cache of IPs: {}".format(change["user"], ip_mapper.keys()))
+				if change["user"] not in list(ip_mapper.keys()):
+					try:
+						contibs = ctx.client.make_api_request(
+							"?action=query&format=json&list=usercontribs&uclimit=max&ucuser={user}&ucstart={timestamp}&ucprop=".format(
+								user=sanitize_to_url(change["user"]), timestamp=change["timestamp"]), "query",
+							"usercontribs")
+					except (ServerError, MediaWikiError):
+						logger.warning("WARNING: Something went wrong when checking amount of contributions for given IP address")
+						if settings.get("hide_ips", False):
+							author = ctx._("Unregistered user")
+						else:
+							author = change["user"] + "(?)"
+					else:
+						ip_mapper[change["user"]] = len(contibs)
+						logger.debug("Current params user {} and state of map_ips {}".format(change["user"], ip_mapper))
+						if settings.get("hide_ips", False):
+							author = ctx._("Unregistered user")
+						else:
+							author = "{author} ({contribs})".format(author=change["user"], contribs=len(contibs))
+				else:
+					logger.debug("Current params user {} and state of map_ips {}".format(change["user"], ip_mapper))
+					if ctx.event in ("edit", "new"):
+						ip_mapper[change["user"]] += 1
+					author = "{author} ({amount})".format(
+						author=change["user"] if settings.get("hide_ips", False) is False else ctx._("Unregistered user"),
+						amount=ip_mapper[change["user"]])
 		else:
 			author_url = ctx.client.create_article_path("User:{}".format(sanitize_to_url(change["user"])))
 			author = change["user"]
