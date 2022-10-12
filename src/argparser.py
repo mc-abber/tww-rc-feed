@@ -17,6 +17,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description="Start RcGcDw")
 parser.add_argument("--test", action='store_true', help="mode used for testing, sends only 5 entries of both rc and discussion changes and sends daily overview")
+parser.add_argument("--nowelcome", action='store_true', help="don't send a welcome message when a new data file is created")
 parser.add_argument("--settings", default="settings.json", type=argparse.FileType(encoding='utf8'), help="provides a path to settings file (default ./settings.json)")
 command_args, unknown = parser.parse_known_args()
 

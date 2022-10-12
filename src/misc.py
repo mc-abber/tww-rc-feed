@@ -20,6 +20,7 @@ from html.parser import HTMLParser
 from urllib.parse import urlparse, urlunparse
 import requests
 
+from src.argparser import command_args
 from src.configloader import settings
 import src.api.util
 from src.discord.message import DiscordMessage, DiscordMessageMetadata
@@ -72,6 +73,9 @@ class DataFile:
 		except FileNotFoundError:
 			self.generate_datafile()
 			misc_logger.info("The data file could not be found. Generating a new one...")
+			if not command_args.nowelcome:
+				send_simple("welcome", _("RcGcDw is now running and checking {wiki}.").format(wiki=settings["wikiname"]),
+				     _("Welcome"), settings["avatars"].get("welcome", ""))
 			return data_template
 
 	def save_datafile(self):
