@@ -13,6 +13,7 @@
     "avatars": {
         "connection_failed": "https://i.imgur.com/2jWQEt1.png",
         "connection_restored": "",
+        "welcome": "",
         "no_event": "",
         "embed": "",
         "compact": ""
@@ -510,6 +511,11 @@
             "icon": "",
             "color": 8421504,
             "emoji": "📛"
+        },
+        "templateclassification/tc-changed": {
+            "icon": "",
+            "color": 8750469,
+            "emoji": "📱"
         },
         "suppressed": {
             "icon": "https://i.imgur.com/1gps6EZ.png",

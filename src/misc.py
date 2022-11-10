@@ -20,6 +20,7 @@ from html.parser import HTMLParser
 from urllib.parse import urlparse, urlunparse
 import requests
 
+from src.argparser import command_args
 from src.configloader import settings
 import src.api.util
 from src.discord.message import DiscordMessage, DiscordMessageMetadata
@@ -41,6 +42,14 @@ WIKI_API_PATH: str = ""
 WIKI_ARTICLE_PATH: str = ""
 WIKI_SCRIPT_PATH: str = ""
 WIKI_JUST_DOMAIN: str = ""
+
+def send_simple(msgtype, message, name, avatar):
+	discord_msg = DiscordMessage("compact", msgtype, settings["webhookURL"], content=message)
+	discord_msg.set_avatar(avatar)
+	discord_msg.set_name(name)
+	messagequeue.resend_msgs()
+	send_to_discord(discord_msg, meta=DiscordMessageMetadata("POST"))
+
 
 class DataFile:
 	"""Data class which instance of is shared by multiple modules to remain consistent and do not cause too many IO operations."""
@@ -69,6 +78,9 @@ class DataFile:
 		except FileNotFoundError:
 			self.generate_datafile()
 			misc_logger.info("The data file could not be found. Generating a new one...")
+			if not command_args.nowelcome:
+				send_simple("welcome", _("RcGcDw is now running and checking {wiki}.").format(wiki=settings["wikiname"]),
+				     _("Welcome"), settings["avatars"].get("welcome", ""))
 			return data_template
 
 	def save_datafile(self):
@@ -298,14 +310,6 @@ def prepare_paths(path: str, dry=False):
 
 
 prepare_paths(settings["wiki_url"])
-
-
-def send_simple(msgtype, message, name, avatar):
-	discord_msg = DiscordMessage("compact", msgtype, settings["webhookURL"], content=message)
-	discord_msg.set_avatar(avatar)
-	discord_msg.set_name(name)
-	messagequeue.resend_msgs()
-	send_to_discord(discord_msg, meta=DiscordMessageMetadata("POST"))
 
 
 def run_hooks(hooks, *arguments):
