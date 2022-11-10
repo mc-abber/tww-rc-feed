@@ -42,9 +42,6 @@ WIKI_ARTICLE_PATH: str = ""
 WIKI_SCRIPT_PATH: str = ""
 WIKI_JUST_DOMAIN: str = ""
 
-profile_fields = {"profile-location": _("Location"), "profile-aboutme": _("About me"), "profile-link-google": _("Google link"), "profile-link-facebook":_("Facebook link"), "profile-link-twitter": _("Twitter link"), "profile-link-reddit": _("Reddit link"), "profile-link-twitch": _("Twitch link"), "profile-link-psn": _("PSN link"), "profile-link-vk": _("VK link"), "profile-link-xbl": _("XBL link"), "profile-link-steam": _("Steam link"), "profile-link-discord": _("Discord handle"), "profile-link-battlenet": _("Battle.net handle")}
-
-
 class DataFile:
 	"""Data class which instance of is shared by multiple modules to remain consistent and do not cause too many IO operations."""
 	def __init__(self):
@@ -322,7 +319,14 @@ def run_hooks(hooks, *arguments):
 				raise
 
 
-def profile_field_name(name, embed):
+def profile_field_name(name, embed, _):
+	profile_fields = {"profile-location": _("Location"), "profile-aboutme": _("About me"),
+					  "profile-link-google": _("Google link"), "profile-link-facebook": _("Facebook link"),
+					  "profile-link-twitter": _("Twitter link"), "profile-link-reddit": _("Reddit link"),
+					  "profile-link-twitch": _("Twitch link"), "profile-link-psn": _("PSN link"),
+					  "profile-link-vk": _("VK link"), "profile-link-xbl": _("XBL link"),
+					  "profile-link-steam": _("Steam link"), "profile-link-discord": _("Discord handle"),
+					  "profile-link-battlenet": _("Battle.net handle")}
 	try:
 		return profile_fields[name]
 	except KeyError:
