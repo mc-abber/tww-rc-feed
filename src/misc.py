@@ -46,6 +46,14 @@ WIKI_JUST_DOMAIN: str = ""
 profile_fields = {"profile-location": _("Location"), "profile-aboutme": _("About me"), "profile-link-google": _("Google link"), "profile-link-facebook":_("Facebook link"), "profile-link-twitter": _("Twitter link"), "profile-link-reddit": _("Reddit link"), "profile-link-twitch": _("Twitch link"), "profile-link-psn": _("PSN link"), "profile-link-vk": _("VK link"), "profile-link-xbl": _("XBL link"), "profile-link-steam": _("Steam link"), "profile-link-discord": _("Discord handle"), "profile-link-battlenet": _("Battle.net handle")}
 
 
+def send_simple(msgtype, message, name, avatar):
+	discord_msg = DiscordMessage("compact", msgtype, settings["webhookURL"], content=message)
+	discord_msg.set_avatar(avatar)
+	discord_msg.set_name(name)
+	messagequeue.resend_msgs()
+	send_to_discord(discord_msg, meta=DiscordMessageMetadata("POST"))
+
+
 class DataFile:
 	"""Data class which instance of is shared by multiple modules to remain consistent and do not cause too many IO operations."""
 	def __init__(self):
@@ -305,14 +313,6 @@ def prepare_paths(path: str, dry=False):
 
 
 prepare_paths(settings["wiki_url"])
-
-
-def send_simple(msgtype, message, name, avatar):
-	discord_msg = DiscordMessage("compact", msgtype, settings["webhookURL"], content=message)
-	discord_msg.set_avatar(avatar)
-	discord_msg.set_name(name)
-	messagequeue.resend_msgs()
-	send_to_discord(discord_msg, meta=DiscordMessageMetadata("POST"))
 
 
 def run_hooks(hooks, *arguments):
