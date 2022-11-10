@@ -34,7 +34,7 @@ def embed_datadump_generate(ctx: Context, change: dict) -> DiscordMessage:
     return embed
 
 
-@formatter.compact(event="mdatadump/generate")
+@formatter.compact(event="datadump/generate")
 def compact_datadump_generate(ctx: Context, change: dict):
     author, author_url = compact_author(ctx, change)
     parsed_comment = compact_summary(ctx)
@@ -56,7 +56,7 @@ def embed_datadump_delete(ctx: Context, change: dict) -> DiscordMessage:
     return embed
 
 
-@formatter.compact(event="mdatadump/delete")
+@formatter.compact(event="datadump/delete")
 def compact_datadump_delete(ctx: Context, change: dict) -> DiscordMessage:
     author, author_url = compact_author(ctx, change)
     parsed_comment = compact_summary(ctx)
