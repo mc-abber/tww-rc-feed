@@ -13,6 +13,7 @@
     "avatars": {
         "connection_failed": "https://i.imgur.com/2jWQEt1.png",
         "connection_restored": "",
+        "welcome": "",
         "no_event": "",
         "embed": "",
         "compact": ""
