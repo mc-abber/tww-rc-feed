@@ -141,7 +141,7 @@ _DiscordMessage is a class taking care of creation of Discord messages that can 
 DiscordMessage object when created with message_type == embed will take all assignments and reads using object[key] as ones reading/setting the actual embed object.   
 DiscordMessage consists of the following:   
 - `__init__(message_type: str, event_type: str, webhook_url: str, content=None)` – constructor which takes message type (can be either `embed` or `compact`), event_type (for example `protect/protect`), webhook_url (full URL of webhook message is intended to be sent to), content optional parameter used in compact messages as main body
-- `set_author(name, url, icon_url="")` – a method that can be used to set username, URL to their profile and optionally an icon for the embed
+- `set_author(name, url, icon_url=None)` – a method that can be used to set username, URL to their profile and optionally an icon for the embed
 - `add_field(name, value, inline=False)` – a method to add a field with given name and value, optional inline argument can be set if field should be inline
 - `set_avatar(url)` – sets avatar for WEBHOOK MESSAGE (not to be confused with actual embed)
 - `set_name(name)` – sets name for WEBHOOK MESSAGE

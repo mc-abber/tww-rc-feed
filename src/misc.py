@@ -80,7 +80,7 @@ class DataFile:
 			misc_logger.info("The data file could not be found. Generating a new one...")
 			if not command_args.nowelcome:
 				send_simple("welcome", _("RcGcDw is now running and checking {wiki}.").format(wiki=settings["wikiname"]),
-				     _("Welcome"), settings["avatars"].get("welcome", ""))
+				     _("Welcome"), settings["avatars"].get("welcome", None))
 			return data_template
 
 	def save_datafile(self):

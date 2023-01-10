@@ -24,7 +24,7 @@ from src.configloader import settings
 class DiscordMessage:
 	"""A class defining a typical Discord JSON representation of webhook payload."""
 	def __init__(self, message_type: str, event_type: str, webhook_url: str, content=None):
-		self.webhook_object = dict(allowed_mentions={"parse": []}, avatar_url=settings["avatars"].get(message_type, ""))
+		self.webhook_object = dict(allowed_mentions={"parse": []}, avatar_url=settings["avatars"].get(message_type, None))
 		self.webhook_url = webhook_url
 
 		if message_type == "embed":
@@ -78,7 +78,7 @@ class DiscordMessage:
 		if len(self.embed["title"]) > 254:
 			self.embed["title"] = self.embed["title"][0:253] + "…"
 
-	def set_author(self, name, url, icon_url=""):
+	def set_author(self, name, url, icon_url=None):
 		self.embed["author"]["name"] = name
 		self.embed["author"]["url"] = url
 		self.embed["author"]["icon_url"] = icon_url

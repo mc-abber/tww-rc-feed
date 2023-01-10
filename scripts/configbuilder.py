@@ -282,7 +282,7 @@ class AdvancedSettings:
 		if settings["show_updown_messages"]:
 			option = default_or_custom(
 				input("Provide a link for a custom webhook avatar when the wiki goes DOWN. (default: no avatar)\n"),
-				"")
+				None)
 			try:
 				if option:
 					response = requests.head(option, timeout=10.0)
@@ -295,7 +295,7 @@ class AdvancedSettings:
 			option = default_or_custom(
 				input(
 					"Provide a link for a custom webhook avatar when the connection to the wiki is RESTORED. (default: no avatar)\n"),
-				"")
+				None)
 			try:
 				if option:
 					response = requests.head(option, timeout=10.0)

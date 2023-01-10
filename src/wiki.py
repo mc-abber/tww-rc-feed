@@ -402,7 +402,7 @@ class Wiki(object):
 			else:
 				if (time.time() - self.last_downtime) > 1800 and self.check_connection():  # check if last downtime happened within 30 minutes, if yes, don't send a message
 					send_simple("down_detector", _("{wiki} seems to be down or unreachable.").format(wiki=settings["wikiname"]),
-					     _("Connection status"), settings["avatars"]["connection_failed"])
+					     _("Connection status"), settings["avatars"].get("connection_failed", None))
 					self.last_downtime = time.time()
 					self.streak = 0
 		else:
@@ -414,7 +414,7 @@ class Wiki(object):
 					self.streak = -1
 					send_simple("down_detector", _("Connection to {wiki} seems to be stable now.").format(
 						wiki=settings["wikiname"]),
-					            _("Connection status"), settings["avatars"]["connection_restored"])
+					            _("Connection status"), settings["avatars"].get("connection_restored", None))
 
 	def clear_cache(self):
 		self.map_ips = {}
