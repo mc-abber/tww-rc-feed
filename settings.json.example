@@ -12,11 +12,11 @@
     "wikiname": "Wreck It Woodhouse",
     "avatars": {
         "connection_failed": "https://i.imgur.com/2jWQEt1.png",
-        "connection_restored": "",
-        "welcome": "",
-        "no_event": "",
-        "embed": "",
-        "compact": ""
+        "connection_restored": null,
+        "welcome": null,
+        "no_event": null,
+        "embed": null,
+        "compact": null
     },
     "ignored": ["external", "newusers/create", "newusers/autocreate", "newusers/create2", "newusers/byemail", "newusers/newusers", "newusers/reclaim"],
     "show_updown_messages": true,
@@ -93,7 +93,7 @@
     },
     "event_appearance": {
         "daily_overview": {
-            "icon": "",
+            "icon": null,
             "color": 16312092,
             "emoji": ""
         },
@@ -103,7 +103,7 @@
             "emoji": "🆕"
         },
         "edit": {
-            "icon": "",
+            "icon": null,
             "color": "THIS COLOR DEPENDS ON EDIT SIZE, PLEASE DON'T CHANGE",
             "emoji": "📝"
         },
@@ -198,7 +198,7 @@
             "emoji": "🔓"
         },
         "import/upload": {
-            "icon": "",
+            "icon": null,
             "color": 65280,
             "emoji": "📥"
         },
@@ -208,22 +208,22 @@
             "emoji": "📥"
         },
         "rights/rights": {
-            "icon": "",
+            "icon": null,
             "color": 16711680,
             "emoji": "🏅"
         },
         "rights/autopromote": {
-            "icon": "",
+            "icon": null,
             "color": 16711680,
             "emoji": "🏅"
         },
         "rights/blockautopromote": {
-            "icon": "",
+            "icon": null,
             "color": 16711680,
             "emoji": "🚫"
         },
         "rights/restoreautopromote": {
-            "icon": "",
+            "icon": null,
             "color": 16711680,
             "emoji": "🏅"
         },
@@ -263,7 +263,7 @@
             "emoji": "📧"
         },
         "curseprofile/comment-deleted": {
-            "icon": "",
+            "icon": null,
             "color": 16089376,
             "emoji": "🗑️"
         },
@@ -278,242 +278,242 @@
             "emoji": "📩"
         },
         "curseprofile/profile-edited": {
-            "icon": "",
+            "icon": null,
             "color": 16089376,
             "emoji": "📌"
         },
         "contentmodel/change": {
-            "icon": "",
+            "icon": null,
             "color": 25600,
             "emoji": "📋"
         },
         "contentmodel/new": {
-            "icon": "",
+            "icon": null,
             "color": 25600,
             "emoji": "📋"
         },
         "cargo/deletetable": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "📦"
         },
         "cargo/createtable": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "📦"
         },
         "cargo/replacetable": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "📦"
         },
         "cargo/recreatetable": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "📦"
         },
         "sprite/sprite": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "🪟"
         },
         "sprite/sheet": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "🪟"
         },
         "sprite/slice": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "🪟"
         },
         "managetags/create": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "🏷️"
         },
         "managetags/delete": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "🏷️"
         },
         "managetags/activate": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "🏷️"
         },
         "managetags/deactivate": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "🏷️"
         },
         "newusers/autocreate": {
-            "icon": "",
+            "icon": null,
             "color": 65280,
             "emoji": "🗿"
         },
         "newusers/byemail": {
-            "icon": "",
+            "icon": null,
             "color": 65280,
             "emoji": "🗿"
         },
         "newusers/create": {
-            "icon": "",
+            "icon": null,
             "color": 65280,
             "emoji": "🗿"
         },
         "newusers/create2": {
-            "icon": "",
+            "icon": null,
             "color": 65280,
             "emoji": "🗿"
         },
         "newusers/newusers": {
-            "icon": "",
+            "icon": null,
             "color": 65280,
             "emoji": "🗿"
         },
         "newusers/reclaim": {
-            "icon": "",
+            "icon": null,
             "color": 65280,
             "emoji": "🗿"
         },
         "managewiki/delete": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🗑️"
         },
         "managewiki/lock": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🔒"
         },
         "managewiki/namespaces": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "📦"
         },
         "managewiki/namespaces-delete": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🗑️"
         },
         "managewiki/rights": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🏅"
         },
         "managewiki/settings": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "⚙️"
         },
         "managewiki/undelete": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "♻️"
         },
         "managewiki/unlock": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🔓"
         },
         "datadump/generate": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "📤"
         },
         "datadump/delete": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🗑️"
         },
         "pagetranslation/mark": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/unmark": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/moveok": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/movenok": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/deletefok": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/deletefnok": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/deletelok": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/deletelnok": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/encourage": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/discourage": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/prioritylanguages": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/associate": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagetranslation/dissociate": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "translationreview/message": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "translationreview/group": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "pagelang/pagelang": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "🌐"
         },
         "renameuser/renameuser": {
-            "icon": "",
+            "icon": null,
             "color": 8421504,
             "emoji": "📛"
         },
         "templateclassification/tc-changed": {
-            "icon": "",
+            "icon": null,
             "color": 8750469,
             "emoji": "📱"
         },
@@ -568,12 +568,12 @@
             "emoji": "🗒️"
         },
         "abuselog/": {
-            "icon": "",
+            "icon": null,
             "color": 65280,
             "emoji": "🆓"
         },
         "abuselog/warn": {
-            "icon": "",
+            "icon": null,
             "color": 16776960,
             "emoji": "⚠️"
         },
@@ -583,12 +583,12 @@
             "emoji": "🚫"
         },
         "abuselog/tag": {
-            "icon": "",
+            "icon": null,
             "color": 8750469,
             "emoji": "🏷️"
         },
         "abuselog/disallow": {
-            "icon": "",
+            "icon": null,
             "color": 16711680,
             "emoji": "🛑"
         },
@@ -598,22 +598,22 @@
             "emoji": "🚫"
         },
         "abuselog/throttle": {
-            "icon": "",
+            "icon": null,
             "color": 16711680,
             "emoji": "🐌"
         },
         "abuselog/blockautopromote": {
-            "icon": "",
+            "icon": null,
             "color": 1,
             "emoji": "🚷"
         },
         "abuselog/degroup": {
-            "icon": "",
+            "icon": null,
             "color": 1,
             "emoji": "⏬"
         },
         "unknown": {
-            "icon": "",
+            "icon": null,
             "color": 0,
             "emoji": "❓"
         }
