@@ -1,4 +1,5 @@
 from src.configloader import settings, load_settings
+from src.argparser import command_args
 import logging
 import shutil
 import time
@@ -7,6 +8,7 @@ import sys
 
 logger = logging.getLogger("rcgcdw.migrations.falsytypes")
 new_settings = settings.copy()
+
 
 def run():
 	change = False
@@ -28,8 +30,8 @@ def run():
 		sys.exit(1)
 	if change:
 		logger.info("Running migration falsytypes")
-		shutil.copy("settings.json", "settings.json.{}.bak".format(int(time.time())))
-		with open("settings.json", "w", encoding="utf-8") as new_write:
+		shutil.copy(command_args.settings, command_args.settings+".{}.bak".format(int(time.time())))
+		with open(command_args.settings, "w", encoding="utf-8") as new_write:
 			new_write.write(json.dumps(new_settings, indent=4))
 		load_settings()
 		logger.info("Migration falsytypes has been successful.")

@@ -1,4 +1,5 @@
 from src.configloader import settings, load_settings
+from src.argparser import command_args
 import logging
 import shutil
 import time
@@ -33,8 +34,8 @@ def run():
 		except KeyError:
 			logger.exception("Failed to migrate appearance embed.")
 			sys.exit(1)
-		shutil.copy("settings.json", "settings.json.{}.bak".format(int(time.time())))
-		with open("settings.json", "w", encoding="utf-8") as new_write:
+		shutil.copy(command_args.settings, command_args.settings+".{}.bak".format(int(time.time())))
+		with open(command_args.settings, "w", encoding="utf-8") as new_write:
 			new_write.write(json.dumps(new_settings, indent=4))
 		load_settings()
 		logger.info("Migration 1.13.1.1 has been successful.")
