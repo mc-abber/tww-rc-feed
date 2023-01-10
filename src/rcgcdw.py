@@ -20,9 +20,9 @@
 # You have been warned
 
 import time, logging.config, requests, datetime, math, os.path, sys, importlib
-
 import src.misc
 import src.configloader
+from src.migrations import *
 from collections import defaultdict, Counter, OrderedDict
 from src.argparser import command_args
 from typing import Optional

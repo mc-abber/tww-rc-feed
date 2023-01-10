@@ -30,8 +30,8 @@ def run():
 		sys.exit(1)
 	if change:
 		logger.info("Running migration falsytypes")
-		shutil.copy(command_args.settings, command_args.settings+".{}.bak".format(int(time.time())))
-		with open(command_args.settings, "w", encoding="utf-8") as new_write:
+		shutil.copy(command_args.settings.name, "{}.{}.bak".format(command_args.settings.name, int(time.time())))
+		with open(command_args.settings.name, "w", encoding="utf-8") as new_write:
 			new_write.write(json.dumps(new_settings, indent=4))
 		load_settings()
 		logger.info("Migration falsytypes has been successful.")

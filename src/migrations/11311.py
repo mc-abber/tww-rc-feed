@@ -11,6 +11,7 @@ from src.migrations.utils import return_example_file
 logger = logging.getLogger("rcgcdw.migrations.1.13.1.1")
 new_settings = settings.copy()
 
+
 def run():
 	if "event_appearance" not in settings:
 		logger.info("Running migration 1.13.1.1")
@@ -34,8 +35,8 @@ def run():
 		except KeyError:
 			logger.exception("Failed to migrate appearance embed.")
 			sys.exit(1)
-		shutil.copy(command_args.settings, command_args.settings+".{}.bak".format(int(time.time())))
-		with open(command_args.settings, "w", encoding="utf-8") as new_write:
+		shutil.copy(command_args.settings.name, "{}.{}.bak".format(command_args.settings.name, int(time.time())))
+		with open(command_args.settings.name, "w", encoding="utf-8") as new_write:
 			new_write.write(json.dumps(new_settings, indent=4))
 		load_settings()
 		logger.info("Migration 1.13.1.1 has been successful.")
