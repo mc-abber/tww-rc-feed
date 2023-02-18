@@ -163,7 +163,8 @@ def embed_upload_upload(ctx, change) -> DiscordMessage:
             for num, revision in enumerate(urls):
                 if revision["timestamp"] == change["logparams"][
                     "img_timestamp"]:  # find the correct revision corresponding for this log entry
-                    image_direct_url = "{rev}?{cache}".format(rev=revision["url"],
+                    image_direct_url = "{rev}{c}rcgcdw={cache}".format(rev=revision["url"],
+                                                              c="&" if "?" in revision["url"] else "?",
                                                               cache=int(time.time() * 5))  # cachebusting
                     break
         except KeyError:
